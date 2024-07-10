@@ -8,6 +8,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu";
 import { IoIosMenu } from "react-icons/io";
+import Link from "next/link";
 
 const DropMenu = () => {
 	return (
@@ -21,8 +22,16 @@ const DropMenu = () => {
 				<DropdownMenuContent>
 					<DropdownMenuLabel>My Profile</DropdownMenuLabel>
 					<DropdownMenuSeparator />
-					<DropdownMenuItem>Products</DropdownMenuItem>
+					<Link href="/">
+						<DropdownMenuItem>Products</DropdownMenuItem>
+					</Link>
+					<DropdownMenuItem>Categories</DropdownMenuItem>
 					<DropdownMenuItem>Cart(0)</DropdownMenuItem>
+					<Link href="/login">
+						<DropdownMenuItem className="bg-red-700 text-white rounded-lg hover:bg-red-700">
+							Disconnect
+						</DropdownMenuItem>
+					</Link>
 				</DropdownMenuContent>
 			</DropdownMenu>
 		</div>

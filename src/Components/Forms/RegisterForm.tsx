@@ -76,19 +76,21 @@ export const RegisterForm = () => {
 					</div>
 
 					<div>
-						<button
-							type="submit"
-							className="flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-						>
-							Submit{" "}
-						</button>
+						<Link href="/">
+							<button
+								type="submit"
+								className="flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							>
+								Submit{" "}
+							</button>
+						</Link>
 					</div>
 				</div>
 
 				<p className="mt-10 text-center text-sm text-gray-500">
-					Already a member ? //TODO: fixe link
+					Already a member ?
 					<Link
-						href={"/login"}
+						href="/login"
 						className="font-semibold leading-6 text-sky-700 hover:text-sky-500"
 					>
 						Log in{" "}

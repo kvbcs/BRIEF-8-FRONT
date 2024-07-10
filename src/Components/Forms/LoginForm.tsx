@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export const LoginForm = () => {
@@ -16,24 +17,6 @@ export const LoginForm = () => {
 
 			<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 				<div className="space-y-6">
-					<div>
-						<label
-							htmlFor="name"
-							className="block text-sm font-medium leading-6 text-gray-900"
-						>
-							Name
-						</label>
-						<div className="mt-2">
-							<input
-								id="name"
-								name="name"
-								type="text"
-								required
-								autoComplete="name"
-								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-							/>
-						</div>
-					</div>
 					<div>
 						<label
 							htmlFor="email"
@@ -64,7 +47,7 @@ export const LoginForm = () => {
 							<div className="text-sm">
 								<a
 									href="#"
-									className="font-semibold text-indigo-600 hover:text-indigo-500"
+									className="font-semibold text-sky-500 hover:text-sky-700"
 								>
 									Forgot password?
 								</a>
@@ -83,23 +66,24 @@ export const LoginForm = () => {
 					</div>
 
 					<div>
+						<Link href="/">
 						<button
 							type="submit"
-							className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							className="flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 						>
-							Sign in
-						</button>
+							Log in
+						</button></Link>
 					</div>
 				</div>
 
 				<p className="mt-10 text-center text-sm text-gray-500">
 					Not a member?{" "}
-					<a
-						href="#"
-						className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+					<Link
+						href="/register"
+						className="font-semibold leading-6 text-sky-500 hover:text-sky-700"
 					>
-						Start a 14 day free trial
-					</a>
+						Register{" "}
+					</Link>
 				</p>
 			</div>
 		</div>

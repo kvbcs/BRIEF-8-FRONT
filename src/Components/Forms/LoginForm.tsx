@@ -8,7 +8,7 @@ export const LoginForm = () => {
 				<img
 					alt="Ecommerce logo"
 					src="https://t3.ftcdn.net/jpg/02/47/48/00/360_F_247480017_ST4hotATsrcErAja0VzdUsrrVBMIcE4u.jpg"
-					className="mx-auto h-10 w-auto"
+					className="mx-auto h-20 w-auto"
 				/>
 				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
 					Log in to your account
@@ -67,17 +67,18 @@ export const LoginForm = () => {
 
 					<div>
 						<Link href="/">
-						<button
-							type="submit"
-							className="flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-						>
-							Log in
-						</button></Link>
+							<button
+								type="submit"
+								className="flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							>
+								Log in
+							</button>
+						</Link>
 					</div>
 				</div>
 
 				<p className="mt-10 text-center text-sm text-gray-500">
-					Not a member?{" "}
+					Not a member ?{" "}
 					<Link
 						href="/register"
 						className="font-semibold leading-6 text-sky-500 hover:text-sky-700"

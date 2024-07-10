@@ -87,11 +87,11 @@ export const RegisterForm = () => {
 					</div>
 				</div>
 
-				<p className="mt-10 text-center text-sm text-gray-500">
+				<p className="flex flex-row gap-2 items-center justify-center mt-10 text-center text-sm text-gray-500">
 					Already a member ?
 					<Link
 						href="/login"
-						className="font-semibold leading-6 text-sky-700 hover:text-sky-500"
+						className="font-semibold leading-6 text-sky-500 hover:text-sky-700"
 					>
 						Log in{" "}
 					</Link>

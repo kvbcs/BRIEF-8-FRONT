@@ -17,3 +17,9 @@ export type AllCategoriesProps = {
 	id: string;
 	name: string;
 };
+
+export type AllUserProps = {
+	id: string
+	name: string
+	email: string
+}

@@ -9,6 +9,8 @@ import {
 } from "@/Components/ui/dropdown-menu";
 import { IoIosMenu } from "react-icons/io";
 import Link from "next/link";
+import { FaArrowRightFromBracket, FaUser } from "react-icons/fa6";
+import { FaShoppingCart, FaTshirt } from "react-icons/fa";
 
 const DropMenu = () => {
 	return (
@@ -20,15 +22,30 @@ const DropMenu = () => {
 					</button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent>
-					<DropdownMenuLabel>My Profile</DropdownMenuLabel>
+					<Link href="/profile">
+						<DropdownMenuLabel className="flex flex-row items-center gap-2">
+							<FaUser />
+							My Profile
+						</DropdownMenuLabel>
+					</Link>
 					<DropdownMenuSeparator />
 					<Link href="/">
-						<DropdownMenuItem>Products</DropdownMenuItem>
+						<DropdownMenuItem className="flex flex-row items-center gap-2">
+							<FaTshirt />
+							Products
+						</DropdownMenuItem>
 					</Link>
-					<DropdownMenuItem>Categories</DropdownMenuItem>
-					<DropdownMenuItem>Cart(0)</DropdownMenuItem>
+
+					<Link href="/cart">
+						<DropdownMenuItem className="flex flex-row items-center gap-2">
+							<FaShoppingCart />
+							Cart(0)
+						</DropdownMenuItem>{" "}
+					</Link>
+
 					<Link href="/login">
-						<DropdownMenuItem className="bg-red-700 text-white rounded-lg hover:bg-red-700">
+						<DropdownMenuItem className="bg-red-700 text-white rounded-lg hover:bg-red-700 flex flex-row items-center gap-2">
+							<FaArrowRightFromBracket />
 							Disconnect
 						</DropdownMenuItem>
 					</Link>

@@ -1,5 +1,6 @@
 import { AllProductsProps } from "@/Utils/types";
 import React from "react";
+import { FaCartArrowDown } from "react-icons/fa6";
 
 const ProductCards = ({ product }: { product: AllProductsProps }) => {
 	return (
@@ -26,15 +27,15 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 					</div>
 
 					<div className="flex items-center justify-between">
-						<span className="text-3xl font-bold text-white dark:text-white">
+						<span className="text-2xl font-bold text-[green] dark:text-white">
 							${product.price}
 						</span>
-						<a
-							href="#"
-							className="text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+						<button
+							className="flex flex-row gap-2 items-center text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 						>
-							Add to cart
-						</a>
+							<FaCartArrowDown />
+							 Add to cart
+						</button>
 					</div>
 				</div>
 			</div>

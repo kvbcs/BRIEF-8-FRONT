@@ -1,4 +1,4 @@
-import { AuthProps } from "@/Utils/types";
+import { AllProductsProps, AuthProps } from "@/Utils/types";
 import axios from "axios";
 
 export async function getAllProducts() {
@@ -27,7 +27,7 @@ export async function getAllCategories() {
 		});
 }
 
-export async function registerService({ auth }: { auth: AuthProps }) {
+export async function registerService(auth: AuthProps) {
 	let url = `${process.env.NEXT_PUBLIC_API_URL}auth/signup`;
 
 	let axiosConfig = {
@@ -48,15 +48,15 @@ export async function registerService({ auth }: { auth: AuthProps }) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res);
-			return res;
+			console.log(res.data);
+			return res.data;
 		})
 		.catch((e) => {
 			throw new Error(e);
 		});
 }
 
-export async function loginService({ auth }: { auth: AuthProps }) {
+export async function loginService(auth: AuthProps) {
 	let url = `${process.env.NEXT_PUBLIC_API_URL}auth/signin`;
 
 	let axiosConfig = {
@@ -76,11 +76,42 @@ export async function loginService({ auth }: { auth: AuthProps }) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res);
-			return res;
+			console.log(res.data);
+			return res.data;
 		})
 		.catch((e) => {
 			throw new Error(e);
 		});
 }
-// Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+
+export async function addProduct(product: AllProductsProps) {
+	let url = `${process.env.NEXT_PUBLIC_API_URL}product/add`;
+
+	let axiosConfig = {
+		headers: {
+			"content-type": "application/json;charset=utf-8",
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+			Authorization: `Bearer ${localStorage.getItem("token")}`,
+		},
+	};
+	return axios
+		.post(
+			url,
+			{
+				name: product.name,
+				image: product.image,
+				stock: product.stock,
+				price: product.price,
+				category: product.category,
+			},
+			axiosConfig
+		)
+		.then((res) => {
+			console.log(res.data);
+			return res.data;
+		})
+		.catch((e) => {
+			throw new Error(e);
+		});
+}

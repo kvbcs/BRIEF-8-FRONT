@@ -23,3 +23,7 @@ export type AllUserProps = {
 	name: string
 	email: string
 }
+
+export type ErrorMsgProps = {
+	content?: any;
+};

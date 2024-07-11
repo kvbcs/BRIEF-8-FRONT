@@ -11,6 +11,7 @@ export type AllProductsProps = {
 	stock: number;
 	price: number;
 	category: AllCategoriesProps[];
+	categoryId: string;
 };
 
 export type AllCategoriesProps = {
@@ -19,10 +20,10 @@ export type AllCategoriesProps = {
 };
 
 export type AllUserProps = {
-	id: string
-	name: string
-	email: string
-}
+	id: string;
+	name: string;
+	email: string;
+};
 
 export type ErrorMsgProps = {
 	content?: any;

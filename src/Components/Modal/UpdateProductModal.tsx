@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
 import AddProductForm from "../Forms/AddProductForm";
 import UpdateProductForm from "../Forms/UpdateProductForm";
+import { FaEdit } from "react-icons/fa";
 
 export const UpdateProductModal = () => {
 	const [open, setOpen] = useState(false);
@@ -28,8 +29,8 @@ export const UpdateProductModal = () => {
 				onClick={handleOpen}
 				className="bg-orange-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-orange-700"
 			>
-				<IoMdAddCircle />
-				Edit product
+				<FaEdit />
+				Edit
 			</button>
 
 			<Modal

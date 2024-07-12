@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCartArrowDown } from "react-icons/fa6";
 import { UpdateProductModal } from "../Modal/UpdateProductModal";
+import { FaTrashAlt } from "react-icons/fa";
 
 const ProductCards = ({ product }: { product: AllProductsProps }) => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -67,7 +68,7 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 				</div>
 			</div>
 			<div className="flex items-center justify-evenly mt-2">
-				<UpdateProductModal/>
+				<UpdateProductModal />
 				<button
 					onClick={(e) => {
 						console.log(product.id);
@@ -76,7 +77,7 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 					}}
 					className="flex flex-row gap-2 items-center text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-28 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 				>
-					<FaCartArrowDown />
+					<FaTrashAlt />
 					Delete
 				</button>
 			</div>

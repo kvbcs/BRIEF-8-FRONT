@@ -13,6 +13,7 @@ export type AllProductsProps = {
 	category: AllCategoriesProps[];
 	categoryId: string;
 };
+//TODO: FIXE NUMBERS SUR PRICE ET STOCK de add product
 
 export type AllCategoriesProps = {
 	id: string;

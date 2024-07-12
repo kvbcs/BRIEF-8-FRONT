@@ -24,7 +24,7 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div className="px-8 min-h-[80vh] max-h-fit w-full flex flex-col gap-12 my-8">
+		<div className="px-8 min-h-[80vh] max-h-fit w-full flex flex-col gap-16 my-8">
 			{/* <h2 className="text-2xl font-bold text-center">All Categories</h2>
 			{categoryList &&
 				categoryList.map((category) => {

@@ -101,8 +101,8 @@ export async function addProduct(product: AllProductsProps) {
 			{
 				name: product.name,
 				image: product.image,
-				stock: 1,
-				price: 1,
+				stock: Number(product.stock),
+				price: Number(product.price),
 				categoryId: product.categoryId,
 			},
 			axiosConfig

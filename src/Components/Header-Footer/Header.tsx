@@ -1,5 +1,4 @@
 import React from "react";
-import Search from "../Search";
 import DropMenu from "../ShadCN/DropMenu";
 
 const Header = () => {
@@ -12,7 +11,6 @@ const Header = () => {
 					className="w-[50px] rounded-full"
 				/>
 			</div>
-			<Search />
 			<DropMenu />
 		</div>
 	);

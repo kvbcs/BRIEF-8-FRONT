@@ -20,7 +20,6 @@ const AddProductForm = (handleClose: any) => {
 				console.log(res);
 				// setIsReloadNeeded(true);
 				toast.success("Product created !");
-				handleClose();
 			})
 			.catch((e) => {
 				toast.error("Error");

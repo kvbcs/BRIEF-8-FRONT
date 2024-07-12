@@ -30,11 +30,13 @@ const page = () => {
 				<AddProductModal />
 				<AddCategoryModal />
 			</div>
-
-			{userList &&
-				userList.map((user) => {
-					return <UserCards key={user.id} user={user} />;
-				})}
+			<div className="w-full flex flex-col justify-evenly gap-4 items-center p-4 rounded-lg h-fit bg-black text-white overflow-auto">
+				<h2>All Users</h2>
+				{userList &&
+					userList.map((user) => {
+						return <UserCards key={user.id} user={user} />;
+					})}
+			</div>
 		</div>
 	);
 };

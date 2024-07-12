@@ -221,3 +221,28 @@ export async function deleteProduct(id: string) {
 			throw new Error(e);
 		});
 }
+
+export async function deleteUser(id: string) {
+	let url = `${process.env.NEXT_PUBLIC_API_URL}user/delete/${id}`;
+
+	let axiosConfig = {
+		headers: {
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+			Authorization: `Bearer ${localStorage.getItem("token")}`,
+		},
+	};
+	return axios
+		.delete(
+			url,
+
+			axiosConfig
+		)
+		.then((res) => {
+			console.log(res);
+			return res;
+		})
+		.catch((e) => {
+			throw new Error(e);
+		});
+}

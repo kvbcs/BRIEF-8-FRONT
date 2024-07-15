@@ -1,4 +1,4 @@
-import { deleteUser } from "@/Services/authService";
+import { deleteUser } from "@/Services/userService";
 import { AllUserProps } from "@/Utils/types";
 import React, { useState } from "react";
 import toast from "react-hot-toast";

@@ -1,7 +1,6 @@
 import { AllCategoriesProps, AllProductsProps, AuthProps } from "@/Utils/types";
 import axios from "axios";
 
-
 //GET products --------------------------------------------------------------------------------------------------------------------
 export async function getAllProducts() {
 	let url = `${process.env.NEXT_PUBLIC_API_URL}product/all`;
@@ -50,7 +49,10 @@ export async function addProduct(product: AllProductsProps) {
 }
 
 //PATCH products --------------------------------------------------------------------------------------------------------------------
-export async function updateProduct(product: AllProductsProps, id: string) {
+export async function updateProduct(
+	productUpdateData: AllProductsProps,
+	id: string
+) {
 	let url = `${process.env.NEXT_PUBLIC_API_URL}product/update/${id}`;
 
 	let axiosConfig = {
@@ -65,11 +67,11 @@ export async function updateProduct(product: AllProductsProps, id: string) {
 		.patch(
 			url,
 			{
-				name: product.name,
-				image: product.image,
-				stock: Number(product.stock),
-				price: Number(product.price),
-				categoryId: product.categoryId,
+				name: productUpdateData.name,
+				image: productUpdateData.image,
+				stock: Number(productUpdateData.stock),
+				price: Number(productUpdateData.price),
+				categoryId: productUpdateData.categoryId,
 			},
 			axiosConfig
 		)
@@ -107,4 +109,3 @@ export async function deleteProduct(id: string) {
 			throw new Error(e);
 		});
 }
-

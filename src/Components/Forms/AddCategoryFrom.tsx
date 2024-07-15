@@ -1,10 +1,10 @@
 "use client";
-import { addCategory, addProduct } from "@/Services/authService";
 import { AllProductsProps } from "@/Utils/types";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ErrorMsg } from "../Error";
+import { addCategory } from "@/Services/categoryService";
 
 const AddCategoryForm = (handleClose: any) => {
 	const {

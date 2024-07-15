@@ -1,10 +1,10 @@
-import { deleteProduct } from "@/Services/authService";
 import { AllProductsProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCartArrowDown } from "react-icons/fa6";
 import { UpdateProductModal } from "../Modal/UpdateProductModal";
 import { FaTrashAlt } from "react-icons/fa";
+import { deleteProduct } from "@/Services/productService";
 
 const ProductCards = ({ product }: { product: AllProductsProps }) => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -68,7 +68,7 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 				</div>
 			</div>
 			<div className="flex items-center justify-evenly mt-2">
-				<UpdateProductModal />
+				<UpdateProductModal product={product} />
 				<button
 					onClick={(e) => {
 						console.log(product.id);

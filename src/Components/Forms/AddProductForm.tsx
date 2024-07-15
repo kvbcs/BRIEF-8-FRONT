@@ -1,5 +1,5 @@
 "use client";
-import { addProduct } from "@/Services/authService";
+import { addProduct } from "@/Services/productService";
 import { AllProductsProps } from "@/Utils/types";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";

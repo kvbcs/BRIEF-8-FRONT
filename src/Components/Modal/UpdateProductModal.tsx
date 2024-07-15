@@ -5,8 +5,13 @@ import { IoMdAddCircle } from "react-icons/io";
 import AddProductForm from "../Forms/AddProductForm";
 import UpdateProductForm from "../Forms/UpdateProductForm";
 import { FaEdit } from "react-icons/fa";
+import { AllProductsProps } from "@/Utils/types";
 
-export const UpdateProductModal = () => {
+export const UpdateProductModal = ({
+	product,
+}: {
+	product: AllProductsProps;
+}) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -45,7 +50,7 @@ export const UpdateProductModal = () => {
 							className="absolute right-10 top-10 cursor-pointer"
 							onClick={handleClose}
 						></span>
-						<UpdateProductForm />
+						<UpdateProductForm product={product} />
 					</div>
 				</Box>
 			</Modal>

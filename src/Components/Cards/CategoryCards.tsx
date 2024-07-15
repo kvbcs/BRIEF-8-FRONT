@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AllCategoriesProps } from "../../Utils/types";
 import toast from "react-hot-toast";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import { deleteCategory } from "@/Services/authService";
+import { deleteCategory } from "@/Services/categoryService";
 
 const CategoryCards = ({ category }: { category: AllCategoriesProps }) => {
 	const [isLoading, setIsLoading] = useState(false);

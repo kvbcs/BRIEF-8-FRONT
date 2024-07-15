@@ -10,7 +10,16 @@ export type AllProductsProps = {
 	image: string;
 	stock: number;
 	price: number;
-	category: AllCategoriesProps[];
+	category?: AllCategoriesProps;
+	categoryId: string;
+};
+
+export type UpdateProductProps = {
+	id: string;
+	name: string;
+	image: string;
+	stock: number;
+	price: number;
 	categoryId: string;
 };
 

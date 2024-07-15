@@ -2,7 +2,9 @@
 
 import CategoryCards from "@/Components/Cards/CategoryCards";
 import ProductCards from "@/Components/Cards/ProductCards";
-import { getAllCategories, getAllProducts } from "@/Services/fetchData";
+import Search from "@/Components/Search";
+import { getAllCategories } from "@/Services/categoryService";
+import { getAllProducts } from "@/Services/productService";
 import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
 import { useEffect, useState } from "react";
 export default function Home() {
@@ -35,6 +37,7 @@ export default function Home() {
 			<h2 className="text-2xl font-bold text-center">
 				Products Available
 			</h2>
+			<Search />
 			{productList &&
 				productList.map((product) => {
 					return <ProductCards key={product.id} product={product} />;

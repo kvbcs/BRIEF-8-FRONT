@@ -29,6 +29,11 @@ const DropMenu = () => {
 						</DropdownMenuLabel>
 					</Link>
 					<DropdownMenuSeparator />
+					<Link href="/admin">
+						<DropdownMenuItem className="flex flex-row items-center gap-2">
+							Admin
+						</DropdownMenuItem>
+					</Link>
 					<Link href="/">
 						<DropdownMenuItem className="flex flex-row items-center gap-2">
 							<FaTshirt />

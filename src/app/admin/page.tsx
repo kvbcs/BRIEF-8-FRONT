@@ -3,7 +3,7 @@ import CategoryCards from "@/Components/Cards/CategoryCards";
 import UserCards from "@/Components/Cards/UserCards";
 import { AddCategoryModal } from "@/Components/Modal/AddCategory";
 import { AddProductModal } from "@/Components/Modal/AddProductModal";
-import { getAllCategories, getAllUsers } from "@/Services/fetchData";
+import { getAllCategories, getAllUsers } from "@/Services/authService";
 import { AllCategoriesProps, AllUserProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";

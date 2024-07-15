@@ -1,5 +1,5 @@
 "use client";
-import { addCategory, addProduct } from "@/Services/fetchData";
+import { addCategory, addProduct } from "@/Services/authService";
 import { AllProductsProps } from "@/Utils/types";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -53,7 +53,7 @@ const AddCategoryForm = (handleClose: any) => {
 							{errors.name && <ErrorMsg content={"name"} />}
 						</div>
 					</div>
-					
+
 					<div>
 						<input
 							type="submit"

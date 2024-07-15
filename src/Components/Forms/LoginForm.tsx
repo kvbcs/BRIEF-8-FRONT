@@ -1,5 +1,5 @@
 "use client";
-import { loginService } from "@/Services/fetchData";
+import { loginService } from "@/Services/authService";
 import { AuthProps } from "@/Utils/types";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

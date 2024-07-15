@@ -1,4 +1,4 @@
-import { deleteProduct } from "@/Services/fetchData";
+import { deleteProduct } from "@/Services/authService";
 import { AllProductsProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";

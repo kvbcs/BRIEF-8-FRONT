@@ -1,10 +1,10 @@
 "use client";
-import { addProduct, updateProduct } from "@/Services/fetchData";
 import { AllProductsProps } from "@/Utils/types";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ErrorMsg } from "../Error";
+import { updateProduct } from "@/Services/productService";
 
 const UpdateProductForm = (handleClose: any, id: AllProductsProps) => {
 	const {
@@ -133,7 +133,6 @@ const UpdateProductForm = (handleClose: any, id: AllProductsProps) => {
 							type="submit"
 							className="my-8 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 							value="Submit"
-							
 						/>
 					</div>
 				</form>

@@ -1,11 +1,11 @@
-import { deleteUser } from "@/Services/fetchData";
+import { deleteUser } from "@/Services/authService";
 import { AllUserProps } from "@/Utils/types";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 const UserCards = ({ user }: { user: AllUserProps }) => {
-    const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	function handleUserDelete(id: string) {
 		deleteUser(id)
 			.then((res) => {
@@ -38,8 +38,8 @@ const UserCards = ({ user }: { user: AllUserProps }) => {
 				</button>
 				<button
 					onClick={(e) => {
-                        console.log(user.id);
-                        handleUserDelete(user.id)
+						console.log(user.id);
+						handleUserDelete(user.id);
 					}}
 					className="flex flex-row gap-2 items-center p-2 rounded-lg bg-red-500 hover:bg-red-700"
 				>

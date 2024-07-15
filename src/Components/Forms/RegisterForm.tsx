@@ -5,7 +5,7 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "@/Utils/validator";
-import { registerService } from "@/Services/fetchData";
+import { registerService } from "@/Services/authService";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { ErrorMsg } from "../Error";

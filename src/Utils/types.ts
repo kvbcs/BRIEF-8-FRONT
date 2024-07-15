@@ -27,6 +27,16 @@ export type AllUserProps = {
 	updatedAt: string;
 };
 
+export type AllCartProps = {
+	id: string;
+	cartId: string;
+	userId: string;
+	productId: string;
+	quantity: number;
+	createdAt: string;
+	updatedAt: string;
+};
+
 export type ErrorMsgProps = {
 	content?: any;
 };

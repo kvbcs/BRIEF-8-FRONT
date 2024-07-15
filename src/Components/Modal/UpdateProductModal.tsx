@@ -1,11 +1,10 @@
 "use client";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
-import { IoMdAddCircle } from "react-icons/io";
-import AddProductForm from "../Forms/AddProductForm";
 import UpdateProductForm from "../Forms/UpdateProductForm";
 import { FaEdit } from "react-icons/fa";
 import { AllProductsProps } from "@/Utils/types";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 export const UpdateProductModal = ({
 	product,
@@ -27,7 +26,6 @@ export const UpdateProductModal = ({
 		boxShadow: 24,
 		p: 4,
 	};
-	//TODO: regarder kennel front pour faire update
 	return (
 		<>
 			<button
@@ -49,7 +47,9 @@ export const UpdateProductModal = ({
 						<span
 							className="absolute right-10 top-10 cursor-pointer"
 							onClick={handleClose}
-						></span>
+						>
+							<IoIosCloseCircleOutline color="#222" size={48} />
+						</span>
 						<UpdateProductForm product={product} />
 					</div>
 				</Box>

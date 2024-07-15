@@ -7,14 +7,14 @@ import { ErrorMsg } from "../Error";
 import { updateProduct } from "@/Services/productService";
 import { getAllCategories } from "@/Services/categoryService";
 
-const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
-	const [name, setName] = useState("");
-	const [image, setImage] = useState("");
-	const [price, setPrice] = useState<number>(0);
-	const [stock, setStock] = useState<number>(0);
-	const [categoryId, setCategoryId] = useState("");
+const UpdateProductForm = ({ product  }: { product: AllProductsProps }) => {
+	const [name, setName] = useState(product?.name || "");
+	const [image, setImage] = useState(product?.image || "");
+	const [price, setPrice] = useState<number>(product?.price || 0);
+	const [stock, setStock] = useState<number>(product?.stock || 0);
+	const [categoryId, setCategoryId] = useState(product?.categoryId || "");
 	const [isLoaded, setIsLoaded] = useState(false);
-
+	const [isReloadNeeded, setisReloadNeeded] = useState(false);
 	const [productData, setproductData] = useState<AllProductsProps>();
 	const [categoriesList, setCategoriesList] = useState<AllCategoriesProps[]>(
 		[]
@@ -23,12 +23,12 @@ const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
 	useEffect(() => {
 		getAllCategories()
 			.then((res) => {
-				toast.success("got cats !");
+				toast.success("Categories loaded !");
 				setCategoriesList(res);
 				console.log(res);
 			})
 			.catch((e) => {
-				toast.error("oh no");
+				toast.error("Error getting categories");
 				console.log(e);
 			});
 	}, [isLoaded]);
@@ -42,7 +42,7 @@ const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
 			setCategoryId(productData?.categoryId);
 			setIsLoaded(true);
 		}
-	});
+	}, [product, isLoaded]);
 	// const {
 	// 	register,
 	// 	handleSubmit,
@@ -64,15 +64,15 @@ const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
 			.then((res) => {
 				console.log(res);
 				console.log(productUpdateData);
-
-				// setIsReloadNeeded(true);
+				setisReloadNeeded(true);
 				toast.success("Product updated !");
 			})
 			.catch((e) => {
 				toast.error("Error");
 				console.log(e);
 				console.log(productUpdateData);
-			});
+			}),
+			[isReloadNeeded];
 	}
 
 	return (
@@ -121,6 +121,11 @@ const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
 							/>
 							{/* {errors.image && <ErrorMsg content={"image"} />} */}
 						</div>
+						{/* <p>Preview</p>
+								<img
+									src={image || cryptoProps?.image}
+									className="w-32 h-32 object-cover"
+								/> */}
 					</div>
 					<div>
 						<label
@@ -167,27 +172,35 @@ const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
 							htmlFor="categoryId"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product categoryId
+							Product category
 						</label>
 						<div className="mt-2">
-							<input
+							<select
+								required
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								onChange={(e) => setCategoryId(e.target.value)}
-								defaultValue={product?.categoryId}
-								type="text"
-								className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-								// {...register("categoryId", { required: true })}
-							/>
+							>
+								{categoriesList &&
+									categoriesList.map((category) => {
+										return (
+											<option
+												selected={
+													product?.category?.id ===
+													category.id
+												}
+												key={category.id}
+												value={category.id}
+											>
+												{category.name}
+											</option>
+										);
+									})}
+							</select>
 							{/* {errors.categoryId && (
 								<ErrorMsg content={"categoryId"} />
 							)} */}
 
-							<div>
-								{/* <p>Preview</p>
-								<img
-									src={image || cryptoProps?.image}
-									className="w-32 h-32 object-cover"
-								/> */}
-							</div>
+							<div></div>
 						</div>
 					</div>
 					<div>

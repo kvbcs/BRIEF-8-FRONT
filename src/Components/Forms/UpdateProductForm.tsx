@@ -7,7 +7,7 @@ import { ErrorMsg } from "../Error";
 import { updateProduct } from "@/Services/productService";
 import { getAllCategories } from "@/Services/categoryService";
 
-const UpdateProductForm = ({ product  }: { product: AllProductsProps }) => {
+const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
 	const [name, setName] = useState(product?.name || "");
 	const [image, setImage] = useState(product?.image || "");
 	const [price, setPrice] = useState<number>(product?.price || 0);
@@ -199,8 +199,6 @@ const UpdateProductForm = ({ product  }: { product: AllProductsProps }) => {
 							{/* {errors.categoryId && (
 								<ErrorMsg content={"categoryId"} />
 							)} */}
-
-							<div></div>
 						</div>
 					</div>
 					<div>

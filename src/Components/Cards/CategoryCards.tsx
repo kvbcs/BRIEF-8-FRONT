@@ -3,6 +3,7 @@ import { AllCategoriesProps } from "../../Utils/types";
 import toast from "react-hot-toast";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { deleteCategory } from "@/Services/categoryService";
+import { UpdateCategoryModal } from "../Modal/UpdateCategoryModal";
 
 const CategoryCards = ({ category }: { category: AllCategoriesProps }) => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -28,15 +29,7 @@ const CategoryCards = ({ category }: { category: AllCategoriesProps }) => {
 				{category.name}
 			</h3>
 			<div className="flex flex-row gap-2">
-				<button
-					onClick={(e) => {
-						console.log(category.id);
-					}}
-					className="flex flex-row gap-2 items-center p-2 rounded-lg bg-orange-500 hover:bg-orange-700"
-				>
-					<FaEdit />
-					Edit
-				</button>
+				<UpdateCategoryModal category={category}/>
 				<button
 					onClick={(e) => {
 						console.log(category.id);

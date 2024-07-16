@@ -3,6 +3,7 @@ import { AllUserProps } from "@/Utils/types";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { UpdateUserModal } from "../Modal/UpdateUserModal";
 
 const UserCards = ({ user }: { user: AllUserProps }) => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -27,15 +28,7 @@ const UserCards = ({ user }: { user: AllUserProps }) => {
 			<h2>Name : {user.name}</h2>
 			<p>Email : {user.email}</p>
 			<div className="w-full flex flex-row justify-evenly">
-				<button
-					onClick={(e) => {
-						console.log(user.id);
-					}}
-					className="flex flex-row gap-2 items-center p-2 rounded-lg bg-orange-500 hover:bg-orange-700"
-				>
-					<FaEdit />
-					Edit
-				</button>
+				<UpdateUserModal user={user} />
 				<button
 					onClick={(e) => {
 						console.log(user.id);

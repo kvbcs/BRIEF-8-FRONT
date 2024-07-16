@@ -1,4 +1,4 @@
-import { AllProductsProps } from "@/Utils/types";
+import { AllCartProps, AllProductsProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCartArrowDown } from "react-icons/fa6";
@@ -55,15 +55,7 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 						<span className="text-2xl font-bold text-[green] dark:text-white">
 							${product.price}
 						</span>
-						<button
-							onClick={(e) => {
-								console.log(product.id);
-							}}
-							className="flex flex-row gap-2 items-center text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-24"
-						>
-							<FaCartArrowDown />
-							Add
-						</button>
+						{/* <AddCartModal /> */}
 					</div>
 				</div>
 			</div>

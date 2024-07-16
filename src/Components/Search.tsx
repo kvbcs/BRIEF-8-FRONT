@@ -1,10 +1,17 @@
 import React from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const Search = () => {
+const Search = ({
+	setSearch,
+}: {
+	setSearch: React.Dispatch<React.SetStateAction<string>>;
+}) => {
 	return (
 		<div className="w-full h-[60%] flex flex-row items-center">
 			<input
+				onChange={(e: any) => {
+					setSearch(e.target.value);
+				}}
 				type="text"
 				placeholder="Search..."
 				className="rounded-lg p-2 border-black border-2 flex flex-row items-center w-full rounded-tr-none rounded-br-none"

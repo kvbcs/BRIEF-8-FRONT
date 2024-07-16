@@ -11,6 +11,7 @@ import { IoIosMenu } from "react-icons/io";
 import Link from "next/link";
 import { FaArrowRightFromBracket, FaUser } from "react-icons/fa6";
 import { FaShoppingCart, FaTshirt } from "react-icons/fa";
+import { AllUserProps } from "@/Utils/types";
 
 const DropMenu = () => {
 	return (
@@ -22,7 +23,7 @@ const DropMenu = () => {
 					</button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent>
-					<Link href="/profile">
+					<Link href={`/profile`}>
 						<DropdownMenuLabel className="flex flex-row items-center gap-2">
 							<FaUser />
 							My Profile

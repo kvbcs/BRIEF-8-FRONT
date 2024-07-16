@@ -7,24 +7,59 @@ import { getAllCategories } from "@/Services/categoryService";
 import { getAllProducts } from "@/Services/productService";
 import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { FidgetSpinner } from "react-loader-spinner";
+
 export default function Home() {
+	const [search, setSearch] = useState<string>("");
+	const [isLoading, setisLoading] = useState(false);
 	const [productList, setProductList] = useState<AllProductsProps[]>([]);
 	const [categoryList, setCatgoryList] = useState<AllCategoriesProps[]>([]);
 
 	useEffect(() => {
-		getAllProducts().then((res) => {
-			setProductList(res);
-			console.log(res);
-		});
-	}, []);
+		getAllProducts()
+			.then((res) => {
+				setisLoading(true);
+				setProductList(res);
+				toast.success("Got products !");
+				console.log(res);
+			})
+			.catch((e) => {
+				console.log(e);
+				toast.error("Something went wrong");
+			});
+	}, [search, isLoading]);
 
 	useEffect(() => {
-		getAllCategories().then((res) => {
-			setCatgoryList(res);
-			console.log(res);
-		});
+		getAllCategories()
+			.then((res) => {
+				setisLoading(true);
+				setCatgoryList(res);
+				toast.success("Got categories !");
+				console.log(res);
+			})
+			.catch((e) => {
+				toast.error("oh oh");
+				console.log(e);
+			});
 	}, []);
 
+	if (!isLoading) {
+		return (
+			<div className="h-screen w-full flex flex-col items-center justify-center">
+				<h1 className="text-4xl">Loading...</h1>
+				<FidgetSpinner
+					visible={true}
+					height="140"
+					width="140"
+					backgroundColor="#000000"
+					ariaLabel="fidget-spinner-loading"
+					wrapperStyle={{}}
+					wrapperClass="fidget-spinner-wrapper"
+				/>
+			</div>
+		);
+	}
 	return (
 		<div className="px-8 min-h-[80vh] max-h-fit w-full flex flex-col gap-16 my-8">
 			{/* <h2 className="text-2xl font-bold text-center">All Categories</h2>
@@ -37,9 +72,9 @@ export default function Home() {
 			<h2 className="text-2xl font-bold text-center">
 				Products Available
 			</h2>
-			<Search />
+			<Search setSearch={setSearch} />
 			{productList &&
-				productList.map((product) => {
+				productList.map((product, cart) => {
 					return <ProductCards key={product.id} product={product} />;
 				})}
 		</div>

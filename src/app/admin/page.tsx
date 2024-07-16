@@ -8,8 +8,10 @@ import { getAllUsers } from "@/Services/userService";
 import { AllCategoriesProps, AllUserProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { FidgetSpinner } from "react-loader-spinner";
 
 const page = () => {
+	const [isLoading, setisLoading] = useState(false)
 	const [userList, setuserList] = useState<AllUserProps[]>([]);
 	const [categoryList, setCategoryList] = useState<AllCategoriesProps[]>([]);
 
@@ -17,27 +19,46 @@ const page = () => {
 		getAllUsers()
 			.then((res) => {
 				setuserList(res);
+				setisLoading(true)
 				console.log(res);
-				toast.success("got users");
+				toast.success("Got users");
 			})
 			.catch((e) => {
 				console.log(e);
 				toast.error("no users :(");
 			});
-	}, []);
+	}, [isLoading]);
 
 	useEffect(() => {
 		getAllCategories()
 			.then((res) => {
+				setisLoading(true)
 				setCategoryList(res);
 				console.log(res);
-				toast.success("got categories");
+				toast.success("Got categories");
 			})
 			.catch((e) => {
 				console.log(e);
 				toast.error("no categories :(");
 			});
-	}, []);
+	}, [isLoading]);
+
+	if (!isLoading) {
+		return (
+			<div className="h-screen w-full flex flex-col items-center justify-center">
+				<h1 className="text-4xl">Loading...</h1>
+				<FidgetSpinner
+					visible={true}
+					height="140"
+					width="140"
+					backgroundColor="#000000"
+					ariaLabel="fidget-spinner-loading"
+					wrapperStyle={{}}
+					wrapperClass="fidget-spinner-wrapper"
+				/>
+			</div>
+		);
+	}
 
 	return (
 		<div className="h-screen w-full flex flex-col justify-evenly">

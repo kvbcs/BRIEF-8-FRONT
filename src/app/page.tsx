@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import { FidgetSpinner } from "react-loader-spinner";
 
 export default function Home() {
-	const [search, setSearch] = useState<string>("");
+	const [search, setSearch] = useState("");
 	const [isLoading, setisLoading] = useState(false);
 	const [productList, setProductList] = useState<AllProductsProps[]>([]);
 	const [categoryList, setCatgoryList] = useState<AllCategoriesProps[]>([]);
@@ -42,7 +42,7 @@ export default function Home() {
 				toast.error("oh oh");
 				console.log(e);
 			});
-	}, []);
+	}, [isLoading]);
 
 	if (!isLoading) {
 		return (
@@ -72,7 +72,7 @@ export default function Home() {
 			<h2 className="text-2xl font-bold text-center">
 				Products Available
 			</h2>
-			<Search setSearch={setSearch} />
+			<Search />
 			{productList &&
 				productList.map((product, cart) => {
 					return <ProductCards key={product.id} product={product} />;

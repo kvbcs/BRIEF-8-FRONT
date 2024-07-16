@@ -1,11 +1,11 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const Search = ({
-	setSearch,
-}: {
-	setSearch: React.Dispatch<React.SetStateAction<string>>;
-}) => {
+const Search = () => {
+	const [search, setSearch] = useState("");
+				console.log(search);
+
 	return (
 		<div className="w-full h-[60%] flex flex-row items-center">
 			<input

@@ -9,13 +9,14 @@ const page = ({ cart }: { cart: AllCartProps }) => {
 	const [cartList, setcartList] = useState<AllCartProps[]>([]);
 	const [isLoading, setisLoading] = useState(false);
 	useEffect(() => {
-		const cart = window.localStorage.getItem("cart");
+		const cartId = window.localStorage.getItem("cart");
+		console.log(cartId);
 
-		getAllCartProducts(cart)
+		getAllCartProducts(cartId!)
 			.then((res) => {
 				setisLoading(true);
 				setcartList(res);
-				console.log(res.data);
+				console.log(res);
 				toast.success("got carts");
 				console.log(cartList);
 			})

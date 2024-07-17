@@ -7,8 +7,8 @@ import {
 import axios from "axios";
 
 //GET products --------------------------------------------------------------------------------------------------------------------
-export async function getAllCartProducts(id: string) {
-	let url = `${process.env.NEXT_PUBLIC_API_URL}cart/all/${id}`;
+export async function getAllCartProducts(cartId: string) {
+	let url = `${process.env.NEXT_PUBLIC_API_URL}cart/all/${cartId}`;
 	let axiosConfig = {
 		headers: {
 			"content-type": "application/json;charset=utf-8",

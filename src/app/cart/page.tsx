@@ -1,4 +1,5 @@
 "use client";
+import CartCards from "@/Components/Cards/CartCards";
 import { getAllCartProducts } from "@/Services/cartService";
 import { AllCartProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
@@ -33,7 +34,7 @@ const page = ({ cart }: { cart: AllCartProps }) => {
 				cartList.map((cart) => {
 					return (
 						<div key={cart.productId}>
-							<p className="text-black">{cart.productId}</p>
+							<CartCards key={cart.productId} cart={cart} />
 						</div>
 					);
 				})}

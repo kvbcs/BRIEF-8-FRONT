@@ -41,6 +41,7 @@ export type AllCartProps = {
 	cartId: string;
 	userId: string;
 	productId: string;
+	product?: AllProductsProps;
 	quantity: number;
 	createdAt: string;
 	updatedAt: string;

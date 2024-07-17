@@ -5,7 +5,11 @@ import ProductCards from "@/Components/Cards/ProductCards";
 import Search from "@/Components/Search";
 import { getAllCategories } from "@/Services/categoryService";
 import { getAllProducts } from "@/Services/productService";
-import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
+import {
+	AllCartProps,
+	AllCategoriesProps,
+	AllProductsProps,
+} from "@/Utils/types";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FidgetSpinner } from "react-loader-spinner";
@@ -74,7 +78,7 @@ export default function Home() {
 			</h2>
 			<Search />
 			{productList &&
-				productList.map((product, cart) => {
+				productList.map((product, cart: any) => {
 					return <ProductCards key={product.id} product={product} />;
 				})}
 		</div>

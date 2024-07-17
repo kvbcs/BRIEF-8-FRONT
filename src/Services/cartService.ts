@@ -29,8 +29,8 @@ export async function getAllCartProducts(cartId: string) {
 }
 
 //POST products --------------------------------------------------------------------------------------------------------------------
-export async function addCartProduct(cart: AllCartProps, productId: string) {
-	let url = `${process.env.NEXT_PUBLIC_API_URL}cart/add/${productId}`;
+export async function addCartProduct(cart: AllCartProps, cartId: string) {
+	let url = `${process.env.NEXT_PUBLIC_API_URL}cart/add/${cartId}`;
 
 	let axiosConfig = {
 		headers: {
@@ -44,7 +44,8 @@ export async function addCartProduct(cart: AllCartProps, productId: string) {
 		.post(
 			url,
 			{
-				quantity: cart.quantity,
+				productId: cart.productId,
+				quantity: Number(cart.quantity),
 			},
 			axiosConfig
 		)

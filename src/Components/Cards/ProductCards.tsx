@@ -5,6 +5,7 @@ import { FaCartArrowDown } from "react-icons/fa6";
 import { UpdateProductModal } from "../Modal/UpdateProductModal";
 import { FaTrashAlt } from "react-icons/fa";
 import { deleteProduct } from "@/Services/productService";
+import { AddCartModal } from "../Modal/AddCartModal";
 
 const ProductCards = ({ product }: { product: AllProductsProps }) => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +56,7 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 						<span className="text-2xl font-bold text-[green] dark:text-white">
 							${product.price}
 						</span>
-						{/* <AddCartModal /> */}
+						<AddCartModal product={product} />
 					</div>
 				</div>
 			</div>

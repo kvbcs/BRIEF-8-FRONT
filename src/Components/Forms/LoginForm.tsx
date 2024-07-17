@@ -3,15 +3,14 @@ import { loginService } from "@/Services/authService";
 import { AuthProps } from "@/Utils/types";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ErrorMsg } from "../Error";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "@/Utils/validator";
 
 export const LoginForm = () => {
 	const { push } = useRouter();
+	const [isLoading, setisLoading] = useState(false);
 
 	const {
 		register,
@@ -24,9 +23,21 @@ export const LoginForm = () => {
 		try {
 			loginService(data).then((res) => {
 				if (res.status === 201) {
-					window.localStorage.setItem("token", res.data.access_token);
+					setisLoading(true);
+					window.localStorage.setItem(
+						"token",
+						res.data.token.access_token
+					);
+					window.localStorage.setItem("role", res.data.role);
+					window.localStorage.setItem("cart", res.data.cart);
 					toast.success("Login successful !");
 					push("/");
+					console.log(res);
+					setisLoading(false);
+					console.log(res.data);
+					console.log(res.status);
+				} else {
+					toast.error("oh oh");
 				}
 			});
 		} catch (e) {
@@ -66,7 +77,7 @@ export const LoginForm = () => {
 							/>
 							{errors.email && (
 								<ErrorMsg
-									content={"This email field is required"}
+									content={"The email field is required"}
 								/>
 							)}
 						</div>

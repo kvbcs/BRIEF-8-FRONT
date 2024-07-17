@@ -1,7 +1,6 @@
 import { AllCategoriesProps, AllProductsProps, AuthProps } from "@/Utils/types";
 import axios from "axios";
 
-
 //Service du register --------------------------------------------------------------------------------------------------------------------
 export async function registerService(auth: AuthProps) {
 	let url = `${process.env.NEXT_PUBLIC_API_URL}auth/signup`;
@@ -53,8 +52,8 @@ export async function loginService(auth: AuthProps) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res.data);
-			return res.data;
+			console.log(res);
+			return res;
 		})
 		.catch((e) => {
 			throw new Error(e);

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
 	DropdownMenu,
@@ -12,8 +13,10 @@ import Link from "next/link";
 import { FaArrowRightFromBracket, FaUser } from "react-icons/fa6";
 import { FaShoppingCart, FaTshirt } from "react-icons/fa";
 import { AllUserProps } from "@/Utils/types";
+import { useRouter } from "next/navigation";
 
 const DropMenu = () => {
+	const { push } = useRouter();
 	return (
 		<div className="h-[60%]">
 			<DropdownMenu>
@@ -49,12 +52,16 @@ const DropMenu = () => {
 						</DropdownMenuItem>{" "}
 					</Link>
 
-					<Link href="/login">
-						<DropdownMenuItem className="bg-red-700 text-white rounded-lg hover:bg-red-700 flex flex-row items-center gap-2">
-							<FaArrowRightFromBracket />
-							Disconnect
-						</DropdownMenuItem>
-					</Link>
+					<DropdownMenuItem
+						onClick={() => {
+							push("/login");
+							window.localStorage.clear();
+						}}
+						className="bg-red-700 text-white rounded-lg hover:bg-red-700 flex flex-row items-center gap-2"
+					>
+						<FaArrowRightFromBracket />
+						Disconnect
+					</DropdownMenuItem>
 				</DropdownMenuContent>
 			</DropdownMenu>
 		</div>

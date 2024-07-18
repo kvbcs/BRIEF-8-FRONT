@@ -1,9 +1,7 @@
 "use client";
 import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { ErrorMsg } from "../Error";
 import { updateProduct } from "@/Services/productService";
 import { getAllCategories } from "@/Services/categoryService";
 

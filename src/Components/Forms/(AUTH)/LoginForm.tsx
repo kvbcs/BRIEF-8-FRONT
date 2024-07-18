@@ -1,4 +1,5 @@
 "use client";
+import { ErrorMsg } from "@/Components/Error";
 import { loginService } from "@/Services/authService";
 import { AuthProps } from "@/Utils/types";
 import Link from "next/link";
@@ -6,7 +7,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { ErrorMsg } from "../Error";
 
 export const LoginForm = () => {
 	const { push } = useRouter();

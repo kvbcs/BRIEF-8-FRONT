@@ -2,8 +2,8 @@ import { deleteUser } from "@/Services/userService";
 import { AllUserProps } from "@/Utils/types";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import { UpdateUserModal } from "../Modal/UpdateUserModal";
+import { FaTrashAlt } from "react-icons/fa";
+import { UpdateUserModal } from "../Modal/(UPDATE)/UpdateUserModal";
 
 const UserCards = ({ user }: { user: AllUserProps }) => {
 	const [isLoading, setIsLoading] = useState(false);

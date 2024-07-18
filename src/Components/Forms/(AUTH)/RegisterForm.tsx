@@ -8,7 +8,7 @@ import { schema } from "@/Utils/validator";
 import { registerService } from "@/Services/authService";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { ErrorMsg } from "../Error";
+import { ErrorMsg } from "../../Error";
 
 export const RegisterForm = () => {
 	const { push } = useRouter();

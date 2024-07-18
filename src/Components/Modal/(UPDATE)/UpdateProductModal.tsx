@@ -2,12 +2,15 @@
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { FaEdit } from "react-icons/fa";
-import { AllCategoriesProps } from "@/Utils/types";
+import { AllProductsProps } from "@/Utils/types";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import UpdateCategoryForm from "../Forms/UpdateCategoryForm";
-import UpdateCartForm, { updateCartProps } from "../Forms/UpdateCartForm";
+import UpdateProductForm from "@/Components/Forms/(UPDATE)/UpdateProductForm";
 
-export const UpdateCartModal = ({ cart }: { cart: updateCartProps }) => {
+export const UpdateProductModal = ({
+	product,
+}: {
+	product: AllProductsProps;
+}) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -46,7 +49,7 @@ export const UpdateCartModal = ({ cart }: { cart: updateCartProps }) => {
 						>
 							<IoIosCloseCircleOutline color="#222" size={48} />
 						</span>
-						<UpdateCartForm handleClose={handleClose} cart={cart} />
+						<UpdateProductForm product={product} />
 					</div>
 				</Box>
 			</Modal>

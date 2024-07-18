@@ -2,7 +2,6 @@
 import { AllCategoriesProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { updateUser } from "@/Services/userService";
 import { updateCategory } from "@/Services/categoryService";
 
 const UpdateCategoryForm = ({ category }: { category: AllCategoriesProps }) => {

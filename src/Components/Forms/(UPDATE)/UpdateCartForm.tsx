@@ -1,11 +1,7 @@
 "use client";
-import { AllCartProps, AllCategoriesProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { updateUser } from "@/Services/userService";
-import { updateCategory } from "@/Services/categoryService";
 import { updateCartProduct } from "@/Services/cartService";
-import { FidgetSpinner } from "react-loader-spinner";
 
 export type updateCartProps = {
 	id: string;

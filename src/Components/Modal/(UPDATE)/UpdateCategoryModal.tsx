@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { AllCategoriesProps } from "@/Utils/types";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import UpdateCategoryForm from "../Forms/UpdateCategoryForm";
+import UpdateCategoryForm from "../../Forms/(UPDATE)/UpdateCategoryForm";
 
 export const UpdateCategoryModal = ({
 	category,
@@ -33,7 +33,6 @@ export const UpdateCategoryModal = ({
 				className="bg-orange-500 rounded-full text-white w-fit flex flex-row justify-center items-center p-2 hover:bg-orange-700"
 			>
 				<FaEdit />
-				
 			</button>
 
 			<Modal

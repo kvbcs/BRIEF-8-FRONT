@@ -1,16 +1,13 @@
 "use client";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
-import UpdateProductForm from "../Forms/UpdateProductForm";
 import { FaEdit } from "react-icons/fa";
-import { AllProductsProps } from "@/Utils/types";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import UpdateCartForm, {
+	updateCartProps,
+} from "../../Forms/(UPDATE)/UpdateCartForm";
 
-export const UpdateProductModal = ({
-	product,
-}: {
-	product: AllProductsProps;
-}) => {
+export const UpdateCartModal = ({ cart }: { cart: updateCartProps }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -49,7 +46,7 @@ export const UpdateProductModal = ({
 						>
 							<IoIosCloseCircleOutline color="#222" size={48} />
 						</span>
-						<UpdateProductForm product={product} />
+						<UpdateCartForm handleClose={handleClose} cart={cart} />
 					</div>
 				</Box>
 			</Modal>

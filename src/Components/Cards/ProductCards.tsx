@@ -1,11 +1,10 @@
-import { AllCartProps, AllProductsProps } from "@/Utils/types";
-import React, { useEffect, useState } from "react";
+import { AllProductsProps } from "@/Utils/types";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { FaCartArrowDown } from "react-icons/fa6";
-import { UpdateProductModal } from "../Modal/UpdateProductModal";
+import { UpdateProductModal } from "../Modal/(UPDATE)/UpdateProductModal";
 import { FaTrashAlt } from "react-icons/fa";
 import { deleteProduct } from "@/Services/productService";
-import { AddCartModal } from "../Modal/AddCartModal";
+import { AddCartModal } from "../Modal/(POST)/AddCartModal";
 
 const ProductCards = ({ product }: { product: AllProductsProps }) => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -38,18 +37,18 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 				</div>
 
 				<div className="px-5 pb-5 flex flex-col gap-6">
-					<div className="w-full px-2 text-justify">
+					<div className="flex flex-row justify-between items-center w-full px-2 text-justify">
 						<h3 className="text-white font-semibold text-xl tracking-tight dark:text-white">
 							{product.name}
 						</h3>
-					</div>
-					<div className="w-full flex flex-row justify-between px-2 text-justify">
 						<h3 className="text-[gray] font-semibold text-sm tracking-tight dark:text-white">
 							{product.stock} in stock.
 						</h3>
-						{/* <h3 className="text-[gray] font-semibold text-sm tracking-tight dark:text-white">
-							{product.category}
-						</h3> */}
+					</div>
+					<div className="w-full flex flex-row items-center justify-between px-2 text-justify">
+						<h3 className="text-[gray] font-semibold text-sm tracking-tight dark:text-white">
+							{product.category?.name}
+						</h3>
 						<span className="text-2xl font-bold text-[green] dark:text-white">
 							${product.price}
 						</span>

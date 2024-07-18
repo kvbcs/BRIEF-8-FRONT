@@ -1,15 +1,7 @@
 "use client";
-import {
-	AllCategoriesProps,
-	AllProductsProps,
-	AllUserProps,
-} from "@/Utils/types";
+import { AllUserProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { ErrorMsg } from "../Error";
-import { updateProduct } from "@/Services/productService";
-import { getAllCategories } from "@/Services/categoryService";
 import { updateUser } from "@/Services/userService";
 
 const UpdateUserForm = ({ user }: { user: AllUserProps }) => {

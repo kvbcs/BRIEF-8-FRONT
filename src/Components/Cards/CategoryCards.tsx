@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { AllCategoriesProps } from "../../Utils/types";
 import toast from "react-hot-toast";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import {  FaTrashAlt } from "react-icons/fa";
 import { deleteCategory } from "@/Services/categoryService";
-import { UpdateCategoryModal } from "../Modal/UpdateCategoryModal";
+import { UpdateCategoryModal } from "../Modal/(UPDATE)/UpdateCategoryModal";
 
 const CategoryCards = ({ category }: { category: AllCategoriesProps }) => {
 	const [isLoading, setIsLoading] = useState(false);

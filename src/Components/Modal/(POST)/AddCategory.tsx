@@ -1,10 +1,10 @@
 "use client";
+import AddCategoryForm from "@/Components/Forms/(POST)/AddCategoryFrom";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
-import AddProductForm from "../Forms/AddProductForm";
 
-export const AddProductModal = () => {
+export const AddCategoryModal = () => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -28,7 +28,7 @@ export const AddProductModal = () => {
 				className="bg-sky-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-700"
 			>
 				<IoMdAddCircle />
-				Add product
+				Add category
 			</button>
 
 			<Modal
@@ -43,7 +43,7 @@ export const AddProductModal = () => {
 							className="absolute right-10 top-10 cursor-pointer"
 							onClick={handleClose}
 						></span>
-						<AddProductForm />
+						<AddCategoryForm />
 					</div>
 				</Box>
 			</Modal>

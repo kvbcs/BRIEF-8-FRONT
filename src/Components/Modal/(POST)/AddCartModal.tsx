@@ -1,13 +1,11 @@
 "use client";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
-import UpdateProductForm from "../Forms/UpdateProductForm";
-import { FaEdit } from "react-icons/fa";
-import { AllProductsProps, AllUserProps } from "@/Utils/types";
-import { IoIosCloseCircleOutline } from "react-icons/io";
-import UpdateUserForm from "../Forms/UpdateUserModal";
+import { IoMdAddCircle } from "react-icons/io";
+import {  AllProductsProps } from "@/Utils/types";
+import AddCartForm from "@/Components/Forms/(POST)/AddCartForm";
 
-export const UpdateUserModal = ({ user }: { user: AllUserProps }) => {
+export const AddCartModal = ({ product }: { product: AllProductsProps }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -23,13 +21,15 @@ export const UpdateUserModal = ({ user }: { user: AllUserProps }) => {
 		boxShadow: 24,
 		p: 4,
 	};
+
 	return (
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-orange-500 text-center rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:bg-orange-700"
+				className="bg-sky-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-700"
 			>
-				<FaEdit />
+				<IoMdAddCircle />
+				Add
 			</button>
 
 			<Modal
@@ -43,10 +43,8 @@ export const UpdateUserModal = ({ user }: { user: AllUserProps }) => {
 						<span
 							className="absolute right-10 top-10 cursor-pointer"
 							onClick={handleClose}
-						>
-							<IoIosCloseCircleOutline color="#222" size={48} />
-						</span>
-						<UpdateUserForm user={user} />
+						></span>
+						<AddCartForm product={product} />
 					</div>
 				</Box>
 			</Modal>

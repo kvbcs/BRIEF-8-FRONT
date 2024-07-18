@@ -1,10 +1,7 @@
 "use client";
-import { addProduct } from "@/Services/productService";
 import { AllCartProps, AllProductsProps } from "@/Utils/types";
-import React, { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { ErrorMsg } from "../Error";
 import { addCartProduct } from "@/Services/cartService";
 
 const AddCartForm = ({ product }: { product: AllProductsProps }) => {

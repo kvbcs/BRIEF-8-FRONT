@@ -1,10 +1,10 @@
 "use client";
 import { deleteCartProduct } from "@/Services/cartService";
-import { AllCartProps, AllProductsProps } from "@/Utils/types";
+import { AllCartProps } from "@/Utils/types";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaTrashAlt } from "react-icons/fa";
-import { UpdateCartModal } from "../Modal/UpdateCartModal";
+import { UpdateCartModal } from "../Modal/(UPDATE)/UpdateCartModal";
 
 const CartCards = ({ cart }: { cart: AllCartProps }) => {
 	const [isLoading, setisLoading] = useState(false);

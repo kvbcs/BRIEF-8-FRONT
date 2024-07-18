@@ -1,4 +1,4 @@
-import { updateCartProps } from "@/Components/Forms/UpdateCartForm";
+import { updateCartProps } from "@/Components/Forms/(UPDATE)/UpdateCartForm";
 import { AllCartProps } from "@/Utils/types";
 import axios from "axios";
 

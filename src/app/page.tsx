@@ -25,21 +25,21 @@ export default function Home() {
 			.then((res) => {
 				setisLoading(true);
 				setProductList(res);
-				toast.success("Got products !");
 				console.log(res);
+				toast.success("Got products !");
 			})
 			.catch((e) => {
 				console.log(e);
 				toast.error("Something went wrong");
 			});
-	}, [search, isLoading]);
+	}, [isLoading]);
 
 	useEffect(() => {
 		getAllCategories()
 			.then((res) => {
+				toast.success("Got categories !");
 				setisLoading(true);
 				setCatgoryList(res);
-				toast.success("Got categories !");
 				console.log(res);
 			})
 			.catch((e) => {

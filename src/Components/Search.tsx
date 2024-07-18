@@ -4,17 +4,17 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const Search = () => {
 	const [search, setSearch] = useState("");
-				console.log(search);
+	console.log(search);
 
 	return (
-		<div className="w-full h-[60%] flex flex-row items-center">
+		<div className="w-full h-[60%] flex flex-row items-center justify-center">
 			<input
 				onChange={(e: any) => {
 					setSearch(e.target.value);
 				}}
 				type="text"
 				placeholder="Search..."
-				className="rounded-lg p-2 border-black border-2 flex flex-row items-center w-full rounded-tr-none rounded-br-none"
+				className="rounded-lg p-2 border-black border-2 flex flex-row items-center w-full md:w-1/2 lg:w-1/3 rounded-tr-none rounded-br-none"
 			/>
 			<button
 				type="submit"

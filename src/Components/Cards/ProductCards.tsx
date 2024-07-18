@@ -8,6 +8,7 @@ import { AddCartModal } from "../Modal/(POST)/AddCartModal";
 
 const ProductCards = ({ product }: { product: AllProductsProps }) => {
 	const [isLoading, setIsLoading] = useState(false);
+
 	function handleProductDelete(id: string) {
 		deleteProduct(id)
 			.then((res) => {
@@ -26,8 +27,8 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 	}
 
 	return (
-		<div className="max-w-2xl w-full h-[450px] mx-auto mb-6">
-			<div className="bg-black shadow-md rounded-lg h-full max-w-sm p-4 dark:bg-gray-800 object-cover dark:border-gray-700">
+		<div className=" w-full md:w-fit h-[450px] mx-auto mb-6">
+			<div className="bg-black shadow-md rounded-lg h-full md:w-[300px] p-4 dark:bg-gray-800 object-cover dark:border-gray-700">
 				<div className="h-64 object-cover mb-4 p-2">
 					<img
 						className="rounded-xl object-cover h-full w-full"

@@ -27,14 +27,20 @@ const CartCards = ({ cart }: { cart: AllCartProps }) => {
 			[isLoading];
 	}
 	return (
-		<div className="w-full h-fit flex flex-row justify-evenly text-white rounded-lg bg-black">
-			<div className="w-full p-4 flex flex-row  ">
-				<img src={cart.product?.image} className="h-32" alt="" />
-			</div>
-			<div className="flex flex-col w-full justify-evenly items-center">
-				<h2>{cart.product?.name}</h2>
-				<h2>Amount : {cart.quantity}</h2>
-				<h2>$ {cart.product?.price}</h2>
+		<div className="w-full h-[200px] flex flex-row justify-between md:text-2xl text-white rounded-lg p-4 bg-black">
+			<div className="w-fit p-4 flex flex-row h-full ">
+				<img
+					src={cart.product?.image}
+					className="h-full w-[200px]"
+					alt=""
+				/>
+				<div className="flex flex-col w-fit justify-evenly md:min-w-full items-center">
+					<h2>{cart.product?.name}</h2>
+					<h2>Amount : {cart.quantity}</h2>
+					<h2 className="text-green-600 font-bold">
+						$ {cart.product?.price}
+					</h2>
+				</div>
 			</div>
 			<div className="flex flex-col gap-2 items-center justify-evenly">
 				<UpdateCartModal cart={cart} />

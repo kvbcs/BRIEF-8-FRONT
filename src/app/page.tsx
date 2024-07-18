@@ -77,10 +77,14 @@ export default function Home() {
 				Products Available
 			</h2>
 			<Search />
-			{productList &&
-				productList.map((product, cart: any) => {
-					return <ProductCards key={product.id} product={product} />;
-				})}
+			<div className="flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-2">
+				{productList &&
+					productList.map((product, cart: any) => {
+						return (
+							<ProductCards key={product.id} product={product} />
+						);
+					})}
+			</div>
 		</div>
 	);
 }

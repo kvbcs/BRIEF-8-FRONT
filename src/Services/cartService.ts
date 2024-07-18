@@ -1,9 +1,4 @@
-import {
-	AllCartProps,
-	AllCategoriesProps,
-	AllProductsProps,
-	AuthProps,
-} from "@/Utils/types";
+import { AllCartProps } from "@/Utils/types";
 import axios from "axios";
 
 //GET products --------------------------------------------------------------------------------------------------------------------

@@ -1,46 +1,59 @@
 "use client";
-import { AllCategoriesProps } from "@/Utils/types";
+import { AllCartProps, AllCategoriesProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { updateUser } from "@/Services/userService";
 import { updateCategory } from "@/Services/categoryService";
+import { updateCartProduct } from "@/Services/cartService";
+import { FidgetSpinner } from "react-loader-spinner";
 
-const UpdateCategoryForm = ({ category }: { category: AllCategoriesProps }) => {
-	const [name, setName] = useState(category?.name || "");
+export type updateCartProps = {
+	id: string;
+	quantity: number;
+	productId: string;
+};
+const UpdateCartForm = ({
+	cart,
+	handleClose,
+}: {
+	cart: updateCartProps;
+	handleClose: any;
+}) => {
+	const [quantity, setQuantity] = useState<number>(cart?.quantity || 0);
+
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [isReloadNeeded, setisReloadNeeded] = useState(false);
-	const [categoryData, setcategoryData] = useState<AllCategoriesProps>();
+	const [cartData, setcartData] = useState<updateCartProps>();
 
 	useEffect(() => {
-		if (!isLoaded && categoryData) {
-			setName(categoryData?.name);
+		if (!isLoaded && cartData) {
+			setQuantity(cartData?.quantity);
 			setIsLoaded(true);
 		}
-	}, [category, isLoaded]);
-	// const {
-	// 	register,
-	// 	handleSubmit,
-	// 	watch,
-	// 	formState: { errors },
-	// } = useForm<AllProductsProps>();
+	}, [cart, isLoaded]);
 
-	// const onSubmit: SubmitHandler<AllProductsProps> = () =>
 	function handleSubmit() {
-		let categoryUpdateData = {
-			id: category.id,
-			name: name,
+		let cartUpdateData = {
+			id: cart.id,
+			productId: cart.productId,
+			quantity: quantity,
 		};
-		updateCategory(categoryUpdateData, categoryUpdateData.id)
+		const cartId = window.localStorage.getItem("cart");
+		console.log(cartId);
+
+		updateCartProduct(cartUpdateData, cartId!, cartUpdateData.productId!)
 			.then((res) => {
-				console.log(res);
-				console.log(categoryUpdateData);
 				setisReloadNeeded(true);
-				toast.success("Category updated !");
+				console.log(res);
+				console.log(cartUpdateData);
+				setisReloadNeeded(true);
+				toast.success("Cart product updated !");
+				handleClose();
 			})
 			.catch((e) => {
 				toast.error("Error");
 				console.log(e);
-				console.log(categoryUpdateData);
+				console.log(cartUpdateData);
 			}),
 			[isReloadNeeded];
 	}
@@ -49,7 +62,7 @@ const UpdateCategoryForm = ({ category }: { category: AllCategoriesProps }) => {
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/2 mx-auto">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">
-					Edit a category
+					Edit quantity
 				</h2>
 			</div>
 
@@ -57,26 +70,27 @@ const UpdateCategoryForm = ({ category }: { category: AllCategoriesProps }) => {
 				<div className="space-y-6">
 					<div>
 						<label
-							htmlFor="name"
+							htmlFor="quantity"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Category name
+							Product quantity
 						</label>
 						<div className="mt-2">
 							<input
-								onChange={(e) => setName(e.target.value)}
-								defaultValue={category?.name}
-								type="text"
+								id="quantity"
+								onChange={(e) =>
+									setQuantity(e.target.valueAsNumber)
+								}
+								defaultValue={cart?.quantity}
+								type="number"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-								// {...register("name", { required: true })}
 							/>
-							{/* {errors.name && <ErrorMsg content={"name"} />} */}
 						</div>
 					</div>
 					<div>
 						<input
 							onClick={() => {
-								console.log(category);
+								console.log(cart);
 
 								handleSubmit();
 							}}
@@ -91,4 +105,4 @@ const UpdateCategoryForm = ({ category }: { category: AllCategoriesProps }) => {
 	);
 };
 
-export default UpdateCategoryForm;
+export default UpdateCartForm;

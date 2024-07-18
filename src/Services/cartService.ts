@@ -1,3 +1,4 @@
+import { updateCartProps } from "@/Components/Forms/UpdateCartForm";
 import { AllCartProps } from "@/Utils/types";
 import axios from "axios";
 
@@ -55,7 +56,7 @@ export async function addCartProduct(cart: AllCartProps, cartId: string) {
 
 //PATCH products --------------------------------------------------------------------------------------------------------------------
 export async function updateCartProduct(
-	cart: AllCartProps,
+	cart: updateCartProps,
 	cartId: string,
 	productId: string
 ) {

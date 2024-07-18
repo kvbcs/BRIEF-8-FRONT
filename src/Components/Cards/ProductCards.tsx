@@ -43,36 +43,35 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 							{product.name}
 						</h3>
 					</div>
-					<div className="w-full px-2 text-justify">
+					<div className="w-full flex flex-row justify-between px-2 text-justify">
 						<h3 className="text-[gray] font-semibold text-sm tracking-tight dark:text-white">
 							{product.stock} in stock.
 						</h3>
 						{/* <h3 className="text-[gray] font-semibold text-sm tracking-tight dark:text-white">
 							{product.category}
 						</h3> */}
-					</div>
-
-					<div className="flex items-center justify-between">
 						<span className="text-2xl font-bold text-[green] dark:text-white">
 							${product.price}
 						</span>
+					</div>
+
+					<div className="flex items-center justify-between">
 						<AddCartModal product={product} />
+						<div className="flex flex-row gap-2 items-center justify-evenly">
+							<UpdateProductModal product={product} />
+							<button
+								onClick={(e) => {
+									console.log(product.id);
+
+									handleProductDelete(product.id);
+								}}
+								className="flex flex-row items-center text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"
+							>
+								<FaTrashAlt />
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div className="flex items-center justify-evenly mt-2">
-				<UpdateProductModal product={product} />
-				<button
-					onClick={(e) => {
-						console.log(product.id);
-
-						handleProductDelete(product.id);
-					}}
-					className="flex flex-row gap-2 items-center text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-28 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-				>
-					<FaTrashAlt />
-					Delete
-				</button>
 			</div>
 		</div>
 	);

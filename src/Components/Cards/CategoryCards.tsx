@@ -24,21 +24,20 @@ const CategoryCards = ({ category }: { category: AllCategoriesProps }) => {
 			[isLoading];
 	}
 	return (
-		<div className="w-full flex flex-row justify-between bg-gray-700 rounded-lg p-2">
+		<div className="w-full flex flex-row justify-between items-center bg-gray-700 rounded-lg p-2">
 			<h3 className="text-sm" key={category.id}>
 				{category.name}
 			</h3>
 			<div className="flex flex-row gap-2">
-				<UpdateCategoryModal category={category}/>
+				<UpdateCategoryModal category={category} />
 				<button
 					onClick={(e) => {
 						console.log(category.id);
 						handleCategoryDelete(category.id);
 					}}
-					className="flex flex-row gap-2 items-center p-2 rounded-lg bg-red-500 hover:bg-red-700"
+					className="flex flex-row items-center p-2 rounded-full bg-red-500 hover:bg-red-700"
 				>
 					<FaTrashAlt />
-					Delete
 				</button>
 			</div>
 		</div>

@@ -5,12 +5,9 @@ import { FaEdit } from "react-icons/fa";
 import { AllCategoriesProps } from "@/Utils/types";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import UpdateCategoryForm from "../Forms/UpdateCategoryForm";
+import UpdateCartForm, { updateCartProps } from "../Forms/UpdateCartForm";
 
-export const UpdateCategoryModal = ({
-	category,
-}: {
-	category: AllCategoriesProps;
-}) => {
+export const UpdateCartModal = ({ cart }: { cart: updateCartProps }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -30,10 +27,9 @@ export const UpdateCategoryModal = ({
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-orange-500 rounded-full text-white w-fit flex flex-row justify-center items-center p-2 hover:bg-orange-700"
+				className="bg-orange-500 rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:bg-orange-700"
 			>
 				<FaEdit />
-				
 			</button>
 
 			<Modal
@@ -50,7 +46,7 @@ export const UpdateCategoryModal = ({
 						>
 							<IoIosCloseCircleOutline color="#222" size={48} />
 						</span>
-						<UpdateCategoryForm category={category} />
+						<UpdateCartForm handleClose={handleClose} cart={cart} />
 					</div>
 				</Box>
 			</Modal>

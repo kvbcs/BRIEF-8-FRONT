@@ -24,20 +24,21 @@ const UserCards = ({ user }: { user: AllUserProps }) => {
 			[isLoading];
 	}
 	return (
-		<div className="bg-gray-800 w-full flex flex-col gap-2 items-center p-2 rounded-lg text-white">
-			<h2>Name : {user.name}</h2>
-			<p>Email : {user.email}</p>
-			<div className="w-full flex flex-row justify-evenly">
+		<div className="bg-gray-800 w-full flex flex-row gap-2 items-center p-2 rounded-lg text-white">
+			<div className="w-full flex flex-col gap-3 flex-wrap">
+				<h2>Name : {user.name}</h2>
+				<p>Email : {user.email}</p>
+			</div>
+			<div className="w-fit flex flex-col gap-2">
 				<UpdateUserModal user={user} />
 				<button
 					onClick={(e) => {
 						console.log(user.id);
 						handleUserDelete(user.id);
 					}}
-					className="flex flex-row gap-2 items-center p-2 rounded-lg bg-red-500 hover:bg-red-700"
+					className="flex flex-row items-center p-3 rounded-full bg-red-500 hover:bg-red-700"
 				>
 					<FaTrashAlt />
-					Delete
 				</button>
 			</div>
 		</div>

@@ -30,10 +30,9 @@ export const UpdateProductModal = ({
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-orange-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-orange-700"
+				className="bg-orange-500 rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:bg-orange-700"
 			>
 				<FaEdit />
-				Edit
 			</button>
 
 			<Modal

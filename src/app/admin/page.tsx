@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import { FidgetSpinner } from "react-loader-spinner";
 
 const page = () => {
-	const [isLoading, setisLoading] = useState(false)
+	const [isLoading, setisLoading] = useState(false);
 	const [userList, setuserList] = useState<AllUserProps[]>([]);
 	const [categoryList, setCategoryList] = useState<AllCategoriesProps[]>([]);
 
@@ -19,7 +19,7 @@ const page = () => {
 		getAllUsers()
 			.then((res) => {
 				setuserList(res);
-				setisLoading(true)
+				setisLoading(true);
 				console.log(res);
 				toast.success("Got users");
 			})
@@ -32,7 +32,7 @@ const page = () => {
 	useEffect(() => {
 		getAllCategories()
 			.then((res) => {
-				setisLoading(true)
+				setisLoading(true);
 				setCategoryList(res);
 				console.log(res);
 				toast.success("Got categories");
@@ -67,14 +67,14 @@ const page = () => {
 				<AddProductModal />
 				<AddCategoryModal />
 			</div>
-			<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 rounded-lg min-h-fit h-[500px] bg-black text-white overflow-auto">
+			<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 rounded-lg min-h-fit max-h-[200px] bg-black text-white overflow-auto">
 				<h2>All Users</h2>
 				{userList &&
 					userList.map((user) => {
 						return <UserCards key={user.id} user={user} />;
 					})}
 			</div>
-			<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 rounded-lg h-fit bg-black text-white overflow-auto">
+			<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 rounded-lg h-fit max-h-[200px] bg-black text-white overflow-auto">
 				<h2>All Categories</h2>
 				{categoryList &&
 					categoryList.map((category) => {

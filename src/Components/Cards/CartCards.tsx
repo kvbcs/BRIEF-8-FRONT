@@ -44,7 +44,7 @@ const CartCards = ({
 					</div>
 					<div className="flex flex-col h-1/2 md:h-full w-full md:w-1/2 justify-evenly items-center">
 						<h2>{cart.product?.name}</h2>
-						<h2>Amount : {cart.quantity}</h2>
+						<h2 className="p-2 bg-black rounded-lg text-white">Amount : {cart.quantity}</h2>
 						<h2 className="text-green-600 font-bold">
 							$ {cart.product!.price * cart.quantity}
 						</h2>

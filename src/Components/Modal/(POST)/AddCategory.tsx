@@ -4,7 +4,7 @@ import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
 
-export const AddCategoryModal = () => {
+export const AddCategoryModal = ({ setisLoading }: any) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -43,7 +43,10 @@ export const AddCategoryModal = () => {
 							className="absolute right-10 top-10 cursor-pointer"
 							onClick={handleClose}
 						></span>
-						<AddCategoryForm />
+						<AddCategoryForm
+							setisLoading={setisLoading}
+							handleClose={handleClose}
+						/>
 					</div>
 				</Box>
 			</Modal>

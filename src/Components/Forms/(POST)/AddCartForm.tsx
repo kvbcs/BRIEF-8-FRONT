@@ -4,7 +4,15 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { addCartProduct } from "@/Services/cartService";
 
-const AddCartForm = ({ product }: { product: AllProductsProps }) => {
+const AddCartForm = ({
+	product,
+	setisLoading,
+	handleClose,
+}: {
+	product: AllProductsProps;
+	setisLoading: any;
+	handleClose: any;
+}) => {
 	console.log(product.id);
 
 	const {
@@ -18,9 +26,10 @@ const AddCartForm = ({ product }: { product: AllProductsProps }) => {
 		const cartId = window.localStorage.getItem("cart");
 		addCartProduct(data, cartId!)
 			.then((res) => {
+				setisLoading(true);
 				console.log(res);
-				// setIsReloadNeeded(true);
 				toast.success("Product added to cart !");
+				handleClose();
 			})
 			.catch((e) => {
 				toast.error("Error");

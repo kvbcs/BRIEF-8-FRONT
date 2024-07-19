@@ -65,7 +65,7 @@ const page = () => {
 			<h1 className="text-center text-2xl">Administration</h1>
 			<div className="flex flex-row w-full justify-evenly mt-10">
 				<AddProductModal setisLoading={setisLoading} />
-				<AddCategoryModal />
+				<AddCategoryModal setisLoading={setisLoading} />
 			</div>
 			<div className="flex flex-col gap-4 md:flex-row md:h-[500px]">
 				<div className="mt-10 w-full flex flex-col justify-evenly md:w-1/2 md:h-fit md:max-h-full gap-4 items-center p-4 rounded-lg min-h-fit max-h-[200px] bg-black text-white overflow-auto">
@@ -75,7 +75,7 @@ const page = () => {
 							return <UserCards key={user.id} user={user} />;
 						})}
 				</div>
-				<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/2 rounded-lg h-fit max-h-[200px] bg-black text-white overflow-auto md:h-fit md:max-h-[90%]">
+				<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/2 rounded-lg h-fit max-h-[200px] bg-black text-white overflow-auto md:h-fit md:max-h-full">
 					<h2>All Categories</h2>
 					{categoryList &&
 						categoryList.map((category) => {

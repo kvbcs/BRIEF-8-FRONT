@@ -76,7 +76,7 @@ const ProductCards = ({
 								<FaTrashAlt />
 							</button>
 						</div>
-						<AddCartModal product={product} />
+						<AddCartModal product={product} setisLoading={setisLoading}/>
 					</div>
 				</div>
 			</div>

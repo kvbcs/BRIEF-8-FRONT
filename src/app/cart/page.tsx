@@ -28,27 +28,25 @@ const page = ({ cart }: { cart: AllCartProps }) => {
 	}, [isLoading]);
 
 	return (
-		<div className="min-h-[80vh] max-h-fit w-full flex flex-col justify-between">
+		<div className="min-h-[80vh] max-h-fit w-full flex flex-col gap-14 justify-between">
 			<h2 className="text-center text-2xl md:text-4xl font-bold w-full mt-8">
 				Your cart
 			</h2>
 			{cartList &&
 				cartList.map((cart) => {
 					return (
-						<div key={cart.productId}>
-							<CartCards
-								key={cart.productId}
-								setisLoading={setisLoading}
-								cart={cart}
-							/>
-						</div>
+						<CartCards
+							key={cart.productId}
+							setisLoading={setisLoading}
+							cart={cart}
+						/>
 					);
 				})}
-			<div className="w-full flex justify-center">
+			<div className="w-full flex justify-center my-10">
 				<div className="w-2/3">
 					<div className="border-t-2 border-black flex flex-row w-full justify-end py-4">
-						<button className="bg-green-500 rounded-lg p-2 text-white hover:bg-green-700 flex flex-row items-center gap-2">
-							<FaCreditCard />
+						<button className="bg-green-500 md:text-2xl rounded-lg p-4 text-white hover:bg-green-700 flex flex-row items-center gap-2">
+							<FaCreditCard size={26} />
 							Buy
 						</button>
 					</div>

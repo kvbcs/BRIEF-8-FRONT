@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { ErrorMsg } from "../../Error";
 import { addCategory } from "@/Services/categoryService";
 
-const AddCategoryForm = (handleClose: any) => {
+const AddCategoryForm = ({ handleClose, setisLoading }: any) => {
 	const {
 		register,
 		handleSubmit,
@@ -17,9 +17,10 @@ const AddCategoryForm = (handleClose: any) => {
 	const onSubmit: SubmitHandler<AllProductsProps> = (data) =>
 		addCategory(data)
 			.then((res) => {
+				setisLoading(true);
 				console.log(res);
-				// setIsReloadNeeded(true);
 				toast.success("Category created !");
+				handleClose();
 			})
 			.catch((e) => {
 				toast.error("Error");
@@ -50,14 +51,14 @@ const AddCategoryForm = (handleClose: any) => {
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								{...register("name", { required: true })}
 							/>
-							{errors.name && <ErrorMsg content={"name"} />}
+							{errors.name && <ErrorMsg content={"The name field is required"} />}
 						</div>
 					</div>
 
 					<div>
 						<input
 							type="submit"
-							className="my-8 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							className="my-8 flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 							value="Submit"
 						/>
 					</div>

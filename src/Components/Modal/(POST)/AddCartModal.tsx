@@ -6,7 +6,13 @@ import { AllProductsProps } from "@/Utils/types";
 import AddCartForm from "@/Components/Forms/(POST)/AddCartForm";
 import { FaCartPlus } from "react-icons/fa6";
 
-export const AddCartModal = ({ product }: { product: AllProductsProps }) => {
+export const AddCartModal = ({
+	product,
+	setisLoading,
+}: {
+	product: AllProductsProps;
+	setisLoading: any;
+}) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -45,7 +51,11 @@ export const AddCartModal = ({ product }: { product: AllProductsProps }) => {
 							className="absolute right-10 top-10 cursor-pointer"
 							onClick={handleClose}
 						></span>
-						<AddCartForm product={product} />
+						<AddCartForm
+							setisLoading={setisLoading}
+							handleClose={handleClose}
+							product={product}
+						/>
 					</div>
 				</Box>
 			</Modal>

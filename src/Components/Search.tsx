@@ -9,8 +9,8 @@ const Search = ({ setProductList, setIsLoading }: any) => {
 
 	function handleSearch() {
 		searchProducts(searchValue).then((res) => {
-			setIsLoading(true);
 			setProductList(res.results);
+			setIsLoading(false);
 		});
 	}
 	return (
@@ -19,6 +19,10 @@ const Search = ({ setProductList, setIsLoading }: any) => {
 				<input
 					onChange={(e: any) => {
 						setSearchValue(e.target.value);
+						if (searchValue === null) {
+							setIsLoading(true);
+							setIsLoading(false);
+						}
 					}}
 					type="text"
 					placeholder="Search products..."

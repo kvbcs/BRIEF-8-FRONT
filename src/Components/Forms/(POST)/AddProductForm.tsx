@@ -51,7 +51,9 @@ const AddProductForm = ({ setisLoading, handleClose }: any) => {
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								{...register("name", { required: true })}
 							/>
-							{errors.name && <ErrorMsg content={"name"} />}
+							{errors.name && (
+								<ErrorMsg content={"This field is required"} />
+							)}
 						</div>
 					</div>
 					<div>
@@ -68,7 +70,9 @@ const AddProductForm = ({ setisLoading, handleClose }: any) => {
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								{...register("image", { required: true })}
 							/>
-							{errors.image && <ErrorMsg content={"image"} />}
+							{errors.image && (
+								<ErrorMsg content={"This field is required"} />
+							)}
 						</div>
 					</div>
 					<div>
@@ -84,7 +88,9 @@ const AddProductForm = ({ setisLoading, handleClose }: any) => {
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								{...register("stock", { required: true })}
 							/>
-							{errors.stock && <ErrorMsg content={"stock"} />}
+							{errors.stock && (
+								<ErrorMsg content={"This field is required"} />
+							)}
 						</div>
 					</div>
 					<div>
@@ -100,7 +106,9 @@ const AddProductForm = ({ setisLoading, handleClose }: any) => {
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								{...register("price", { required: true })}
 							/>
-							{errors.price && <ErrorMsg content={"price"} />}
+							{errors.price && (
+								<ErrorMsg content={"This field is required"} />
+							)}
 						</div>
 					</div>
 					<div>
@@ -117,7 +125,7 @@ const AddProductForm = ({ setisLoading, handleClose }: any) => {
 								{...register("categoryId", { required: true })}
 							/>
 							{errors.categoryId && (
-								<ErrorMsg content={"categoryId"} />
+								<ErrorMsg content={"This field is required"} />
 							)}
 
 							<div>
@@ -132,7 +140,7 @@ const AddProductForm = ({ setisLoading, handleClose }: any) => {
 					<div>
 						<input
 							type="submit"
-							className="my-8 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							className="my-8 flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 							value="Submit"
 						/>
 					</div>

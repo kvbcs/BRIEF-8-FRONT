@@ -16,17 +16,17 @@ import { FidgetSpinner } from "react-loader-spinner";
 
 export default function Home() {
 	const [search, setSearch] = useState<string>("");
-	const [isLoading, setisLoading] = useState(false);
+	const [isLoading, setisLoading] = useState(true);
 	const [productList, setProductList] = useState<AllProductsProps[]>([]);
 	const [categoryList, setCatgoryList] = useState<AllCategoriesProps[]>([]);
 
 	useEffect(() => {
 		getAllProducts()
 			.then((res) => {
-				setisLoading(true);
 				setProductList(res);
 				console.log(res);
 				toast.success("Got products !");
+				setisLoading(false);
 			})
 			.catch((e) => {
 				console.log(e);
@@ -38,9 +38,9 @@ export default function Home() {
 		getAllCategories()
 			.then((res) => {
 				toast.success("Got categories !");
-				setisLoading(true);
 				setCatgoryList(res);
 				console.log(res);
+				setisLoading(false);
 			})
 			.catch((e) => {
 				toast.error("oh oh");
@@ -48,7 +48,7 @@ export default function Home() {
 			});
 	}, [isLoading]);
 
-	if (!isLoading) {
+	if (isLoading) {
 		return (
 			<div className="h-screen w-full flex flex-col items-center justify-center">
 				<h1 className="text-4xl">Loading...</h1>
@@ -98,7 +98,7 @@ export default function Home() {
 				{productList &&
 					productList.map((product, cart: any) => {
 						return (
-							<ProductCards key={product.id} product={product} />
+							<ProductCards key={product.id} setisLoading={ setisLoading} product={product} />
 						);
 					})}
 			</div>

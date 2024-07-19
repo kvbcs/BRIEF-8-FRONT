@@ -8,18 +8,18 @@ import { FaCreditCard } from "react-icons/fa6";
 
 const page = ({ cart }: { cart: AllCartProps }) => {
 	const [cartList, setcartList] = useState<AllCartProps[]>([]);
-	const [isLoading, setisLoading] = useState(false);
+	const [isLoading, setisLoading] = useState(true);
 	useEffect(() => {
 		const cartId = window.localStorage.getItem("cart");
 		console.log(cartId);
 
 		getAllCartProducts(cartId!)
 			.then((res) => {
-				setisLoading(true);
 				setcartList(res);
 				console.log(res);
 				toast.success("got carts");
 				console.log(cartList);
+				setisLoading(false);
 			})
 			.catch((e) => {
 				console.log(e);
@@ -29,21 +29,30 @@ const page = ({ cart }: { cart: AllCartProps }) => {
 
 	return (
 		<div className="min-h-[80vh] max-h-fit w-full flex flex-col justify-between">
-			<h2 className="text-center text-2xl font-bold">Cart</h2>
+			<h2 className="text-center text-2xl md:text-4xl font-bold w-full mt-8">
+				Your cart
+			</h2>
 			{cartList &&
 				cartList.map((cart) => {
 					return (
 						<div key={cart.productId}>
-							<CartCards key={cart.productId} cart={cart} />
+							<CartCards
+								key={cart.productId}
+								setisLoading={setisLoading}
+								cart={cart}
+							/>
 						</div>
 					);
 				})}
-			<div className="border-t-2 border-black flex flex-row w-full justify-between py-4">
-				<h2>Total : $0</h2>
-				<button className="bg-green-500 rounded-lg p-2 text-white hover:bg-green-700 flex flex-row items-center gap-2">
-					<FaCreditCard />
-					Buy
-				</button>
+			<div className="w-full flex justify-center">
+				<div className="w-2/3">
+					<div className="border-t-2 border-black flex flex-row w-full justify-end py-4">
+						<button className="bg-green-500 rounded-lg p-2 text-white hover:bg-green-700 flex flex-row items-center gap-2">
+							<FaCreditCard />
+							Buy
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

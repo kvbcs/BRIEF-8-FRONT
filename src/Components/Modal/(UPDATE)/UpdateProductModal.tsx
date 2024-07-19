@@ -8,8 +8,10 @@ import UpdateProductForm from "@/Components/Forms/(UPDATE)/UpdateProductForm";
 
 export const UpdateProductModal = ({
 	product,
+	setisLoading,
 }: {
 	product: AllProductsProps;
+	setisLoading: any;
 }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
@@ -49,7 +51,11 @@ export const UpdateProductModal = ({
 						>
 							<IoIosCloseCircleOutline color="#222" size={48} />
 						</span>
-						<UpdateProductForm product={product} />
+						<UpdateProductForm
+							setisLoading={setisLoading}
+							product={product}
+							handleClose={handleClose}
+						/>
 					</div>
 				</Box>
 			</Modal>

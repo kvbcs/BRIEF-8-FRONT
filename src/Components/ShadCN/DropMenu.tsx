@@ -13,6 +13,7 @@ import Link from "next/link";
 import { FaArrowRightFromBracket, FaUser } from "react-icons/fa6";
 import { FaShoppingCart, FaTshirt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { RiAdminFill } from "react-icons/ri";
 
 const DropMenu = () => {
 	const { push } = useRouter();
@@ -20,8 +21,8 @@ const DropMenu = () => {
 		<div className="h-[60%] md:hidden">
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<button className="text-white hover:bg-slate-500 h-full border-2 p-1 flex flex-row items-center rounded-xl">
-						<IoIosMenu size={32} />
+					<button className="text-white hover:bg-slate-500 h-full border-2 p-2 flex flex-row items-center rounded-full">
+						<IoIosMenu size={52} />
 					</button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent>
@@ -34,7 +35,7 @@ const DropMenu = () => {
 					<DropdownMenuSeparator />
 					<Link href="/admin">
 						<DropdownMenuItem className="flex flex-row items-center gap-2">
-							Admin
+							<RiAdminFill /> Admin
 						</DropdownMenuItem>
 					</Link>
 					<Link href="/">

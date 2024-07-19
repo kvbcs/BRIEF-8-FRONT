@@ -15,7 +15,7 @@ const Search = ({ setProductList, setIsLoading }: any) => {
 	}
 	return (
 		<div className="w-full h-[60%] flex flex-row items-center justify-center">
-			<div className="flex flex-row w-full md:w-2/3 lg:w-1/3 rounded-lg border-2 border-slate-400">
+			<div className="flex flex-row w-full md:w-2/3 lg:w-1/3 rounded-lg border-2 border-slate-200 shadow-xl hover:border-slate-500">
 				<input
 					onChange={(e: any) => {
 						setSearchValue(e.target.value);

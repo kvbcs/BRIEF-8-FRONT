@@ -11,14 +11,15 @@ export type updateCartProps = {
 const UpdateCartForm = ({
 	cart,
 	handleClose,
+	setisLoading,
 }: {
 	cart: updateCartProps;
 	handleClose: any;
+	setisLoading: any;
 }) => {
 	const [quantity, setQuantity] = useState<number>(cart?.quantity || 0);
 
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [isReloadNeeded, setisReloadNeeded] = useState(false);
 	const [cartData, setcartData] = useState<updateCartProps>();
 
 	useEffect(() => {
@@ -39,10 +40,9 @@ const UpdateCartForm = ({
 
 		updateCartProduct(cartUpdateData, cartId!, cartUpdateData.productId!)
 			.then((res) => {
-				setisReloadNeeded(true);
+				setisLoading(true);
 				console.log(res);
 				console.log(cartUpdateData);
-				setisReloadNeeded(true);
 				toast.success("Cart product updated !");
 				handleClose();
 			})
@@ -51,7 +51,7 @@ const UpdateCartForm = ({
 				console.log(e);
 				console.log(cartUpdateData);
 			}),
-			[isReloadNeeded];
+			[];
 	}
 
 	return (

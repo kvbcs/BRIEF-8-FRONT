@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ErrorMsg } from "../../Error";
 
-const AddProductForm = (handleClose: any) => {
+const AddProductForm = ({ setisLoading, handleClose }: any) => {
 	const {
 		register,
 		handleSubmit,
@@ -17,9 +17,10 @@ const AddProductForm = (handleClose: any) => {
 	const onSubmit: SubmitHandler<AllProductsProps> = (data) =>
 		addProduct(data)
 			.then((res) => {
+				setisLoading(true);
 				console.log(res);
-				// setIsReloadNeeded(true);
 				toast.success("Product created !");
+				handleClose();
 			})
 			.catch((e) => {
 				toast.error("Error");

@@ -6,32 +6,36 @@ import { FaTrashAlt } from "react-icons/fa";
 import { deleteProduct } from "@/Services/productService";
 import { AddCartModal } from "../Modal/(POST)/AddCartModal";
 
-const ProductCards = ({ product }: { product: AllProductsProps }) => {
-	const [isLoading, setIsLoading] = useState(false);
-
+const ProductCards = ({
+	product,
+	setisLoading,
+}: {
+	product: AllProductsProps;
+	setisLoading: any;
+}) => {
 	function handleProductDelete(id: string) {
 		deleteProduct(id)
 			.then((res) => {
 				if (res.status === 200) {
+					setisLoading(true);
 					console.log(res);
 					toast.success("Product deleted !");
-					setIsLoading(true);
 				} else {
-					toast.error("wtf");
+					toast.error("Something went wrong");
 				}
 			})
 			.catch((e) => {
-				console.log(e), toast.error("oupsie");
+				console.log(e), toast.error("Srver error");
 			}),
-			[isLoading];
+			[];
 	}
 
 	return (
-		<div className=" w-full md:w-fit h-[450px] mx-auto mb-6">
-			<div className="bg-black shadow-md rounded-lg h-full md:w-[300px] p-4 dark:bg-gray-800 object-cover dark:border-gray-700">
-				<div className="h-64 object-cover mb-4 p-2">
+		<div className=" w-full md:w-fit h-[400px] mx-auto mb-6">
+			<div className="bg-slate-100 hover:border-slate-300 hover:bg-slate-200 shadow-2xl border-2 border-slate-200 rounded-lg h-full md:w-[300px] p-4 dark:bg-gray-800 object-cover dark:border-gray-700">
+				<div className="h-2/4 shadow-xl rounded-lg mb-5">
 					<img
-						className="rounded-xl object-cover h-full w-full"
+						className="rounded-xl h-full w-full object-cover"
 						src={product.image}
 						alt="product image"
 					/>
@@ -39,7 +43,7 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 
 				<div className="px-5 pb-5 flex flex-col gap-6">
 					<div className="flex flex-row justify-between items-center w-full px-2 text-justify">
-						<h3 className="text-white font-semibold text-xl tracking-tight dark:text-white">
+						<h3 className="text-black font-semibold text-xl tracking-tight dark:text-white">
 							{product.name}
 						</h3>
 						<h3 className="text-[gray] font-semibold text-sm tracking-tight dark:text-white">
@@ -47,7 +51,7 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 						</h3>
 					</div>
 					<div className="w-full flex flex-row items-center justify-between px-2 text-justify">
-						<h3 className="text-[gray] font-semibold text-sm tracking-tight dark:text-white">
+						<h3 className="text-white p-2 rounded-lg bg-black italic font-semibold text-sm tracking-tight dark:text-white">
 							{product.category?.name}
 						</h3>
 						<span className="text-2xl font-bold text-[green] dark:text-white">
@@ -56,9 +60,11 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 					</div>
 
 					<div className="flex items-center justify-between">
-						<AddCartModal product={product} />
 						<div className="flex flex-row gap-2 items-center justify-evenly">
-							<UpdateProductModal product={product} />
+							<UpdateProductModal
+								setisLoading={setisLoading}
+								product={product}
+							/>
 							<button
 								onClick={(e) => {
 									console.log(product.id);
@@ -70,6 +76,7 @@ const ProductCards = ({ product }: { product: AllProductsProps }) => {
 								<FaTrashAlt />
 							</button>
 						</div>
+						<AddCartModal product={product} />
 					</div>
 				</div>
 			</div>

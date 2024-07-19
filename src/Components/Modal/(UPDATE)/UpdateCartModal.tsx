@@ -7,7 +7,13 @@ import UpdateCartForm, {
 	updateCartProps,
 } from "../../Forms/(UPDATE)/UpdateCartForm";
 
-export const UpdateCartModal = ({ cart }: { cart: updateCartProps }) => {
+export const UpdateCartModal = ({
+	cart,
+	setisLoading,
+}: {
+	cart: updateCartProps;
+	setisLoading: any;
+}) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -46,7 +52,11 @@ export const UpdateCartModal = ({ cart }: { cart: updateCartProps }) => {
 						>
 							<IoIosCloseCircleOutline color="#222" size={48} />
 						</span>
-						<UpdateCartForm handleClose={handleClose} cart={cart} />
+						<UpdateCartForm
+							handleClose={handleClose}
+							setisLoading={setisLoading}
+							cart={cart}
+						/>
 					</div>
 				</Box>
 			</Modal>

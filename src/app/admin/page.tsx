@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import { FidgetSpinner } from "react-loader-spinner";
 
 const page = () => {
-	const [isLoading, setisLoading] = useState(false);
+	const [isLoading, setisLoading] = useState(true);
 	const [userList, setuserList] = useState<AllUserProps[]>([]);
 	const [categoryList, setCategoryList] = useState<AllCategoriesProps[]>([]);
 
@@ -19,9 +19,9 @@ const page = () => {
 		getAllUsers()
 			.then((res) => {
 				setuserList(res);
-				setisLoading(true);
 				console.log(res);
 				toast.success("Got users");
+				setisLoading(false);
 			})
 			.catch((e) => {
 				console.log(e);
@@ -32,10 +32,10 @@ const page = () => {
 	useEffect(() => {
 		getAllCategories()
 			.then((res) => {
-				setisLoading(true);
 				setCategoryList(res);
 				console.log(res);
 				toast.success("Got categories");
+				setisLoading(false);
 			})
 			.catch((e) => {
 				console.log(e);
@@ -43,7 +43,7 @@ const page = () => {
 			});
 	}, [isLoading]);
 
-	if (!isLoading) {
+	if (isLoading) {
 		return (
 			<div className="h-screen w-full flex flex-col items-center justify-center">
 				<h1 className="text-4xl">Loading...</h1>
@@ -64,7 +64,7 @@ const page = () => {
 		<div className="h-screen w-full flex flex-col justify-evenly">
 			<h1 className="text-center text-2xl">Administration</h1>
 			<div className="flex flex-row w-full justify-evenly mt-10">
-				<AddProductModal />
+				<AddProductModal setisLoading={setisLoading} />
 				<AddCategoryModal />
 			</div>
 			<div className="flex flex-col gap-4 md:flex-row md:h-[500px]">

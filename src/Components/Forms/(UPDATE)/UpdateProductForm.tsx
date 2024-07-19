@@ -5,7 +5,15 @@ import toast from "react-hot-toast";
 import { updateProduct } from "@/Services/productService";
 import { getAllCategories } from "@/Services/categoryService";
 
-const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
+const UpdateProductForm = ({
+	product,
+	setisLoading,
+	handleClose,
+}: {
+	product: AllProductsProps;
+	setisLoading: any;
+	handleClose: any;
+}) => {
 	const [name, setName] = useState(product?.name || "");
 	const [image, setImage] = useState(product?.image || "");
 	const [price, setPrice] = useState<number>(product?.price || 0);
@@ -41,14 +49,7 @@ const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
 			setIsLoaded(true);
 		}
 	}, [product, isLoaded]);
-	// const {
-	// 	register,
-	// 	handleSubmit,
-	// 	watch,
-	// 	formState: { errors },
-	// } = useForm<AllProductsProps>();
 
-	// const onSubmit: SubmitHandler<AllProductsProps> = () =>
 	function handleSubmit() {
 		let productUpdateData = {
 			id: product.id,
@@ -60,17 +61,18 @@ const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
 		};
 		updateProduct(productUpdateData, productUpdateData.id)
 			.then((res) => {
+				setisLoading(true);
 				console.log(res);
 				console.log(productUpdateData);
-				setisReloadNeeded(true);
 				toast.success("Product updated !");
+				handleClose();
 			})
 			.catch((e) => {
 				toast.error("Error");
 				console.log(e);
 				console.log(productUpdateData);
 			}),
-			[isReloadNeeded];
+			[];
 	}
 
 	return (

@@ -1,8 +1,6 @@
-"use client";
-import { AllUserProps } from "@/Utils/types";
 import React from "react";
 
-const page = ({ user }: { user: AllUserProps }) => {
+const page = () => {
 	return (
 		<div>
 			<h2>Name : </h2>

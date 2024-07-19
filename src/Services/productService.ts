@@ -15,6 +15,20 @@ export async function getAllProducts() {
 		});
 }
 
+//GET search products --------------------------------------------------------------------------------------------------------------------
+export async function searchProducts(query: string) {
+	let url = `${process.env.NEXT_PUBLIC_API_URL}product/all/${query}`;
+	return axios
+		.get(url)
+		.then((res) => {
+			console.log(res.data);
+			return res.data;
+		})
+		.catch((e) => {
+			throw new Error(e);
+		});
+}
+
 //POST products --------------------------------------------------------------------------------------------------------------------
 export async function addProduct(product: AllProductsProps) {
 	let url = `${process.env.NEXT_PUBLIC_API_URL}product/add`;

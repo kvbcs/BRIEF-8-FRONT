@@ -27,11 +27,12 @@ const CartCards = ({ cart }: { cart: AllCartProps }) => {
 			[isLoading];
 	}
 	return (
-		<div className="w-full h-[200px] flex flex-row justify-between md:text-2xl text-white rounded-lg p-4 bg-black">
+		<div className="w-full flex flex-row justify-center">
+		<div className="w-full lg:w-2/3 h-[200px] flex flex-row justify-between md:text-2xl text-black rounded-lg p-4 border-2 border-slate-400">
 			<div className="w-fit p-4 flex flex-row h-full ">
 				<img
 					src={cart.product?.image}
-					className="h-full w-[200px]"
+					className="h-full object-cover w-[200px]"
 					alt=""
 				/>
 				<div className="flex flex-col w-fit justify-evenly md:min-w-full items-center">
@@ -54,6 +55,7 @@ const CartCards = ({ cart }: { cart: AllCartProps }) => {
 				>
 					<FaTrashAlt />
 				</button>
+			</div>
 			</div>
 		</div>
 	);

@@ -2,8 +2,9 @@
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
-import {  AllProductsProps } from "@/Utils/types";
+import { AllProductsProps } from "@/Utils/types";
 import AddCartForm from "@/Components/Forms/(POST)/AddCartForm";
+import { FaCartPlus } from "react-icons/fa6";
 
 export const AddCartModal = ({ product }: { product: AllProductsProps }) => {
 	const [open, setOpen] = useState(false);
@@ -28,7 +29,7 @@ export const AddCartModal = ({ product }: { product: AllProductsProps }) => {
 				onClick={handleOpen}
 				className="bg-sky-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-700"
 			>
-				<IoMdAddCircle />
+				<FaCartPlus />
 				Add
 			</button>
 

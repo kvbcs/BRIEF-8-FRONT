@@ -4,7 +4,7 @@ import CategoryCards from "@/Components/Cards/CategoryCards";
 import ProductCards from "@/Components/Cards/ProductCards";
 import Search from "@/Components/Search";
 import { getAllCategories } from "@/Services/categoryService";
-import { getAllProducts } from "@/Services/productService";
+import { getAllProducts, searchProducts } from "@/Services/productService";
 import {
 	AllCartProps,
 	AllCategoriesProps,
@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 import { FidgetSpinner } from "react-loader-spinner";
 
 export default function Home() {
-	const [search, setSearch] = useState("");
+	const [search, setSearch] = useState<string>("");
 	const [isLoading, setisLoading] = useState(false);
 	const [productList, setProductList] = useState<AllProductsProps[]>([]);
 	const [categoryList, setCatgoryList] = useState<AllCategoriesProps[]>([]);
@@ -30,7 +30,7 @@ export default function Home() {
 			})
 			.catch((e) => {
 				console.log(e);
-				toast.error("Something went wrong");
+				toast.error("Something went wrong", e);
 			});
 	}, [isLoading]);
 
@@ -69,7 +69,10 @@ export default function Home() {
 			<h2 className="text-2xl font-bold text-center">
 				Products Available
 			</h2>
-			<Search />
+			<Search
+				setProductList={setProductList}
+				setIsLoading={setisLoading}
+			/>
 			<div className="w-full flex flex-row justify-center md:justify-end gap-2">
 				<select className="border-2 rounded-lg p-2 border-black w-fit">
 					{categoryList &&

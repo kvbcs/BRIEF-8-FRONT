@@ -66,17 +66,31 @@ export default function Home() {
 	}
 	return (
 		<div className="px-8 min-h-[80vh] max-h-fit w-full flex flex-col gap-16 my-8">
-			{/* <h2 className="text-2xl font-bold text-center">All Categories</h2>
-			{categoryList &&
-				categoryList.map((category) => {
-					return (
-						<CategoryCards key={category.id} category={category} />
-					);
-				})} */}
 			<h2 className="text-2xl font-bold text-center">
 				Products Available
 			</h2>
 			<Search />
+			<div className="w-full flex flex-row justify-center md:justify-end gap-2">
+				<select className="border-2 rounded-lg p-2 border-black w-fit">
+					{categoryList &&
+						categoryList.map((category) => {
+							return (
+								<option
+									// selected={category.id === category.id}
+									key={category.id}
+									value={category.id}
+								>
+									{category.name}
+								</option>
+							);
+						})}
+				</select>
+				<select className="border-2 rounded-lg p-2 border-black w-fit">
+					<option>0-50$</option>
+					<option>50-100$</option>
+					<option>+100$</option>
+				</select>
+			</div>
 			<div className="flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-2">
 				{productList &&
 					productList.map((product, cart: any) => {

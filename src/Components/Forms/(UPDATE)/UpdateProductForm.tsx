@@ -26,7 +26,7 @@ const UpdateProductForm = ({ product }: { product: AllProductsProps }) => {
 				console.log(res);
 			})
 			.catch((e) => {
-				toast.error("Error getting categories");
+				toast.error("Error getting categories", e);
 				console.log(e);
 			});
 	}, [isLoaded]);

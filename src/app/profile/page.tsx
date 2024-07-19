@@ -4,9 +4,9 @@ import React from "react";
 
 const page = ({ user }: { user: AllUserProps }) => {
 	return (
-		<div key={user.id}>
-			<h2>Name : {user.name}</h2>
-			<h2>Email : {user.email}</h2>
+		<div>
+			<h2>Name : </h2>
+			<h2>Email : </h2>
 		</div>
 	);
 };

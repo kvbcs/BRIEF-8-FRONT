@@ -1,7 +1,7 @@
 "use client";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
-import { IoMdAddCircle } from "react-icons/io";
+import { IoIosCloseCircleOutline, IoMdAddCircle } from "react-icons/io";
 import { AllProductsProps } from "@/Utils/types";
 import AddCartForm from "@/Components/Forms/(POST)/AddCartForm";
 import { FaCartPlus } from "react-icons/fa6";
@@ -50,7 +50,9 @@ export const AddCartModal = ({
 						<span
 							className="absolute right-10 top-10 cursor-pointer"
 							onClick={handleClose}
-						></span>
+						>
+							<IoIosCloseCircleOutline color="#222" size={48} />
+						</span>
 						<AddCartForm
 							setisLoading={setisLoading}
 							handleClose={handleClose}

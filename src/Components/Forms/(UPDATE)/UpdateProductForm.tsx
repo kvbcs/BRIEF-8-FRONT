@@ -20,7 +20,6 @@ const UpdateProductForm = ({
 	const [stock, setStock] = useState<number>(product?.stock || 0);
 	const [categoryId, setCategoryId] = useState(product?.categoryId || "");
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [isReloadNeeded, setisReloadNeeded] = useState(false);
 	const [productData, setproductData] = useState<AllProductsProps>();
 	const [categoriesList, setCategoriesList] = useState<AllCategoriesProps[]>(
 		[]
@@ -68,7 +67,7 @@ const UpdateProductForm = ({
 				handleClose();
 			})
 			.catch((e) => {
-				toast.error("Error");
+				toast.error("Error" + e);
 				console.log(e);
 				console.log(productUpdateData);
 			}),
@@ -98,9 +97,7 @@ const UpdateProductForm = ({
 								defaultValue={product?.name}
 								type="text"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-								// {...register("name", { required: true })}
 							/>
-							{/* {errors.name && <ErrorMsg content={"name"} />} */}
 						</div>
 					</div>
 					<div>
@@ -117,15 +114,15 @@ const UpdateProductForm = ({
 								type="url"
 								id="image"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-								// {...register("image", { required: true })}
 							/>
-							{/* {errors.image && <ErrorMsg content={"image"} />} */}
 						</div>
-						{/* <p>Preview</p>
-								<img
-									src={image || cryptoProps?.image}
-									className="w-32 h-32 object-cover"
-								/> */}
+						<div className="mt-4">
+							<p>Preview</p>
+							<img
+								src={image}
+								className="w-32 h-32 object-cover"
+							/>
+						</div>
 					</div>
 					<div>
 						<label
@@ -142,9 +139,7 @@ const UpdateProductForm = ({
 								defaultValue={product?.stock}
 								type="number"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-								// {...register("stock", { required: true })}
 							/>
-							{/* {errors.stock && <ErrorMsg content={"stock"} />} */}
 						</div>
 					</div>
 					<div>
@@ -162,9 +157,7 @@ const UpdateProductForm = ({
 								defaultValue={product?.price}
 								type="number"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-								// {...register("price", { required: true })}
 							/>
-							{/* {errors.price && <ErrorMsg content={"price"} />} */}
 						</div>
 					</div>
 					<div>
@@ -196,9 +189,6 @@ const UpdateProductForm = ({
 										);
 									})}
 							</select>
-							{/* {errors.categoryId && (
-								<ErrorMsg content={"categoryId"} />
-							)} */}
 						</div>
 					</div>
 					<div>

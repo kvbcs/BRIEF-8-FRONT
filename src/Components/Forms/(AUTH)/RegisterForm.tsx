@@ -12,33 +12,33 @@ import { ErrorMsg } from "../../Error";
 
 export const RegisterForm = () => {
 	const [isLoading, setisLoading] = useState(false);
-
 	const { push } = useRouter();
+
 	const {
 		register,
 		handleSubmit,
 		watch,
 		formState: { errors },
 	} = useForm<AuthProps>({ mode: "all", resolver: yupResolver(schema) });
+
 	const onSubmit: SubmitHandler<AuthProps> = async (data) => {
 		try {
 			registerService(data)
 				.then((res) => {
-					if (res.status !== 201) {
+					if (res.status === 201) {
 						setisLoading(true);
 						console.log(res);
 						toast.success("Register successful !");
 						push("/login");
-					} else {
-						toast.error("Bad request");
+						console.log(res.status);
 					}
 				})
 				.catch((e) => {
-					toast.error(e);
+					toast.error("Credentials already taken" + e);
 					console.log(e);
 				});
 		} catch (e) {
-			toast.error("Server error");
+			toast.error("Server error" + e);
 			console.log(e);
 		}
 	};
@@ -135,7 +135,7 @@ export const RegisterForm = () => {
 						href="/login"
 						className="font-semibold leading-6 text-sky-500 hover:text-sky-700"
 					>
-						Log in{" "}
+						Log in
 					</Link>
 				</p>
 			</div>

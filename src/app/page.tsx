@@ -23,22 +23,27 @@ export default function Home() {
 	useEffect(() => {
 		getAllProducts()
 			.then((res) => {
-				setProductList(res);
-				console.log(res);
-				toast.success("Got products !");
-				setisLoading(false);
+				try {
+					setProductList(res);
+					console.log(res);
+					toast.success("Products loaded !");
+					setisLoading(false);
+				} catch (e) {
+					console.log(e);
+					toast.error("Something went wrong" + e);
+				}
 			})
 			.catch((e) => {
 				console.log(e);
-				toast.error("Server error", e);
+				toast.error("Server error" + e);
 			});
 	}, [isLoading]);
 
 	useEffect(() => {
 		getAllCategories()
 			.then((res) => {
-				toast.success("Got categories !");
 				setCatgoryList(res);
+				toast.success("Categories loaded !");
 				console.log(res);
 				setisLoading(false);
 			})
@@ -96,7 +101,7 @@ export default function Home() {
 			</div>
 			<div className="flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-2">
 				{productList &&
-					productList.map((product, cart: any) => {
+					productList.map((product) => {
 						return (
 							<ProductCards
 								key={product.id}

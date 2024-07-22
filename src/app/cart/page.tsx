@@ -17,13 +17,13 @@ const page = ({ cart }: { cart: AllCartProps }) => {
 			.then((res) => {
 				setcartList(res);
 				console.log(res);
-				toast.success("got carts");
+				toast.success("Cart products loaded");
 				console.log(cartList);
 				setisLoading(false);
 			})
 			.catch((e) => {
 				console.log(e);
-				toast.error("error");
+				toast.error("Server error" + e);
 			});
 	}, [isLoading]);
 

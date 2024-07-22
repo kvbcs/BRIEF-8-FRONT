@@ -1,4 +1,5 @@
 "use client";
+import { useStoreConnect } from "@/Components/stores/connextTest";
 import { ErrorMsg } from "@/Components/Error";
 import { loginService } from "@/Services/authService";
 import { AuthProps } from "@/Utils/types";
@@ -9,6 +10,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 export const LoginForm = () => {
+	const { setIsConnected } = useStoreConnect((state) => state);
+
 	const { push } = useRouter();
 	const [isLoading, setisLoading] = useState(false);
 
@@ -32,20 +35,23 @@ export const LoginForm = () => {
 						window.localStorage.setItem("role", res.data.role);
 						window.localStorage.setItem("cart", res.data.cart);
 						toast.success("Login successful !");
+						setIsConnected(true);
+
 						push("/");
 						setisLoading(false);
 						console.log(res.data);
 						console.log(res.status);
-					} else {
+					}
+					if (res.status === 403) {
 						toast.error("Invalid credentials");
 					}
 				})
 				.catch((e) => {
 					console.log(e);
-					toast.error(e);
+					toast.error("Invalid credentials" + e);
 				});
 		} catch (e) {
-			toast.error("Bad request");
+			toast.error("Server error" + e);
 			console.log(e);
 		}
 	};
@@ -96,14 +102,6 @@ export const LoginForm = () => {
 							>
 								Password
 							</label>
-							<div className="text-sm">
-								<a
-									href="#"
-									className="font-semibold text-sky-500 hover:text-sky-700"
-								>
-									Forgot password?
-								</a>
-							</div>
 						</div>
 						<div className="mt-2">
 							<input

@@ -23,8 +23,8 @@ export async function registerService(auth: AuthProps) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res.data);
-			return res.data;
+			console.log(res);
+			return res;
 		})
 		.catch((e) => {
 			throw new Error(e);

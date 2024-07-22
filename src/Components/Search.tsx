@@ -5,7 +5,6 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const Search = ({ setProductList, setIsLoading }: any) => {
 	const [searchValue, setSearchValue] = useState("");
-	console.log(searchValue);
 
 	function handleSearch() {
 		searchProducts(searchValue).then((res) => {

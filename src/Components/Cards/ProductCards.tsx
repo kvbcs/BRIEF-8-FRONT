@@ -21,18 +21,18 @@ const ProductCards = ({
 					console.log(res);
 					toast.success("Product deleted !");
 				} else {
-					toast.error("Something went wrong");
+					toast.error("Something is wrong");
 				}
 			})
 			.catch((e) => {
-				console.log(e), toast.error("Srver error", e);
+				console.log(e),
+					toast.error("Product in carts can't be deleted", e);
 			}),
 			[];
 	}
 	function isAdmin() {
 		const role = window.localStorage.getItem("role");
 		const jwt = window.localStorage.getItem("token");
-
 		return role === "admin" && jwt !== undefined && jwt!.length > 60;
 	}
 
@@ -48,7 +48,7 @@ const ProductCards = ({
 				</div>
 
 				<div className="px-5 pb-5 flex flex-col gap-6">
-					<div className="flex flex-row justify-between items-center w-full px-2 text-justify">
+					<div className="flex flex-row justify-between items-center gap-10 w-full px-2 text-justify">
 						<h3 className="text-black font-semibold text-xl tracking-tight dark:text-white">
 							{product.name}
 						</h3>

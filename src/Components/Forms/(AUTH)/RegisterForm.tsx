@@ -1,7 +1,7 @@
 "use client";
 import { AuthProps } from "@/Utils/types";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "@/Utils/validator";
@@ -11,6 +11,8 @@ import toast from "react-hot-toast";
 import { ErrorMsg } from "../../Error";
 
 export const RegisterForm = () => {
+	const [isLoading, setisLoading] = useState(false);
+
 	const { push } = useRouter();
 	const {
 		register,
@@ -20,14 +22,23 @@ export const RegisterForm = () => {
 	} = useForm<AuthProps>({ mode: "all", resolver: yupResolver(schema) });
 	const onSubmit: SubmitHandler<AuthProps> = async (data) => {
 		try {
-			registerService(data).then((res) => {
-				if (res.status === 201) {
-					toast.success("Register successful !");
-					push("/login");
-				}
-			});
+			registerService(data)
+				.then((res) => {
+					if (res.status !== 201) {
+						setisLoading(true);
+						console.log(res);
+						toast.success("Register successful !");
+						push("/login");
+					} else {
+						toast.error("Bad request");
+					}
+				})
+				.catch((e) => {
+					toast.error(e);
+					console.log(e);
+				});
 		} catch (e) {
-			toast.error("Register error !");
+			toast.error("Server error");
 			console.log(e);
 		}
 	};

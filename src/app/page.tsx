@@ -30,7 +30,7 @@ export default function Home() {
 			})
 			.catch((e) => {
 				console.log(e);
-				toast.error("Something went wrong", e);
+				toast.error("Server error", e);
 			});
 	}, [isLoading]);
 
@@ -98,7 +98,11 @@ export default function Home() {
 				{productList &&
 					productList.map((product, cart: any) => {
 						return (
-							<ProductCards key={product.id} setisLoading={ setisLoading} product={product} />
+							<ProductCards
+								key={product.id}
+								setisLoading={setisLoading}
+								product={product}
+							/>
 						);
 					})}
 			</div>

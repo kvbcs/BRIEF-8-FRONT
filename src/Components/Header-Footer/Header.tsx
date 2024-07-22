@@ -6,9 +6,10 @@ import { FaUser, FaArrowRightFromBracket } from "react-icons/fa6";
 import { FaShoppingCart, FaTshirt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { RiAdminFill } from "react-icons/ri";
+import { FidgetSpinner } from "react-loader-spinner";
 
 const Header = () => {
-	const [isLoading, setisLoading] = useState(false);
+	const [isLoading, setisLoading] = useState(true);
 	const [isAdmin, setIsAdmin] = useState(false);
 	const [isConnected, setIsConnected] = useState(false);
 
@@ -29,6 +30,7 @@ const Header = () => {
 		setisLoading(true);
 		setIsAdmin(checkIsAdmin());
 		setIsConnected(checkIsConnected());
+		setisLoading(false);
 	}, [isLoading]);
 
 	const handleDisconnect = () => {
@@ -36,6 +38,23 @@ const Header = () => {
 		window.localStorage.clear();
 		push("/login");
 	};
+
+	if (isLoading) {
+		return (
+			<div className="h-screen w-full flex flex-col items-center justify-center">
+				<h1 className="text-4xl">Loading...</h1>
+				<FidgetSpinner
+					visible={true}
+					height="140"
+					width="140"
+					backgroundColor="#000000"
+					ariaLabel="fidget-spinner-loading"
+					wrapperStyle={{}}
+					wrapperClass="fidget-spinner-wrapper"
+				/>
+			</div>
+		);
+	}
 
 	const { push } = useRouter();
 	return (

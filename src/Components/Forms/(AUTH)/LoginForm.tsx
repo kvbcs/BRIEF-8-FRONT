@@ -21,27 +21,31 @@ export const LoginForm = () => {
 
 	const onSubmit: SubmitHandler<AuthProps> = (data) => {
 		try {
-			loginService(data).then((res) => {
-				if (res.status === 201) {
-					setisLoading(true);
-					window.localStorage.setItem(
-						"token",
-						res.data.token.access_token
-					);
-					window.localStorage.setItem("role", res.data.role);
-					window.localStorage.setItem("cart", res.data.cart);
-					toast.success("Login successful !");
-					push("/");
-					console.log(res);
-					setisLoading(false);
-					console.log(res.data);
-					console.log(res.status);
-				} else {
-					toast.error("Bad request");
-				}
-			});
+			loginService(data)
+				.then((res) => {
+					if (res.status === 201) {
+						setisLoading(true);
+						window.localStorage.setItem(
+							"token",
+							res.data.token.access_token
+						);
+						window.localStorage.setItem("role", res.data.role);
+						window.localStorage.setItem("cart", res.data.cart);
+						toast.success("Login successful !");
+						push("/");
+						setisLoading(false);
+						console.log(res.data);
+						console.log(res.status);
+					} else {
+						toast.error("Invalid credentials");
+					}
+				})
+				.catch((e) => {
+					console.log(e);
+					toast.error(e);
+				});
 		} catch (e) {
-			toast.error("Server error");
+			toast.error("Bad request");
 			console.log(e);
 		}
 	};

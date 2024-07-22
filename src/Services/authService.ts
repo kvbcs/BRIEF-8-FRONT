@@ -1,4 +1,4 @@
-import { AllCategoriesProps, AllProductsProps, AuthProps } from "@/Utils/types";
+import { AuthProps } from "@/Utils/types";
 import axios from "axios";
 
 //Service du register --------------------------------------------------------------------------------------------------------------------

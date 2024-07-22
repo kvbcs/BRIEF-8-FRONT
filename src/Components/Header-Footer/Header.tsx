@@ -9,6 +9,12 @@ import { RiAdminFill } from "react-icons/ri";
 
 const Header = () => {
 	const { push } = useRouter();
+	function isAdmin() {
+		const role = window.localStorage.getItem("role");
+		const jwt = window.localStorage.getItem("token");
+
+		return role === "admin" && jwt !== undefined && jwt!.length > 60;
+	}
 	return (
 		<header className="w-full flex flex-row justify-between px-4 gap-2 items-center h-[10vh] bg-black">
 			<div className="flex flex-row items-center gap-2 w-[75px]">
@@ -38,12 +44,14 @@ const Header = () => {
 						My profile
 					</li>
 				</Link>{" "}
-				<Link href="/admin">
-					<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
-						<RiAdminFill size={26} />
-						Admin
-					</li>
-				</Link>{" "}
+				{isAdmin() && (
+					<Link href="/admin">
+						<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
+							<RiAdminFill size={26} />
+							Admin
+						</li>
+					</Link>
+				)}
 			</ul>
 			<button
 				onClick={() => {

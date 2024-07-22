@@ -25,9 +25,15 @@ const ProductCards = ({
 				}
 			})
 			.catch((e) => {
-				console.log(e), toast.error("Srver error");
+				console.log(e), toast.error("Srver error", e);
 			}),
 			[];
+	}
+	function isAdmin() {
+		const role = window.localStorage.getItem("role");
+		const jwt = window.localStorage.getItem("token");
+
+		return role === "admin" && jwt !== undefined && jwt!.length > 60;
 	}
 
 	return (
@@ -61,22 +67,30 @@ const ProductCards = ({
 
 					<div className="flex items-center justify-between">
 						<div className="flex flex-row gap-2 items-center justify-evenly">
-							<UpdateProductModal
-								setisLoading={setisLoading}
-								product={product}
-							/>
-							<button
-								onClick={(e) => {
-									console.log(product.id);
+							{isAdmin() && (
+								<UpdateProductModal
+									setisLoading={setisLoading}
+									product={product}
+								/>
+							)}
 
-									handleProductDelete(product.id);
-								}}
-								className="flex flex-row items-center text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"
-							>
-								<FaTrashAlt />
-							</button>
+							{isAdmin() && (
+								<button
+									onClick={(e) => {
+										console.log(product.id);
+
+										handleProductDelete(product.id);
+									}}
+									className="flex flex-row items-center text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"
+								>
+									<FaTrashAlt />
+								</button>
+							)}
 						</div>
-						<AddCartModal product={product} setisLoading={setisLoading}/>
+						<AddCartModal
+							product={product}
+							setisLoading={setisLoading}
+						/>
 					</div>
 				</div>
 			</div>

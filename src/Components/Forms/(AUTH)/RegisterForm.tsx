@@ -22,7 +22,6 @@ export const RegisterForm = () => {
 		try {
 			registerService(data).then((res) => {
 				if (res.status === 201) {
-					// window.localStorage.setItem("token", res.data.access_token);
 					toast.success("Register successful !");
 					push("/login");
 				}

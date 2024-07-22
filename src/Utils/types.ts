@@ -1,5 +1,5 @@
 export type AuthProps = {
-	name?: string;
+	name: string;
 	email: string;
 	password: string;
 };

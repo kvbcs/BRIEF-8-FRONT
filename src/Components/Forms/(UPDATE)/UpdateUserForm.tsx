@@ -4,12 +4,19 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { updateUser } from "@/Services/userService";
 
-const UpdateUserForm = ({ user }: { user: AllUserProps }) => {
+const UpdateUserForm = ({
+	user,
+	setisLoading,
+	handleClose,
+}: {
+	user: AllUserProps;
+	setisLoading: any;
+	handleClose: any;
+}) => {
 	const [name, setName] = useState(user?.name || "");
 	const [email, setEmail] = useState(user?.email || "");
 
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [isReloadNeeded, setisReloadNeeded] = useState(false);
 	const [userData, setuserData] = useState<AllUserProps>();
 
 	useEffect(() => {
@@ -19,14 +26,7 @@ const UpdateUserForm = ({ user }: { user: AllUserProps }) => {
 			setIsLoaded(true);
 		}
 	}, [user, isLoaded]);
-	// const {
-	// 	register,
-	// 	handleSubmit,
-	// 	watch,
-	// 	formState: { errors },
-	// } = useForm<AllProductsProps>();
 
-	// const onSubmit: SubmitHandler<AllProductsProps> = () =>
 	function handleSubmit() {
 		let userUpdateData = {
 			id: user.id,
@@ -35,17 +35,18 @@ const UpdateUserForm = ({ user }: { user: AllUserProps }) => {
 		};
 		updateUser(userUpdateData, userUpdateData.id)
 			.then((res) => {
+				setisLoading(true);
 				console.log(res);
 				console.log(userUpdateData);
-				setisReloadNeeded(true);
 				toast.success("User updated !");
+				handleClose();
 			})
 			.catch((e) => {
-				toast.error("Error");
+				toast.error("Server error" + e);
 				console.log(e);
 				console.log(userUpdateData);
 			}),
-			[isReloadNeeded];
+			[];
 	}
 
 	return (

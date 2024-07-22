@@ -5,23 +5,29 @@ import toast from "react-hot-toast";
 import { FaTrashAlt } from "react-icons/fa";
 import { UpdateUserModal } from "../Modal/(UPDATE)/UpdateUserModal";
 
-const UserCards = ({ user }: { user: AllUserProps }) => {
-	const [isLoading, setIsLoading] = useState(false);
+const UserCards = ({
+	user,
+	setisLoading,
+}: {
+	user: AllUserProps;
+	setisLoading: any;
+}) => {
 	function handleUserDelete(id: string) {
 		deleteUser(id)
 			.then((res) => {
 				if (res.status === 200) {
+					setisLoading(true);
+
 					console.log(res);
 					toast.success("User deleted !");
-					setIsLoading(true);
 				} else {
-					toast.error("wtf");
+					toast.error("Unexisting user");
 				}
 			})
 			.catch((e) => {
-				console.log(e), toast.error("oupsie");
+				console.log(e), toast.error("Server error" + e);
 			}),
-			[isLoading];
+			[];
 	}
 	return (
 		<div className="bg-gray-800 w-full flex flex-row gap-2 items-center p-2 rounded-lg text-white">
@@ -30,7 +36,7 @@ const UserCards = ({ user }: { user: AllUserProps }) => {
 				<p>Email : {user.email}</p>
 			</div>
 			<div className="w-fit flex flex-col gap-2">
-				<UpdateUserModal user={user} />
+				<UpdateUserModal setisLoading={setisLoading} user={user} />
 				<button
 					onClick={(e) => {
 						console.log(user.id);

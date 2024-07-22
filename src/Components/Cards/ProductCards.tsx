@@ -37,7 +37,7 @@ const ProductCards = ({
 	}
 
 	return (
-		<div className=" w-full md:w-fit h-[400px] mx-auto mb-6">
+		<div className=" w-full md:w-fit h-[450px] mx-auto mb-6">
 			<div className="bg-slate-100 hover:border-slate-300 hover:bg-slate-200 shadow-2xl border-2 border-slate-200 rounded-lg h-full md:w-[300px] p-4 dark:bg-gray-800 object-cover dark:border-gray-700">
 				<div className="h-2/4 shadow-xl rounded-lg mb-5">
 					<img

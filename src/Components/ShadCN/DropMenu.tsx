@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -14,9 +14,41 @@ import { FaArrowRightFromBracket, FaUser } from "react-icons/fa6";
 import { FaShoppingCart, FaTshirt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { RiAdminFill } from "react-icons/ri";
+import { useStoreConnect } from "../stores/connextTest";
 
 const DropMenu = () => {
 	const { push } = useRouter();
+
+	const { isConnected, setIsConnected } = useStoreConnect((state) => state);
+	const [isLoading, setisLoading] = useState(true);
+	const [isAdmin, setIsAdmin] = useState(false);
+
+	function checkIsAdmin() {
+		const jwt = window.localStorage.getItem("token");
+		const role = window.localStorage.getItem("role");
+		return role === "admin" && jwt !== undefined && jwt!.length > 60;
+	}
+
+	function checkIsConnected() {
+		const role = window.localStorage.getItem("role");
+		const cart = window.localStorage.getItem("cart");
+		const jwt = window.localStorage.getItem("token");
+		return jwt !== null || cart !== null || role !== null;
+	}
+
+	useEffect(() => {
+		setisLoading(true);
+		setIsAdmin(checkIsAdmin());
+		setIsConnected(checkIsConnected());
+		setisLoading(false);
+	}, [isLoading, isConnected]);
+
+	const handleDisconnect = () => {
+		setisLoading(true);
+		window.localStorage.clear();
+		push("/login");
+	};
+
 	return (
 		<div className="h-[60%] md:hidden">
 			<DropdownMenu>
@@ -26,12 +58,6 @@ const DropMenu = () => {
 					</button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent>
-					<Link href={`/profile`}>
-						<DropdownMenuLabel className="flex flex-row items-center gap-2">
-							<FaUser />
-							My Profile
-						</DropdownMenuLabel>
-					</Link>
 					<DropdownMenuSeparator />
 					<Link href="/admin">
 						<DropdownMenuItem className="flex flex-row items-center gap-2">
@@ -53,10 +79,7 @@ const DropMenu = () => {
 					</Link>
 
 					<DropdownMenuItem
-						onClick={() => {
-							window.localStorage.clear();
-							push("/login");
-						}}
+						onClick={handleDisconnect}
 						className="bg-red-700 text-white rounded-lg hover:bg-red-700 flex flex-row items-center gap-2"
 					>
 						<FaArrowRightFromBracket />

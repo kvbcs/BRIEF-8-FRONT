@@ -2,7 +2,7 @@
 import AddCategoryForm from "@/Components/Forms/(POST)/AddCategoryFrom";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
-import { IoMdAddCircle } from "react-icons/io";
+import { IoIosCloseCircleOutline, IoMdAddCircle } from "react-icons/io";
 
 export const AddCategoryModal = ({ setisLoading }: any) => {
 	const [open, setOpen] = useState(false);
@@ -42,7 +42,9 @@ export const AddCategoryModal = ({ setisLoading }: any) => {
 						<span
 							className="absolute right-10 top-10 cursor-pointer"
 							onClick={handleClose}
-						></span>
+						>
+							<IoIosCloseCircleOutline color="#222" size={48} />
+						</span>
 						<AddCategoryForm
 							setisLoading={setisLoading}
 							handleClose={handleClose}

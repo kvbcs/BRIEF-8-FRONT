@@ -72,7 +72,13 @@ const page = () => {
 					<h2>All Users</h2>
 					{userList &&
 						userList.map((user) => {
-							return <UserCards key={user.id} user={user} />;
+							return (
+								<UserCards
+									key={user.id}
+									user={user}
+									setisLoading={setisLoading}
+								/>
+							);
 						})}
 				</div>
 				<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/2 rounded-lg h-fit max-h-[200px] bg-black text-white overflow-auto md:h-fit md:max-h-full">
@@ -81,6 +87,7 @@ const page = () => {
 						categoryList.map((category) => {
 							return (
 								<CategoryCards
+									setisLoading={setisLoading}
 									key={category.id}
 									category={category}
 								/>

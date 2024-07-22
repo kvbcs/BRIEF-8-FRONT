@@ -8,8 +8,10 @@ import UpdateCategoryForm from "../../Forms/(UPDATE)/UpdateCategoryForm";
 
 export const UpdateCategoryModal = ({
 	category,
+	setisLoading,
 }: {
 	category: AllCategoriesProps;
+	setisLoading: any;
 }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
@@ -49,7 +51,11 @@ export const UpdateCategoryModal = ({
 						>
 							<IoIosCloseCircleOutline color="#222" size={48} />
 						</span>
-						<UpdateCategoryForm category={category} />
+						<UpdateCategoryForm
+							category={category}
+							setisLoading={setisLoading}
+							handleClose={handleClose}
+						/>
 					</div>
 				</Box>
 			</Modal>

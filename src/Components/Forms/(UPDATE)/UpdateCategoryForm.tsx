@@ -4,7 +4,15 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { updateCategory } from "@/Services/categoryService";
 
-const UpdateCategoryForm = ({ category }: { category: AllCategoriesProps }) => {
+const UpdateCategoryForm = ({
+	category,
+	handleClose,
+	setisLoading,
+}: {
+	category: AllCategoriesProps;
+	handleClose: any;
+	setisLoading: any;
+}) => {
 	const [name, setName] = useState(category?.name || "");
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [isReloadNeeded, setisReloadNeeded] = useState(false);
@@ -31,17 +39,17 @@ const UpdateCategoryForm = ({ category }: { category: AllCategoriesProps }) => {
 		};
 		updateCategory(categoryUpdateData, categoryUpdateData.id)
 			.then((res) => {
+				setisLoading(true);
 				console.log(res);
 				console.log(categoryUpdateData);
-				setisReloadNeeded(true);
 				toast.success("Category updated !");
 			})
 			.catch((e) => {
-				toast.error("Error");
+				toast.error("Error" + e);
 				console.log(e);
 				console.log(categoryUpdateData);
 			}),
-			[isReloadNeeded];
+			[];
 	}
 
 	return (

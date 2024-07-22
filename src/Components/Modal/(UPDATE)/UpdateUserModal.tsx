@@ -4,9 +4,15 @@ import React, { useState } from "react";
 import { AllUserProps } from "@/Utils/types";
 import { FaEdit } from "react-icons/fa";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import UpdateUserForm from "@/Components/Forms/(UPDATE)/UpdateUserModal";
+import UpdateUserForm from "@/Components/Forms/(UPDATE)/UpdateUserForm";
 
-export const UpdateUserModal = ({ user }: { user: AllUserProps }) => {
+export const UpdateUserModal = ({
+	user,
+	setisLoading,
+}: {
+	user: AllUserProps;
+	setisLoading: any;
+}) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -45,7 +51,11 @@ export const UpdateUserModal = ({ user }: { user: AllUserProps }) => {
 						>
 							<IoIosCloseCircleOutline color="#222" size={48} />
 						</span>
-						<UpdateUserForm user={user} />
+						<UpdateUserForm
+							user={user}
+							handleClose={handleClose}
+							setisLoading={setisLoading}
+						/>
 					</div>
 				</Box>
 			</Modal>

@@ -2,9 +2,9 @@
 import AddProductForm from "@/Components/Forms/(POST)/AddProductForm";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
-import { IoMdAddCircle } from "react-icons/io";
+import { IoIosCloseCircleOutline, IoMdAddCircle } from "react-icons/io";
 
-export const AddProductModal = ({setisLoading}:any) => {
+export const AddProductModal = ({ setisLoading }: any) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -42,8 +42,13 @@ export const AddProductModal = ({setisLoading}:any) => {
 						<span
 							className="absolute right-10 top-10 cursor-pointer"
 							onClick={handleClose}
-						></span>
-						<AddProductForm handleClose={ handleClose} setisLoading={setisLoading} />
+						>
+							<IoIosCloseCircleOutline color="#222" size={48} />
+						</span>
+						<AddProductForm
+							handleClose={handleClose}
+							setisLoading={setisLoading}
+						/>
 					</div>
 				</Box>
 			</Modal>

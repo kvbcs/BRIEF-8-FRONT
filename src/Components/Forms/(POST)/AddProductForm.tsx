@@ -1,12 +1,34 @@
 "use client";
 import { addProduct } from "@/Services/productService";
-import { AllProductsProps } from "@/Utils/types";
-import React from "react";
+import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
+import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ErrorMsg } from "../../Error";
+import { getAllCategories } from "@/Services/categoryService";
 
-const AddProductForm = ({ setisLoading, handleClose }: any) => {
+const AddProductForm = (
+	{ setisLoading, handleClose }: any,
+	product: AllProductsProps
+) => {
+	const [categoriesList, setCategoriesList] = useState<AllCategoriesProps[]>(
+		[]
+	);
+	const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
+
+	useEffect(() => {
+		getAllCategories()
+			.then((res) => {
+				toast.success("Categories loaded !");
+				setCategoriesList(res);
+				console.log(res);
+			})
+			.catch((e) => {
+				toast.error("Error getting categories", e);
+				console.log(e);
+			});
+	}, []);
+
 	const {
 		register,
 		handleSubmit,
@@ -75,6 +97,7 @@ const AddProductForm = ({ setisLoading, handleClose }: any) => {
 							)}
 						</div>
 					</div>
+
 					<div>
 						<label
 							htmlFor="stock"
@@ -116,25 +139,42 @@ const AddProductForm = ({ setisLoading, handleClose }: any) => {
 							htmlFor="categoryId"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product categoryId
+							Product category
 						</label>
 						<div className="mt-2">
-							<input
-								type="text"
-								className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+							<select
+								required
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+								// onChange={(e) =>
+								// 	setSelectedCategoryId(
+								// 		String(e.target.value)
+								// 	)
+								// }
 								{...register("categoryId", { required: true })}
-							/>
+							>
+								<option value="">Select a category</option>
+
+								{categoriesList &&
+									categoriesList.map((category) => {
+										return (
+											<option
+												selected={
+													category.id ===
+													product.categoryId
+												}
+												key={category.id}
+												value={category.id}
+											>
+												{category.name}
+											</option>
+										);
+									})}
+							</select>
 							{errors.categoryId && (
 								<ErrorMsg content={"This field is required"} />
 							)}
 
-							<div>
-								{/* <p>Preview</p>
-								<img
-									src={image || cryptoProps?.image}
-									className="w-32 h-32 object-cover"
-								/> */}
-							</div>
+							<div></div>
 						</div>
 					</div>
 					<div>

@@ -32,7 +32,7 @@ const AddCartForm = ({
 				handleClose();
 			})
 			.catch((e) => {
-				toast.error("Error");
+				toast.error("You must be logged in" + e);
 				console.log(e);
 				console.log(data);
 			});

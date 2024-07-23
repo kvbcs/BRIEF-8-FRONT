@@ -14,7 +14,6 @@ const AddProductForm = (
 	const [categoriesList, setCategoriesList] = useState<AllCategoriesProps[]>(
 		[]
 	);
-	const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
 
 	useEffect(() => {
 		getAllCategories()
@@ -24,7 +23,7 @@ const AddProductForm = (
 				console.log(res);
 			})
 			.catch((e) => {
-				toast.error("Error getting categories", e);
+				toast.error("Server error", e);
 				console.log(e);
 			});
 	}, []);
@@ -145,11 +144,6 @@ const AddProductForm = (
 							<select
 								required
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-								// onChange={(e) =>
-								// 	setSelectedCategoryId(
-								// 		String(e.target.value)
-								// 	)
-								// }
 								{...register("categoryId", { required: true })}
 							>
 								<option value="">Select a category</option>

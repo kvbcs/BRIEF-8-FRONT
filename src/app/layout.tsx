@@ -21,7 +21,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={inter.className}>
 				<Header />
-				<Toaster />
+				<Toaster position="top-right" reverseOrder={false} />
 				<main className="flex min-h-[90vh] flex-col items-center gap-4 p-4 bg-white">
 					{children}
 				</main>

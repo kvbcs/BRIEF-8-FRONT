@@ -10,6 +10,7 @@ import { FidgetSpinner } from "react-loader-spinner";
 import { useStoreConnect } from "@/Components/stores/connextTest";
 
 const Header = () => {
+	const { push } = useRouter();
 	const { isConnected, setIsConnected } = useStoreConnect((state) => state);
 	const [isLoading, setisLoading] = useState(true);
 	const [isAdmin, setIsAdmin] = useState(false);
@@ -57,15 +58,17 @@ const Header = () => {
 		);
 	}
 
-	const { push } = useRouter();
 	return (
 		<>
 			<header className="w-full flex flex-row justify-between px-4 gap-2 items-center h-[10vh] bg-black">
 				<div className="flex flex-row items-center gap-2 w-[75px]">
 					<img
+						onClick={() => {
+							push("/");
+						}}
 						src="https://t3.ftcdn.net/jpg/02/47/48/00/360_F_247480017_ST4hotATsrcErAja0VzdUsrrVBMIcE4u.jpg"
-						alt=""
-						className="w-full h-full rounded-full"
+						alt="E-commerce logo"
+						className="w-full h-full hover:cursor-pointer rounded-full"
 					/>
 				</div>
 				{isConnected ? (

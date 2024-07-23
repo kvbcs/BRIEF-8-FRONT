@@ -10,8 +10,8 @@ import {
 } from "@/Components/ui/dropdown-menu";
 import { IoIosMenu } from "react-icons/io";
 import Link from "next/link";
-import { FaArrowRightFromBracket, FaUser } from "react-icons/fa6";
-import { FaShoppingCart, FaTshirt } from "react-icons/fa";
+import { FaArrowRightFromBracket, FaUser, FaUserPen } from "react-icons/fa6";
+import { FaShoppingCart, FaSignInAlt, FaTshirt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { RiAdminFill } from "react-icons/ri";
 import { useStoreConnect } from "../stores/connextTest";
@@ -59,32 +59,59 @@ const DropMenu = () => {
 				</DropdownMenuTrigger>
 				<DropdownMenuContent>
 					<DropdownMenuSeparator />
-					<Link href="/admin">
-						<DropdownMenuItem className="flex flex-row items-center gap-2">
-							<RiAdminFill /> Admin
-						</DropdownMenuItem>
-					</Link>
-					<Link href="/">
-						<DropdownMenuItem className="flex flex-row items-center gap-2">
-							<FaTshirt />
-							Products
-						</DropdownMenuItem>
-					</Link>
+					{isAdmin && (
+						<Link href="/admin">
+							<DropdownMenuItem className="flex flex-row items-center gap-2">
+								<RiAdminFill /> Admin
+							</DropdownMenuItem>
+						</Link>
+					)}
+					{isConnected ? (
+						<>
+							<Link href="/">
+								<DropdownMenuItem className="flex flex-row items-center gap-2">
+									<FaTshirt />
+									Products
+								</DropdownMenuItem>
+							</Link>
 
-					<Link href="/cart">
-						<DropdownMenuItem className="flex flex-row items-center gap-2">
-							<FaShoppingCart />
-							Cart
-						</DropdownMenuItem>{" "}
-					</Link>
+							<Link href="/cart">
+								<DropdownMenuItem className="flex flex-row items-center gap-2">
+									<FaShoppingCart />
+									Cart
+								</DropdownMenuItem>{" "}
+							</Link>
 
-					<DropdownMenuItem
-						onClick={handleDisconnect}
-						className="bg-red-700 text-white rounded-lg hover:bg-red-700 flex flex-row items-center gap-2"
-					>
-						<FaArrowRightFromBracket />
-						Disconnect
-					</DropdownMenuItem>
+							<DropdownMenuItem
+								onClick={handleDisconnect}
+								className="bg-red-700 text-white rounded-lg hover:bg-red-700 flex flex-row items-center gap-2"
+							>
+								<FaArrowRightFromBracket />
+								Disconnect
+							</DropdownMenuItem>
+						</>
+					) : (
+						<>
+							<DropdownMenuItem
+								onClick={() => {
+									push("/login");
+								}}
+								className="bg-white text-black rounded-lg hover:bg-slate-300 flex flex-row items-center gap-2"
+							>
+								<FaSignInAlt />
+								Login
+							</DropdownMenuItem>
+							<DropdownMenuItem
+								onClick={() => {
+									push("/register");
+								}}
+								className="bg-sky-700 text-white rounded-lg hover:bg-sky-700 flex flex-row items-center gap-2"
+							>
+								<FaUserPen />
+								Register
+							</DropdownMenuItem>
+						</>
+					)}
 				</DropdownMenuContent>
 			</DropdownMenu>
 		</div>

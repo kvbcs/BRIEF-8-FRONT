@@ -5,6 +5,7 @@ import { UpdateProductModal } from "../Modal/(UPDATE)/UpdateProductModal";
 import { FaTrashAlt } from "react-icons/fa";
 import { deleteProduct } from "@/Services/productService";
 import { AddCartModal } from "../Modal/(POST)/AddCartModal";
+import Link from "next/link";
 
 const ProductCards = ({
 	product,
@@ -38,7 +39,8 @@ const ProductCards = ({
 
 	return (
 		<div className=" w-full md:w-fit h-[450px] mx-auto mb-6">
-			<div className="bg-slate-100 hover:border-slate-300 hover:bg-slate-200 shadow-2xl border-2 border-slate-200 rounded-lg h-full md:w-[300px] p-4 dark:bg-gray-800 object-cover dark:border-gray-700">
+			{/* <Link href={`/products/${product.id}`}> */}
+			<div className="bg-stone-100 hover:border-slate-500 hover:bg-slate-300 hover:cursor-pointer hover:scale-110 transition ease-in-out shadow-2xl border-2 border-slate-200 rounded-lg h-full md:w-[300px] p-4 dark:bg-gray-800 object-cover dark:border-gray-700">
 				<div className="h-2/4 shadow-xl rounded-lg mb-5">
 					<img
 						className="rounded-xl h-full w-full object-cover"
@@ -94,6 +96,7 @@ const ProductCards = ({
 					</div>
 				</div>
 			</div>
+			{/* </Link> */}
 		</div>
 	);
 };

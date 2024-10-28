@@ -38,7 +38,7 @@ const Header = () => {
 	const handleDisconnect = () => {
 		setisLoading(true);
 		window.localStorage.clear();
-		push("/login");
+		push("/");
 	};
 
 	if (isLoading) {
@@ -68,12 +68,12 @@ const Header = () => {
 						}}
 						src="https://t3.ftcdn.net/jpg/02/47/48/00/360_F_247480017_ST4hotATsrcErAja0VzdUsrrVBMIcE4u.jpg"
 						alt="E-commerce logo"
-						className="w-full h-full hover:cursor-pointer rounded-full"
+						className="w-full h-full hover:cursor-pointer rounded-full hover:scale-110 transition ease-in-out"
 					/>
 				</div>
 				{isConnected ? (
 					<ul className="text-white flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
-						<Link href="/">
+						<Link href="/products">
 							<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
 								<FaTshirt size={26} />
 								Products
@@ -126,7 +126,7 @@ const Header = () => {
 				{isConnected && (
 					<button
 						onClick={handleDisconnect}
-						className="hidden md:flex bg-red-500 hover:bg-red-700 flex-row items-center gap-2  text-white p-3 rounded-lg"
+						className="hidden md:flex bg-red-700 hover:bg-red-400 flex-row items-center gap-2 hover:scale-110 transition ease-in-out text-white p-3 rounded-lg"
 					>
 						<FaArrowRightFromBracket size={26} />
 						Disconnect

@@ -37,7 +37,7 @@ export const LoginForm = () => {
 						toast.success("Login successful !");
 						setIsConnected(true);
 
-						push("/");
+						push("/products");
 						setisLoading(false);
 						console.log(res.data);
 						console.log(res.status);

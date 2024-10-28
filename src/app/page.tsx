@@ -30,7 +30,7 @@ export default function Home() {
 					setisLoading(false);
 				} catch (e) {
 					console.log(e);
-					toast.error("Something went wrong" + e);
+					toast.error("Error loading products" + e);
 				}
 			})
 			.catch((e) => {
@@ -83,11 +83,7 @@ export default function Home() {
 					{categoryList &&
 						categoryList.map((category) => {
 							return (
-								<option
-									// selected={category.id === category.id}
-									key={category.id}
-									value={category.id}
-								>
+								<option key={category.id} value={category.id}>
 									{category.name}
 								</option>
 							);

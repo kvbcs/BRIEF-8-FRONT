@@ -4,15 +4,11 @@ import CategoryCards from "@/Components/Cards/CategoryCards";
 import ProductCards from "@/Components/Cards/ProductCards";
 import Search from "@/Components/Search";
 import { getAllCategories } from "@/Services/categoryService";
-import { getAllProducts, searchProducts } from "@/Services/productService";
-import {
-	AllCartProps,
-	AllCategoriesProps,
-	AllProductsProps,
-} from "@/Utils/types";
+import { getAllProducts } from "@/Services/productService";
+import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { FidgetSpinner } from "react-loader-spinner";
+import { Hourglass } from "react-loader-spinner";
 
 export default function Home() {
 	const [search, setSearch] = useState<string>("");
@@ -57,14 +53,14 @@ export default function Home() {
 		return (
 			<div className="h-screen w-full flex flex-col items-center justify-center">
 				<h1 className="text-4xl">Loading...</h1>
-				<FidgetSpinner
+				<Hourglass
 					visible={true}
-					height="140"
-					width="140"
-					backgroundColor="#000000"
-					ariaLabel="fidget-spinner-loading"
+					height="80"
+					width="80"
+					ariaLabel="hourglass-loading"
 					wrapperStyle={{}}
-					wrapperClass="fidget-spinner-wrapper"
+					wrapperClass=""
+					colors={["#306cce", "#72a1ed"]}
 				/>
 			</div>
 		);

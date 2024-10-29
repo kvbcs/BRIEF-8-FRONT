@@ -47,8 +47,8 @@ export const RegisterForm = () => {
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<img
-					alt="Ecommerce logo"
-					src="https://t3.ftcdn.net/jpg/02/47/48/00/360_F_247480017_ST4hotATsrcErAja0VzdUsrrVBMIcE4u.jpg"
+					alt="The E-commerce logo"
+					src="/Logo.png"
 					className="mx-auto h-20 w-auto"
 				/>
 				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

@@ -2,7 +2,12 @@
 import React, { useEffect, useState } from "react";
 import DropMenu from "../ShadCN/DropMenu";
 import Link from "next/link";
-import { FaUser, FaArrowRightFromBracket, FaUserPen } from "react-icons/fa6";
+import {
+	FaUser,
+	FaArrowRightFromBracket,
+	FaUserPen,
+	FaHouse,
+} from "react-icons/fa6";
 import { FaShoppingCart, FaSignInAlt, FaTshirt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { RiAdminFill } from "react-icons/ri";
@@ -41,57 +46,42 @@ const Header = () => {
 		push("/");
 	};
 
-	if (isLoading) {
-		return (
-			<div className="h-screen w-full flex flex-col items-center justify-center">
-				<h1 className="text-4xl">Loading...</h1>
-				<FidgetSpinner
-					visible={true}
-					height="140"
-					width="140"
-					backgroundColor="#000000"
-					ariaLabel="fidget-spinner-loading"
-					wrapperStyle={{}}
-					wrapperClass="fidget-spinner-wrapper"
-				/>
-			</div>
-		);
-	}
-
 	return (
 		<>
 			<header className="w-full flex flex-row justify-between px-4 gap-2 items-center h-[10vh] bg-black">
-				<div className="flex flex-row items-center gap-2 w-[75px]">
+				<div className="flex flex-row items-center gap-2 w-[60px] h-[80%]">
 					<img
 						onClick={() => {
 							push("/");
 						}}
-						src="https://t3.ftcdn.net/jpg/02/47/48/00/360_F_247480017_ST4hotATsrcErAja0VzdUsrrVBMIcE4u.jpg"
+						src="/Logo.png"
 						alt="E-commerce logo"
 						className="w-full h-full hover:cursor-pointer rounded-full hover:scale-110 transition ease-in-out"
 					/>
 				</div>
+				<ul className="text-white flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
+					<Link href="/">
+						<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
+							<FaHouse size={26} />
+							Home
+						</li>
+					</Link>
+					<Link href="/products">
+						<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
+							<FaTshirt size={26} />
+							Products
+						</li>
+					</Link>
+				</ul>
 				{isConnected ? (
 					<ul className="text-white flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
-						<Link href="/products">
-							<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
-								<FaTshirt size={26} />
-								Products
-							</li>
-						</Link>
 						<Link href="/cart">
 							<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
 								<FaShoppingCart size={26} />
 								Cart
 							</li>
 						</Link>
-						{/* <Link href="/profile">
-							<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
-								{" "}
-								<FaUser size={24} />
-								My profile
-							</li>
-						</Link>{" "} */}
+
 						{isAdmin && (
 							<Link href="/admin">
 								<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">

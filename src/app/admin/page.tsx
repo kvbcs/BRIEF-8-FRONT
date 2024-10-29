@@ -8,7 +8,7 @@ import { getAllUsers } from "@/Services/userService";
 import { AllCategoriesProps, AllUserProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { FidgetSpinner } from "react-loader-spinner";
+import { Hourglass } from "react-loader-spinner";
 
 const page = () => {
 	const [isLoading, setisLoading] = useState(true);
@@ -47,14 +47,14 @@ const page = () => {
 		return (
 			<div className="h-screen w-full flex flex-col items-center justify-center">
 				<h1 className="text-4xl">Loading...</h1>
-				<FidgetSpinner
+				<Hourglass
 					visible={true}
-					height="140"
-					width="140"
-					backgroundColor="#000000"
-					ariaLabel="fidget-spinner-loading"
+					height="80"
+					width="80"
+					ariaLabel="hourglass-loading"
 					wrapperStyle={{}}
-					wrapperClass="fidget-spinner-wrapper"
+					wrapperClass=""
+					colors={["#306cce", "#72a1ed"]}
 				/>
 			</div>
 		);

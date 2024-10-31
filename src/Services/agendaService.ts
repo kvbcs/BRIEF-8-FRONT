@@ -1,10 +1,9 @@
-import { updateCartProps } from "@/Components/Forms/(UPDATE)/UpdateCartForm";
-import { AllCartProps } from "@/Utils/types";
+import { AllAgendaProps, updateAgendaProps } from "@/Utils/types";
 import axios from "axios";
 
-//GET products --------------------------------------------------------------------------------------------------------------------
-export async function getAllCartProducts(cartId: string) {
-	let url = `${process.env.NEXT_PUBLIC_API_URL}cart/all/${cartId}`;
+//GET agenda events --------------------------------------------------------------------------------------------------------------------
+export async function getAllAgendaEvents(agendaId: string) {
+	let url = `${process.env.NEXT_PUBLIC_API_URL}agenda/all/${agendaId}`;
 	let axiosConfig = {
 		headers: {
 			"content-type": "application/json;charset=utf-8",
@@ -24,9 +23,9 @@ export async function getAllCartProducts(cartId: string) {
 		});
 }
 
-//POST products --------------------------------------------------------------------------------------------------------------------
-export async function addCartProduct(cart: AllCartProps, cartId: string) {
-	let url = `${process.env.NEXT_PUBLIC_API_URL}cart/add/${cartId}`;
+//POST agenda events --------------------------------------------------------------------------------------------------------------------
+export async function addAgendaEvent(agenda: AllAgendaProps, agendaId: string) {
+	let url = `${process.env.NEXT_PUBLIC_API_URL}agenda/add/${agendaId}`;
 
 	let axiosConfig = {
 		headers: {
@@ -40,8 +39,8 @@ export async function addCartProduct(cart: AllCartProps, cartId: string) {
 		.post(
 			url,
 			{
-				productId: cart.productId,
-				quantity: Number(cart.quantity),
+				eventId: agenda.eventId,
+				quantity: Number(agenda.quantity),
 			},
 			axiosConfig
 		)
@@ -54,13 +53,13 @@ export async function addCartProduct(cart: AllCartProps, cartId: string) {
 		});
 }
 
-//PATCH products --------------------------------------------------------------------------------------------------------------------
-export async function updateCartProduct(
-	cart: updateCartProps,
-	cartId: string,
-	productId: string
+//PATCH agenda events --------------------------------------------------------------------------------------------------------------------
+export async function updateAgendaProduct(
+	agenda: updateAgendaProps,
+	agendaId: string,
+	eventId: string
 ) {
-	let url = `${process.env.NEXT_PUBLIC_API_URL}cart/update/${cartId}/${productId}`;
+	let url = `${process.env.NEXT_PUBLIC_API_URL}agenda/update/${agendaId}/${eventId}`;
 
 	let axiosConfig = {
 		headers: {
@@ -74,7 +73,7 @@ export async function updateCartProduct(
 		.patch(
 			url,
 			{
-				quantity: cart.quantity,
+				quantity: agenda.quantity,
 			},
 			axiosConfig
 		)
@@ -87,9 +86,9 @@ export async function updateCartProduct(
 		});
 }
 
-//DELETE products --------------------------------------------------------------------------------------------------------------------
-export async function deleteCartProduct(cartId: string, productId: string) {
-	let url = `${process.env.NEXT_PUBLIC_API_URL}cart/delete/${cartId}/${productId}`;
+//DELETE agenda events --------------------------------------------------------------------------------------------------------------------
+export async function deleteAgendaEvent(agendaId: string, eventId: string) {
+	let url = `${process.env.NEXT_PUBLIC_API_URL}agenda/delete/${agendaId}/${eventId}`;
 
 	let axiosConfig = {
 		headers: {

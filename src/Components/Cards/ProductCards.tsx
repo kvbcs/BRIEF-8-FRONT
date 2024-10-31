@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { UpdateProductModal } from "../Modal/(UPDATE)/UpdateProductModal";
 import { FaTrashAlt } from "react-icons/fa";
-import { deleteProduct } from "@/Services/productService";
+import { deleteProduct } from "@/Services/eventService";
 import { AddCartModal } from "../Modal/(POST)/AddCartModal";
 import Link from "next/link";
 

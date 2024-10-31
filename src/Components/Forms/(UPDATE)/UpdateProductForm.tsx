@@ -1,26 +1,26 @@
 "use client";
-import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
+import { AllCategoriesProps, AllEventsProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { updateProduct } from "@/Services/productService";
+import { updateEvent } from "@/Services/eventService";
 import { getAllCategories } from "@/Services/categoryService";
 
-const UpdateProductForm = ({
-	product,
+const UpdateEventForm = ({
+	event,
 	setisLoading,
 	handleClose,
 }: {
-	product: AllProductsProps;
+	event: AllEventsProps;
 	setisLoading: any;
 	handleClose: any;
 }) => {
-	const [name, setName] = useState(product?.name || "");
-	const [image, setImage] = useState(product?.image || "");
-	const [price, setPrice] = useState<number>(product?.price || 0);
-	const [stock, setStock] = useState<number>(product?.stock || 0);
-	const [categoryId, setCategoryId] = useState(product?.categoryId || "");
+	const [name, setName] = useState(event?.name || "");
+	const [image, setImage] = useState(event?.image || "");
+	const [price, setPrice] = useState<number>(event?.price || 0);
+	const [stock, setStock] = useState<number>(event?.stock || 0);
+	const [categoryId, setCategoryId] = useState(event?.categoryId || "");
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [productData, setproductData] = useState<AllProductsProps>();
+	const [eventData, seteventData] = useState<AllEventsProps>();
 	const [categoriesList, setCategoriesList] = useState<AllCategoriesProps[]>(
 		[]
 	);
@@ -39,37 +39,37 @@ const UpdateProductForm = ({
 	}, [isLoaded]);
 
 	useEffect(() => {
-		if (!isLoaded && productData) {
-			setName(productData?.name);
-			setImage(productData?.image);
-			setPrice(productData?.price);
-			setStock(productData?.stock);
-			setCategoryId(productData?.categoryId);
+		if (!isLoaded && eventData) {
+			setName(eventData?.name);
+			setImage(eventData?.image);
+			setPrice(eventData?.price);
+			setStock(eventData?.stock);
+			setCategoryId(eventData?.categoryId);
 			setIsLoaded(true);
 		}
-	}, [product, isLoaded]);
+	}, [event, isLoaded]);
 
 	function handleSubmit() {
-		let productUpdateData = {
-			id: product.id,
+		let eventUpdateData = {
+			id: event.id,
 			name: name,
 			image: image,
 			stock: stock,
 			price: price,
 			categoryId: categoryId,
 		};
-		updateProduct(productUpdateData, productUpdateData.id)
+		updateEvent(eventUpdateData, eventUpdateData.id)
 			.then((res) => {
 				setisLoading(true);
 				console.log(res);
-				console.log(productUpdateData);
-				toast.success("Product updated !");
+				console.log(eventUpdateData);
+				toast.success("Event updated !");
 				handleClose();
 			})
 			.catch((e) => {
 				toast.error("Error" + e);
 				console.log(e);
-				console.log(productUpdateData);
+				console.log(eventUpdateData);
 			}),
 			[];
 	}
@@ -78,7 +78,7 @@ const UpdateProductForm = ({
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/2 mx-auto">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">
-					Edit a product
+					Edit a event
 				</h2>
 			</div>
 
@@ -89,12 +89,12 @@ const UpdateProductForm = ({
 							htmlFor="name"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product name
+							Event name
 						</label>
 						<div className="mt-2">
 							<input
 								onChange={(e) => setName(e.target.value)}
-								defaultValue={product?.name}
+								defaultValue={event?.name}
 								type="text"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 							/>
@@ -105,12 +105,12 @@ const UpdateProductForm = ({
 							htmlFor="image"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product image
+							Event image
 						</label>
 						<div className="mt-2">
 							<input
 								onChange={(e) => setImage(e.target.value)}
-								defaultValue={product?.image}
+								defaultValue={event?.image}
 								type="url"
 								id="image"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
@@ -129,14 +129,14 @@ const UpdateProductForm = ({
 							htmlFor="stock"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product stock
+							Event stock
 						</label>
 						<div className="mt-2">
 							<input
 								onChange={(e) =>
 									setStock(e.target.valueAsNumber)
 								}
-								defaultValue={product?.stock}
+								defaultValue={event?.stock}
 								type="number"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 							/>
@@ -147,14 +147,14 @@ const UpdateProductForm = ({
 							htmlFor="price"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product price
+							Event price
 						</label>
 						<div className="mt-2">
 							<input
 								onChange={(e) =>
 									setPrice(e.target.valueAsNumber)
 								}
-								defaultValue={product?.price}
+								defaultValue={event?.price}
 								type="number"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 							/>
@@ -165,7 +165,7 @@ const UpdateProductForm = ({
 							htmlFor="categoryId"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product category
+							Event category
 						</label>
 						<div className="mt-2">
 							<select
@@ -178,7 +178,7 @@ const UpdateProductForm = ({
 										return (
 											<option
 												selected={
-													product?.category?.id ===
+													event?.category?.id ===
 													category.id
 												}
 												key={category.id}
@@ -194,7 +194,7 @@ const UpdateProductForm = ({
 					<div>
 						<input
 							onClick={() => {
-								console.log(product);
+								console.log(event);
 
 								handleSubmit();
 							}}
@@ -209,4 +209,4 @@ const UpdateProductForm = ({
 	);
 };
 
-export default UpdateProductForm;
+export default UpdateEventForm;

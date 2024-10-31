@@ -1,4 +1,4 @@
-import { AllCategoriesProps, AllProductsProps, AuthProps } from "@/Utils/types";
+import { AllCategoriesProps } from "@/Utils/types";
 import axios from "axios";
 
 //GET categories --------------------------------------------------------------------------------------------------------------------
@@ -32,6 +32,7 @@ export async function addCategory(category: AllCategoriesProps) {
 			url,
 			{
 				name: category.name,
+				image: category.image,
 			},
 			axiosConfig
 		)
@@ -61,6 +62,7 @@ export async function updateCategory(category: AllCategoriesProps, id: string) {
 			url,
 			{
 				name: category.name,
+				image: category.image,
 			},
 			axiosConfig
 		)

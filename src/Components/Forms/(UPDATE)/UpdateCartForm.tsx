@@ -1,13 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { updateCartProduct } from "@/Services/cartService";
+import { updateCartProduct } from "@/Services/agendaService";
 
-export type updateCartProps = {
-	id: string;
-	quantity: number;
-	productId: string;
-};
 const UpdateCartForm = ({
 	cart,
 	handleClose,

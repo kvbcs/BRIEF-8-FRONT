@@ -2,7 +2,7 @@
 import { AllCartProps, AllProductsProps } from "@/Utils/types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { addCartProduct } from "@/Services/cartService";
+import { addCartProduct } from "@/Services/agendaService";
 
 const AddCartForm = ({
 	product,

@@ -1,5 +1,5 @@
 "use client";
-import { searchProducts } from "@/Services/productService";
+import { searchProducts } from "@/Services/eventService";
 import React, { useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 

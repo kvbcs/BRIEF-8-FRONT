@@ -16,7 +16,8 @@ export async function registerService(auth: AuthProps) {
 		.post(
 			url,
 			{
-				name: auth.name,
+				firstName: auth.firstName,
+				lastName: auth.lastName,
 				email: auth.email,
 				password: auth.password,
 			},

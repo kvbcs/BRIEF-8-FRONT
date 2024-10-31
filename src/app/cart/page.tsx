@@ -1,6 +1,6 @@
 "use client";
 import CartCards from "@/Components/Cards/CartCards";
-import { getAllCartProducts } from "@/Services/cartService";
+import { getAllCartProducts } from "@/Services/agendaService";
 import { AllCartProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";

@@ -1,24 +1,31 @@
 export type AuthProps = {
-	name: string;
+	firstName: string;
+	lastName: string;
 	email: string;
 	password: string;
 };
 
-export type AllProductsProps = {
+export type AllEventsProps = {
 	id: string;
-	name: string;
+	title: string;
 	image: string;
-	stock: number;
+	description: string;
+	maxParticipants: number;
+	startDate: string;
+	endDate: string;
 	price: number;
 	category?: AllCategoriesProps;
 	categoryId: string;
 };
 
-export type UpdateProductProps = {
+export type UpdateEventsProps = {
 	id: string;
-	name: string;
+	title: string;
 	image: string;
-	stock: number;
+	description: string;
+	maxParticipants: number;
+	startDate: string;
+	endDate: string;
 	price: number;
 	categoryId: string;
 };
@@ -26,25 +33,32 @@ export type UpdateProductProps = {
 export type AllCategoriesProps = {
 	id: string;
 	name: string;
+	image: string;
 };
 
 export type AllUserProps = {
 	id: string;
-	name: string;
+	firstName: string;
+	lastName: string;
 	email: string;
-	// createdAt: string;
-	// updatedAt: string;
+	role: string;
 };
 
-export type AllCartProps = {
+export type AllAgendaProps = {
 	id: string;
-	cartId: string;
+	agendaId: string;
 	userId: string;
-	productId: string;
-	product?: AllProductsProps;
+	eventId: string;
+	event?: AllEventsProps;
 	quantity: number;
 	createdAt: string;
 	updatedAt: string;
+};
+
+export type updateAgendaProps = {
+	id: string;
+	quantity: number;
+	eventId: string;
 };
 
 export type ErrorMsgProps = {

@@ -1,5 +1,5 @@
 "use client";
-import { addProduct } from "@/Services/productService";
+import { addProduct } from "@/Services/eventService";
 import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";

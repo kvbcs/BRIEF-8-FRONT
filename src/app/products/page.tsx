@@ -4,7 +4,7 @@ import CategoryCards from "@/Components/Cards/CategoryCards";
 import ProductCards from "@/Components/Cards/ProductCards";
 import Search from "@/Components/Search";
 import { getAllCategories } from "@/Services/categoryService";
-import { getAllProducts } from "@/Services/productService";
+import { getAllProducts } from "@/Services/eventService";
 import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";

@@ -1,8 +1,5 @@
 import {
-	AllCategoriesProps,
-	AllProductsProps,
 	AllUserProps,
-	AuthProps,
 } from "@/Utils/types";
 import axios from "axios";
 
@@ -44,8 +41,10 @@ export async function updateUser(user: AllUserProps, id: string) {
 		.patch(
 			url,
 			{
-				name: user.name,
+				firstName: user.firstName,
+				lastName: user.lastName,
 				email: user.email,
+				role: user.role
 			},
 			axiosConfig
 		)

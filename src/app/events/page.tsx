@@ -21,32 +21,35 @@ export default function Home() {
 				try {
 					setEventList(res);
 					console.log(res);
-					toast.success("Events loaded !");
+					toast.success("Events loaded !", { id: "123" });
 					setisLoading(false);
 				} catch (e) {
 					console.log(e);
 					toast.error("Error loading events" + e);
+					setisLoading(false);
 				}
 			})
 			.catch((e) => {
 				console.log(e);
 				toast.error("Server error" + e);
+				setisLoading(false);
 			});
-	}, [isLoading]);
+	}, []);
 
 	useEffect(() => {
 		getAllCategories()
 			.then((res) => {
 				setCatgoryList(res);
-				toast.success("Categories loaded !");
+				toast.success("Categories loaded !", { id: "123" });
 				console.log(res);
 				setisLoading(false);
 			})
 			.catch((e) => {
-				toast.error("oh oh");
+				toast.error("Server error" + e);
 				console.log(e);
+				setisLoading(false);
 			});
-	}, [isLoading]);
+	}, []);
 
 	if (isLoading) {
 		return (

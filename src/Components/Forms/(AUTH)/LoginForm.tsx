@@ -33,11 +33,11 @@ export const LoginForm = () => {
 							res.data.token.access_token
 						);
 						window.localStorage.setItem("role", res.data.role);
-						window.localStorage.setItem("cart", res.data.cart);
+						window.localStorage.setItem("agenda", res.data.agenda);
 						toast.success("Login successful !");
 						setIsConnected(true);
 
-						push("/products");
+						push("/events");
 						setisLoading(false);
 						console.log(res.data);
 						console.log(res.status);

@@ -1,50 +1,55 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { updateCartProduct } from "@/Services/agendaService";
+import { updateAgendaProps } from "@/Utils/types";
+import { updateAgendaEvent } from "@/Services/agendaService";
 
-const UpdateCartForm = ({
-	cart,
+const UpdateAgendaForm = ({
+	agenda,
 	handleClose,
 	setisLoading,
 }: {
-	cart: updateCartProps;
+	agenda: updateAgendaProps;
 	handleClose: any;
 	setisLoading: any;
 }) => {
-	const [quantity, setQuantity] = useState<number>(cart?.quantity || 0);
+	const [quantity, setQuantity] = useState<number>(agenda?.quantity || 0);
 
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [cartData, setcartData] = useState<updateCartProps>();
+	const [agendaData, setagendaData] = useState<updateAgendaProps>();
 
 	useEffect(() => {
-		if (!isLoaded && cartData) {
-			setQuantity(cartData?.quantity);
+		if (!isLoaded && agendaData) {
+			setQuantity(agendaData?.quantity);
 			setIsLoaded(true);
 		}
-	}, [cart, isLoaded]);
+	}, [agenda, isLoaded]);
 
 	function handleSubmit() {
-		let cartUpdateData = {
-			id: cart.id,
-			productId: cart.productId,
+		let agendaUpdateData = {
+			id: agenda.id,
+			eventId: agenda.eventId,
 			quantity: quantity,
 		};
-		const cartId = window.localStorage.getItem("cart");
-		console.log(cartId);
+		const agendaId = window.localStorage.getItem("agenda");
+		console.log(agendaId);
 
-		updateCartProduct(cartUpdateData, cartId!, cartUpdateData.productId!)
-			.then((res) => {
+		updateAgendaEvent(
+			agendaUpdateData,
+			agendaId!,
+			agendaUpdateData.eventId!
+		)
+			.then((res: any) => {
 				setisLoading(true);
 				console.log(res);
-				console.log(cartUpdateData);
-				toast.success("Cart product updated !");
+				console.log(agendaUpdateData);
+				toast.success("Agenda event updated !");
 				handleClose();
 			})
-			.catch((e) => {
+			.catch((e: any) => {
 				toast.error("Error");
 				console.log(e);
-				console.log(cartUpdateData);
+				console.log(agendaUpdateData);
 			}),
 			[];
 	}
@@ -64,7 +69,7 @@ const UpdateCartForm = ({
 							htmlFor="quantity"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product quantity
+							Event quantity
 						</label>
 						<div className="mt-2">
 							<input
@@ -72,7 +77,7 @@ const UpdateCartForm = ({
 								onChange={(e) =>
 									setQuantity(e.target.valueAsNumber)
 								}
-								defaultValue={cart?.quantity}
+								defaultValue={agenda?.quantity}
 								type="number"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 							/>
@@ -81,7 +86,7 @@ const UpdateCartForm = ({
 					<div>
 						<input
 							onClick={() => {
-								console.log(cart);
+								console.log(agenda);
 
 								handleSubmit();
 							}}
@@ -96,4 +101,4 @@ const UpdateCartForm = ({
 	);
 };
 
-export default UpdateCartForm;
+export default UpdateAgendaForm;

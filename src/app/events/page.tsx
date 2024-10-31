@@ -1,11 +1,10 @@
 "use client";
 
-import CategoryCards from "@/Components/Cards/CategoryCards";
-import ProductCards from "@/Components/Cards/ProductCards";
+import EventCards from "@/Components/Cards/EventCards";
 import Search from "@/Components/Search";
 import { getAllCategories } from "@/Services/categoryService";
-import { getAllProducts } from "@/Services/eventService";
-import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
+import { getAllEvents } from "@/Services/eventService";
+import { AllCategoriesProps, AllEventsProps } from "@/Utils/types";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Hourglass } from "react-loader-spinner";
@@ -13,20 +12,20 @@ import { Hourglass } from "react-loader-spinner";
 export default function Home() {
 	const [search, setSearch] = useState<string>("");
 	const [isLoading, setisLoading] = useState(true);
-	const [productList, setProductList] = useState<AllProductsProps[]>([]);
+	const [eventList, setEventList] = useState<AllEventsProps[]>([]);
 	const [categoryList, setCatgoryList] = useState<AllCategoriesProps[]>([]);
 
 	useEffect(() => {
-		getAllProducts()
+		getAllEvents()
 			.then((res) => {
 				try {
-					setProductList(res);
+					setEventList(res);
 					console.log(res);
-					toast.success("Products loaded !");
+					toast.success("Events loaded !");
 					setisLoading(false);
 				} catch (e) {
 					console.log(e);
-					toast.error("Error loading products" + e);
+					toast.error("Error loading events" + e);
 				}
 			})
 			.catch((e) => {
@@ -67,16 +66,11 @@ export default function Home() {
 	}
 	return (
 		<div className="px-8 min-h-[80vh] max-h-fit w-full flex flex-col gap-16 my-8">
-			<h2 className="text-2xl font-bold text-center">
-				Products Available
-			</h2>
-			<Search
-				setProductList={setProductList}
-				setIsLoading={setisLoading}
-			/>
+			<h2 className="text-2xl font-bold text-center">Events Available</h2>
+			<Search setEventList={setEventList} setIsLoading={setisLoading} />
 			<div className="w-full flex flex-row justify-center md:justify-end gap-2">
 				<select className="border-2 rounded-lg p-2 border-black w-fit">
-					{categoryList &&
+					{Array.isArray(categoryList) &&
 						categoryList.map((category) => {
 							return (
 								<option key={category.id} value={category.id}>
@@ -92,13 +86,13 @@ export default function Home() {
 				</select>
 			</div>
 			<div className="flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-2">
-				{productList &&
-					productList.map((product) => {
+				{Array.isArray(eventList) &&
+					eventList.map((event) => {
 						return (
-							<ProductCards
-								key={product.id}
+							<EventCards
+								key={event.id}
 								setisLoading={setisLoading}
-								product={product}
+								event={event}
 							/>
 						);
 					})}

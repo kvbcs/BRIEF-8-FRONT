@@ -1,19 +1,10 @@
 "use client";
+import AddEventForm from "@/Components/Forms/(POST)/AddEventForm";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
-import { FaEdit } from "react-icons/fa";
-import { IoIosCloseCircleOutline } from "react-icons/io";
-import UpdateCartForm, {
-	updateCartProps,
-} from "../../Forms/(UPDATE)/UpdateCartForm";
+import { IoIosCloseCircleOutline, IoMdAddCircle } from "react-icons/io";
 
-export const UpdateCartModal = ({
-	cart,
-	setisLoading,
-}: {
-	cart: updateCartProps;
-	setisLoading: any;
-}) => {
+export const AddProductModal = ({ setisLoading }: any) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -29,13 +20,15 @@ export const UpdateCartModal = ({
 		boxShadow: 24,
 		p: 4,
 	};
+
 	return (
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-orange-500 rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:bg-orange-700"
+				className="bg-sky-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-700"
 			>
-				<FaEdit />
+				<IoMdAddCircle />
+				Add product
 			</button>
 
 			<Modal
@@ -52,10 +45,9 @@ export const UpdateCartModal = ({
 						>
 							<IoIosCloseCircleOutline color="#222" size={48} />
 						</span>
-						<UpdateCartForm
+						<AddEventForm
 							handleClose={handleClose}
 							setisLoading={setisLoading}
-							cart={cart}
 						/>
 					</div>
 				</Box>

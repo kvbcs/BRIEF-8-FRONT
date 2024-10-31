@@ -1,15 +1,15 @@
 "use client";
-import { addProduct } from "@/Services/eventService";
-import { AllCategoriesProps, AllProductsProps } from "@/Utils/types";
+import { addEvent } from "@/Services/eventService";
+import { AllCategoriesProps, AllEventsProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ErrorMsg } from "../../Error";
 import { getAllCategories } from "@/Services/categoryService";
 
-const AddProductForm = (
+const AddEventForm = (
 	{ setisLoading, handleClose }: any,
-	product: AllProductsProps
+	event: AllEventsProps
 ) => {
 	const [categoriesList, setCategoriesList] = useState<AllCategoriesProps[]>(
 		[]
@@ -33,14 +33,14 @@ const AddProductForm = (
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm<AllProductsProps>();
+	} = useForm<AllEventsProps>();
 
-	const onSubmit: SubmitHandler<AllProductsProps> = (data) =>
-		addProduct(data)
+	const onSubmit: SubmitHandler<AllEventsProps> = (data) =>
+		addEvent(data)
 			.then((res) => {
 				setisLoading(true);
 				console.log(res);
-				toast.success("Product created !");
+				toast.success("Event created !");
 				handleClose();
 			})
 			.catch((e) => {
@@ -53,7 +53,7 @@ const AddProductForm = (
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/2 mx-auto">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">
-					Add a product
+					Add a event
 				</h2>
 			</div>
 
@@ -61,18 +61,18 @@ const AddProductForm = (
 				<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 					<div>
 						<label
-							htmlFor="name"
+							htmlFor="title"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product name
+							Event title
 						</label>
 						<div className="mt-2">
 							<input
 								type="text"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-								{...register("name", { required: true })}
+								{...register("title", { required: true })}
 							/>
-							{errors.name && (
+							{errors.title && (
 								<ErrorMsg content={"This field is required"} />
 							)}
 						</div>
@@ -82,7 +82,7 @@ const AddProductForm = (
 							htmlFor="image"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product image
+							Event image
 						</label>
 						<div className="mt-2">
 							<input
@@ -96,21 +96,77 @@ const AddProductForm = (
 							)}
 						</div>
 					</div>
+					<div>
+						<label
+							htmlFor="description"
+							className="block text-sm font-medium leading-6 text-black"
+						>
+							Event description
+						</label>
+						<div className="mt-2">
+							<input
+								type="text"
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+								{...register("description", { required: true })}
+							/>
+							{errors.description && (
+								<ErrorMsg content={"This field is required"} />
+							)}
+						</div>
+					</div>
+					<div>
+						<label
+							htmlFor="startDate"
+							className="block text-sm font-medium leading-6 text-black"
+						>
+							Event start date
+						</label>
+						<div className="mt-2">
+							<input
+								type="date"
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+								{...register("startDate", { required: true })}
+							/>
+							{errors.startDate && (
+								<ErrorMsg content={"This field is required"} />
+							)}
+						</div>
+					</div>
+					<div>
+						<label
+							htmlFor="endDate"
+							className="block text-sm font-medium leading-6 text-black"
+						>
+							Event end date
+						</label>
+						<div className="mt-2">
+							<input
+								type="date"
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+								{...register("endDate", { required: true })}
+							/>
+							{errors.endDate && (
+								<ErrorMsg content={"This field is required"} />
+							)}
+						</div>
+					</div>
 
 					<div>
 						<label
-							htmlFor="stock"
+							htmlFor="maxParticipants"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product stock
+							Event max participants
 						</label>
 						<div className="mt-2">
 							<input
 								type="number"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-								{...register("stock", { required: true })}
+								{...register("maxParticipants", {
+									required: true,
+								})}
 							/>
-							{errors.stock && (
+							{errors.maxParticipants && (
 								<ErrorMsg content={"This field is required"} />
 							)}
 						</div>
@@ -120,7 +176,7 @@ const AddProductForm = (
 							htmlFor="price"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product price
+							Event price
 						</label>
 						<div className="mt-2">
 							<input
@@ -138,7 +194,7 @@ const AddProductForm = (
 							htmlFor="categoryId"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product category
+							Event category
 						</label>
 						<div className="mt-2">
 							<select
@@ -154,7 +210,7 @@ const AddProductForm = (
 											<option
 												selected={
 													category.id ===
-													product.categoryId
+													event.categoryId
 												}
 												key={category.id}
 												value={category.id}
@@ -184,4 +240,4 @@ const AddProductForm = (
 	);
 };
 
-export default AddProductForm;
+export default AddEventForm;

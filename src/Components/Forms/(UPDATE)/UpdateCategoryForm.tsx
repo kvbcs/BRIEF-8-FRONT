@@ -14,6 +14,7 @@ const UpdateCategoryForm = ({
 	setisLoading: any;
 }) => {
 	const [name, setName] = useState(category?.name || "");
+	const [image, setImage] = useState(category?.image || "");
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [isReloadNeeded, setisReloadNeeded] = useState(false);
 	const [categoryData, setcategoryData] = useState<AllCategoriesProps>();
@@ -21,6 +22,7 @@ const UpdateCategoryForm = ({
 	useEffect(() => {
 		if (!isLoaded && categoryData) {
 			setName(categoryData?.name);
+			setImage(categoryData?.image);
 			setIsLoaded(true);
 		}
 	}, [category, isLoaded]);
@@ -36,6 +38,7 @@ const UpdateCategoryForm = ({
 		let categoryUpdateData = {
 			id: category.id,
 			name: name,
+			image: image,
 		};
 		updateCategory(categoryUpdateData, categoryUpdateData.id)
 			.then((res) => {
@@ -74,6 +77,24 @@ const UpdateCategoryForm = ({
 								onChange={(e) => setName(e.target.value)}
 								defaultValue={category?.name}
 								type="text"
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+								// {...register("name", { required: true })}
+							/>
+							{/* {errors.name && <ErrorMsg content={"name"} />} */}
+						</div>
+					</div>
+					<div>
+						<label
+							htmlFor="image"
+							className="block text-sm font-medium leading-6 text-black"
+						>
+							Category image
+						</label>
+						<div className="mt-2">
+							<input
+								onChange={(e) => setImage(e.target.value)}
+								defaultValue={category?.image}
+								type="url"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								// {...register("name", { required: true })}
 							/>

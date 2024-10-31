@@ -41,7 +41,7 @@ export type AllUserProps = {
 	firstName: string;
 	lastName: string;
 	email: string;
-	role: string;
+	role?: string;
 };
 
 export type AllAgendaProps = {

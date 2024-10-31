@@ -1,27 +1,27 @@
 "use client";
-import { deleteCartProduct } from "@/Services/agendaService";
-import { AllCartProps } from "@/Utils/types";
-import React, { useState } from "react";
+import { deleteAgendaEvent } from "@/Services/agendaService";
+import { AllAgendaProps } from "@/Utils/types";
+import React from "react";
 import toast from "react-hot-toast";
 import { FaTrashAlt } from "react-icons/fa";
-import { UpdateCartModal } from "../Modal/(UPDATE)/UpdateCartModal";
+import { UpdateAgendaModal } from "../Modal/(UPDATE)/UpdateAgendaModal";
 
-const CartCards = ({
-	cart,
+const AgendaCards = ({
+	agenda,
 	setisLoading,
 }: {
-	cart: AllCartProps;
+	agenda: AllAgendaProps;
 	setisLoading: any;
 }) => {
-	function handleCartDelete() {
-		const cartId = window.localStorage.getItem("cart");
-		const productId = cart.productId;
-		deleteCartProduct(cartId!, productId)
+	function handleAgendaDelete() {
+		const agendaId = window.localStorage.getItem("agenda");
+		const eventId = agenda.eventId;
+		deleteAgendaEvent(agendaId!, eventId)
 			.then((res) => {
 				if (res.status === 200) {
 					setisLoading(true);
 					console.log(res);
-					toast.success("Cart product deleted !");
+					toast.success("Agenda event deleted !");
 				} else {
 					toast.error("Bad response");
 				}
@@ -37,28 +37,31 @@ const CartCards = ({
 				<div className="lg:w-1/2 w-full mb-4 md:mb-0 flex justify-start flex-col md:flex-row md:h-full h-[80%] ">
 					<div className="h-1/2 md:h-full w-full md:w-1/2 shadow-2xl">
 						<img
-							src={cart.product?.image}
+							src={agenda.event?.image}
 							className="object-cover w-full h-full rounded-lg"
-							alt="cart product image"
+							alt="agenda event image"
 						/>
 					</div>
 					<div className="flex flex-col h-1/2 md:h-full w-full md:w-1/2 justify-evenly items-center">
-						<h2>{cart.product?.name}</h2>
+						<h2>{agenda.event?.title}</h2>
 						<h2 className="p-2 bg-black rounded-lg text-white">
-							Amount : {cart.quantity}
+							Amount : {agenda.quantity}
 						</h2>
 						<h2 className="text-green-600 font-bold">
-							$ {cart.product!.price * cart.quantity}
+							$ {agenda.event!.price * agenda.quantity}
 						</h2>
 					</div>
 				</div>
 				<div className="flex md:flex-col flex-row gap-2 items-center justify-evenly">
-					<UpdateCartModal setisLoading={setisLoading} cart={cart} />
+					<UpdateAgendaModal
+						setisLoading={setisLoading}
+						agenda={agenda}
+					/>
 					<button
 						onClick={(e) => {
-							console.log(cart.productId);
+							console.log(agenda.eventId);
 
-							handleCartDelete();
+							handleAgendaDelete();
 						}}
 						className="flex flex-row items-center text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"
 					>
@@ -70,4 +73,4 @@ const CartCards = ({
 	);
 };
 
-export default CartCards;
+export default AgendaCards;

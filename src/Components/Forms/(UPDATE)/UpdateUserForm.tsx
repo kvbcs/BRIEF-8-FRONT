@@ -13,15 +13,16 @@ const UpdateUserForm = ({
 	setisLoading: any;
 	handleClose: any;
 }) => {
-	const [name, setName] = useState(user?.name || "");
+	const [firstName, setFirstName] = useState(user?.firstName || "");
+	const [lastName, setLastName] = useState(user?.lastName || "");
 	const [email, setEmail] = useState(user?.email || "");
-
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [userData, setuserData] = useState<AllUserProps>();
 
 	useEffect(() => {
 		if (!isLoaded && userData) {
-			setName(userData?.name);
+			setFirstName(userData?.firstName);
+			setLastName(userData?.lastName);
 			setEmail(userData?.email);
 			setIsLoaded(true);
 		}
@@ -30,7 +31,8 @@ const UpdateUserForm = ({
 	function handleSubmit() {
 		let userUpdateData = {
 			id: user.id,
-			name: name,
+			firstName: firstName,
+			lastName: lastName,
 			email: email,
 		};
 		updateUser(userUpdateData, userUpdateData.id)
@@ -61,15 +63,15 @@ const UpdateUserForm = ({
 				<div className="space-y-6">
 					<div>
 						<label
-							htmlFor="name"
+							htmlFor="firstName"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							User name
+							User first name
 						</label>
 						<div className="mt-2">
 							<input
-								onChange={(e) => setName(e.target.value)}
-								defaultValue={user?.name}
+								onChange={(e) => setFirstName(e.target.value)}
+								defaultValue={user?.firstName}
 								type="text"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								// {...register("name", { required: true })}
@@ -79,7 +81,25 @@ const UpdateUserForm = ({
 					</div>
 					<div>
 						<label
-							htmlFor="image"
+							htmlFor="lastName"
+							className="block text-sm font-medium leading-6 text-black"
+						>
+							User last name
+						</label>
+						<div className="mt-2">
+							<input
+								onChange={(e) => setLastName(e.target.value)}
+								defaultValue={user?.lastName}
+								type="text"
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+								// {...register("name", { required: true })}
+							/>
+							{/* {errors.name && <ErrorMsg content={"name"} />} */}
+						</div>
+					</div>
+					<div>
+						<label
+							htmlFor="email"
 							className="block text-sm font-medium leading-6 text-black"
 						>
 							User email
@@ -89,17 +109,12 @@ const UpdateUserForm = ({
 								onChange={(e) => setEmail(e.target.value)}
 								defaultValue={user?.email}
 								type="url"
-								id="image"
+								id="email"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								// {...register("image", { required: true })}
 							/>
 							{/* {errors.image && <ErrorMsg content={"image"} />} */}
 						</div>
-						{/* <p>Preview</p>
-								<img
-									src={image || cryptoProps?.image}
-									className="w-32 h-32 object-cover"
-								/> */}
 					</div>
 
 					<div>

@@ -1,24 +1,24 @@
 "use client";
-import CartCards from "@/Components/Cards/CartCards";
-import { getAllCartProducts } from "@/Services/agendaService";
-import { AllCartProps } from "@/Utils/types";
+import AgendaCards from "@/Components/Cards/AgendaCards";
+import { getAllAgendaEvents } from "@/Services/agendaService";
+import { AllAgendaProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCreditCard } from "react-icons/fa6";
 
-const page = ({ cart }: { cart: AllCartProps }) => {
-	const [cartList, setcartList] = useState<AllCartProps[]>([]);
+const page = ({ agenda }: { agenda: AllAgendaProps }) => {
+	const [agendaList, setagendaList] = useState<AllAgendaProps[]>([]);
 	const [isLoading, setisLoading] = useState(true);
 	useEffect(() => {
-		const cartId = window.localStorage.getItem("cart");
-		console.log(cartId);
+		const agendaId = window.localStorage.getItem("agenda");
+		console.log(agendaId);
 
-		getAllCartProducts(cartId!)
+		getAllAgendaEvents(agendaId!)
 			.then((res) => {
-				setcartList(res);
+				setagendaList(res);
 				console.log(res);
-				toast.success("Cart products loaded");
-				console.log(cartList);
+				toast.success("Agenda events loaded");
+				console.log(agendaList);
 				setisLoading(false);
 			})
 			.catch((e) => {
@@ -30,15 +30,15 @@ const page = ({ cart }: { cart: AllCartProps }) => {
 	return (
 		<div className="min-h-[80vh] max-h-fit w-full flex flex-col gap-14 justify-between">
 			<h2 className="text-center text-2xl md:text-4xl font-bold w-full mt-8">
-				Your cart
+				Your agenda
 			</h2>
-			{cartList &&
-				cartList.map((cart) => {
+			{agendaList &&
+				agendaList.map((agenda) => {
 					return (
-						<CartCards
-							key={cart.productId}
+						<AgendaCards
+							key={agenda.eventId}
 							setisLoading={setisLoading}
-							cart={cart}
+							agenda={agenda}
 						/>
 					);
 				})}

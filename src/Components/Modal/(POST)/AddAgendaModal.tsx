@@ -1,16 +1,16 @@
 "use client";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
-import { FaEdit } from "react-icons/fa";
-import { AllProductsProps } from "@/Utils/types";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import UpdateProductForm from "@/Components/Forms/(UPDATE)/UpdateProductForm";
+import { AllEventsProps } from "@/Utils/types";
+import { FaCartPlus } from "react-icons/fa6";
+import AddAgendaForm from "@/Components/Forms/(POST)/AddAgendaForm";
 
-export const UpdateProductModal = ({
-	product,
+export const AddAgendaModal = ({
+	event,
 	setisLoading,
 }: {
-	product: AllProductsProps;
+	event: AllEventsProps;
 	setisLoading: any;
 }) => {
 	const [open, setOpen] = useState(false);
@@ -22,20 +22,21 @@ export const UpdateProductModal = ({
 		top: "50%",
 		left: "50%",
 		transform: "translate(-50%, -50%)",
-		width: 600,
-		height: 950,
+		width: 500,
 		bgcolor: "background.paper",
 		border: "2px solid #000",
 		boxShadow: 24,
-		p: 2,
+		p: 4,
 	};
+
 	return (
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-orange-500 rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:bg-orange-700"
+				className="bg-sky-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-700"
 			>
-				<FaEdit />
+				<FaCartPlus />
+				Add
 			</button>
 
 			<Modal
@@ -52,10 +53,10 @@ export const UpdateProductModal = ({
 						>
 							<IoIosCloseCircleOutline color="#222" size={48} />
 						</span>
-						<UpdateProductForm
+						<AddAgendaForm
 							setisLoading={setisLoading}
-							product={product}
 							handleClose={handleClose}
+							event={event}
 						/>
 					</div>
 				</Box>

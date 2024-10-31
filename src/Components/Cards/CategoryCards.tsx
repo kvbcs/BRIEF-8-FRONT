@@ -26,7 +26,7 @@ const CategoryCards = ({
 			.catch((e) => {
 				console.log(e),
 					toast.error(
-						"Products with this category can't be deleted yet" + e
+						"Events with this category can't be deleted yet" + e
 					);
 			}),
 			[];
@@ -36,6 +36,7 @@ const CategoryCards = ({
 			<h3 className="text-sm" key={category.id}>
 				{category.name}
 			</h3>
+			<img src={category.image} alt="" key={category.id} />
 			<div className="flex flex-row gap-2">
 				<UpdateCategoryModal
 					setisLoading={setisLoading}

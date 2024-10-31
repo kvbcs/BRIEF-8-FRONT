@@ -1,5 +1,5 @@
 "use client";
-import { searchProducts } from "@/Services/eventService";
+import { searchEvents } from "@/Services/eventService";
 import React, { useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
@@ -7,7 +7,7 @@ const Search = ({ setProductList, setIsLoading }: any) => {
 	const [searchValue, setSearchValue] = useState("");
 
 	function handleSearch() {
-		searchProducts(searchValue).then((res) => {
+		searchEvents(searchValue).then((res) => {
 			setProductList(res.results);
 			setIsLoading(false);
 		});

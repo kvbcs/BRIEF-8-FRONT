@@ -14,10 +14,15 @@ const UpdateEventForm = ({
 	setisLoading: any;
 	handleClose: any;
 }) => {
-	const [name, setName] = useState(event?.name || "");
+	const [title, setTitle] = useState(event?.title || "");
 	const [image, setImage] = useState(event?.image || "");
+	const [description, setDescription] = useState(event?.description || "");
 	const [price, setPrice] = useState<number>(event?.price || 0);
-	const [stock, setStock] = useState<number>(event?.stock || 0);
+	const [maxParticipants, setMaxParticipants] = useState<number>(
+		event?.maxParticipants || 0
+	);
+	const [startDate, setStartDate] = useState(event?.startDate || "");
+	const [endDate, setEndDate] = useState(event?.endDate || "");
 	const [categoryId, setCategoryId] = useState(event?.categoryId || "");
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [eventData, seteventData] = useState<AllEventsProps>();
@@ -40,10 +45,13 @@ const UpdateEventForm = ({
 
 	useEffect(() => {
 		if (!isLoaded && eventData) {
-			setName(eventData?.name);
+			setTitle(eventData?.title);
 			setImage(eventData?.image);
+			setDescription(eventData?.description);
+			setStartDate(eventData?.startDate);
+			setEndDate(eventData?.endDate);
 			setPrice(eventData?.price);
-			setStock(eventData?.stock);
+			setMaxParticipants(eventData?.maxParticipants);
 			setCategoryId(eventData?.categoryId);
 			setIsLoaded(true);
 		}
@@ -52,9 +60,12 @@ const UpdateEventForm = ({
 	function handleSubmit() {
 		let eventUpdateData = {
 			id: event.id,
-			name: name,
+			title: title,
 			image: image,
-			stock: stock,
+			description: description,
+			startDate: startDate,
+			endDate: endDate,
+			maxParticipants: maxParticipants,
 			price: price,
 			categoryId: categoryId,
 		};
@@ -78,7 +89,7 @@ const UpdateEventForm = ({
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/2 mx-auto">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">
-					Edit a event
+					Edit an event
 				</h2>
 			</div>
 
@@ -86,15 +97,15 @@ const UpdateEventForm = ({
 				<div className="space-y-6">
 					<div>
 						<label
-							htmlFor="name"
+							htmlFor="title"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Event name
+							Event title
 						</label>
 						<div className="mt-2">
 							<input
-								onChange={(e) => setName(e.target.value)}
-								defaultValue={event?.name}
+								onChange={(e) => setTitle(e.target.value)}
+								defaultValue={event?.title}
 								type="text"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 							/>
@@ -126,17 +137,65 @@ const UpdateEventForm = ({
 					</div>
 					<div>
 						<label
-							htmlFor="stock"
+							htmlFor="description"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Event stock
+							Event description
+						</label>
+						<div className="mt-2">
+							<input
+								onChange={(e) => setDescription(e.target.value)}
+								defaultValue={event?.description}
+								type="text"
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+							/>
+						</div>
+					</div>
+					<div>
+						<label
+							htmlFor="startDate"
+							className="block text-sm font-medium leading-6 text-black"
+						>
+							Event start date
+						</label>
+						<div className="mt-2">
+							<input
+								onChange={(e) => setStartDate(e.target.value)}
+								defaultValue={event?.startDate}
+								type="date"
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+							/>
+						</div>
+					</div>
+					<div>
+						<label
+							htmlFor="endDate"
+							className="block text-sm font-medium leading-6 text-black"
+						>
+							Event end date
+						</label>
+						<div className="mt-2">
+							<input
+								onChange={(e) => setEndDate(e.target.value)}
+								defaultValue={event?.endDate}
+								type="date"
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+							/>
+						</div>
+					</div>
+					<div>
+						<label
+							htmlFor="maxParticipants"
+							className="block text-sm font-medium leading-6 text-black"
+						>
+							Event max participants
 						</label>
 						<div className="mt-2">
 							<input
 								onChange={(e) =>
-									setStock(e.target.valueAsNumber)
+									setMaxParticipants(e.target.valueAsNumber)
 								}
-								defaultValue={event?.stock}
+								defaultValue={event?.maxParticipants}
 								type="number"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 							/>

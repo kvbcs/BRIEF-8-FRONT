@@ -4,13 +4,12 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu";
 import { IoIosMenu } from "react-icons/io";
 import Link from "next/link";
-import { FaArrowRightFromBracket, FaUser, FaUserPen } from "react-icons/fa6";
+import { FaArrowRightFromBracket, FaUserPen } from "react-icons/fa6";
 import { FaShoppingCart, FaSignInAlt, FaTshirt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { RiAdminFill } from "react-icons/ri";

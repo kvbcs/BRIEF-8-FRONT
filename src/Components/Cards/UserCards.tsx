@@ -1,6 +1,6 @@
 import { deleteUser } from "@/Services/userService";
 import { AllUserProps } from "@/Utils/types";
-import React, { useState } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 import { FaTrashAlt } from "react-icons/fa";
 import { UpdateUserModal } from "../Modal/(UPDATE)/UpdateUserModal";
@@ -32,7 +32,8 @@ const UserCards = ({
 	return (
 		<div className="bg-gray-800 w-full flex flex-row gap-2 items-center p-2 rounded-lg text-white">
 			<div className="w-full flex flex-col gap-3 flex-wrap">
-				<h2>Name : {user.name}</h2>
+				<p>First Name : {user.firstName}</p>
+				<p>Last Name : {user.lastName}</p>
 				<p>Email : {user.email}</p>
 			</div>
 			<div className="w-fit flex flex-col gap-2">

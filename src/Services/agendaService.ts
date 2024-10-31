@@ -54,7 +54,7 @@ export async function addAgendaEvent(agenda: AllAgendaProps, agendaId: string) {
 }
 
 //PATCH agenda events --------------------------------------------------------------------------------------------------------------------
-export async function updateAgendaProduct(
+export async function updateAgendaEvent(
 	agenda: updateAgendaProps,
 	agendaId: string,
 	eventId: string

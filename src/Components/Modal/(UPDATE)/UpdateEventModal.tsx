@@ -1,10 +1,18 @@
 "use client";
-import AddProductForm from "@/Components/Forms/(POST)/AddProductForm";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
-import { IoIosCloseCircleOutline, IoMdAddCircle } from "react-icons/io";
+import { FaEdit } from "react-icons/fa";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import UpdateEventForm from "@/Components/Forms/(UPDATE)/UpdateEventForm";
+import { AllEventsProps } from "@/Utils/types";
 
-export const AddProductModal = ({ setisLoading }: any) => {
+export const UpdateEventModal = ({
+	event,
+	setisLoading,
+}: {
+	event: AllEventsProps;
+	setisLoading: any;
+}) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -15,20 +23,19 @@ export const AddProductModal = ({ setisLoading }: any) => {
 		left: "50%",
 		transform: "translate(-50%, -50%)",
 		width: 600,
+		height: 950,
 		bgcolor: "background.paper",
 		border: "2px solid #000",
 		boxShadow: 24,
-		p: 4,
+		p: 2,
 	};
-
 	return (
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-sky-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-700"
+				className="bg-orange-500 rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:bg-orange-700"
 			>
-				<IoMdAddCircle />
-				Add product
+				<FaEdit />
 			</button>
 
 			<Modal
@@ -45,9 +52,10 @@ export const AddProductModal = ({ setisLoading }: any) => {
 						>
 							<IoIosCloseCircleOutline color="#222" size={48} />
 						</span>
-						<AddProductForm
-							handleClose={handleClose}
+						<UpdateEventForm
 							setisLoading={setisLoading}
+							event={event}
+							handleClose={handleClose}
 						/>
 					</div>
 				</Box>

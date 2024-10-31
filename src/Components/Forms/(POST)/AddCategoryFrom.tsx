@@ -1,5 +1,5 @@
 "use client";
-import { AllProductsProps } from "@/Utils/types";
+import { AllCategoriesProps } from "@/Utils/types";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -12,9 +12,9 @@ const AddCategoryForm = ({ handleClose, setisLoading }: any) => {
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm<AllProductsProps>();
+	} = useForm<AllCategoriesProps>();
 
-	const onSubmit: SubmitHandler<AllProductsProps> = (data) =>
+	const onSubmit: SubmitHandler<AllCategoriesProps> = (data) =>
 		addCategory(data)
 			.then((res) => {
 				setisLoading(true);

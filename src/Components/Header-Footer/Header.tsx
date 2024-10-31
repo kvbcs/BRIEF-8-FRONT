@@ -23,7 +23,11 @@ const Header = () => {
 	function checkIsAdmin() {
 		const jwt = window.localStorage.getItem("token");
 		const role = window.localStorage.getItem("role");
-		return role === "admin" && jwt !== undefined && jwt!.length > 60;
+		return (
+			role === `${process.env.NEXT_PUBLIC_ADMIN_ROLE}` &&
+			jwt !== undefined &&
+			jwt!.length > 60
+		);
 	}
 
 	function checkIsConnected() {
@@ -66,19 +70,19 @@ const Header = () => {
 							Home
 						</li>
 					</Link>
-					<Link href="/products">
+					<Link href="/events">
 						<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
 							<FaTshirt size={26} />
-							Products
+							Events
 						</li>
 					</Link>
 				</ul>
 				{isConnected ? (
 					<ul className="text-white flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
-						<Link href="/cart">
+						<Link href="/agenda">
 							<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
 								<FaShoppingCart size={26} />
-								Cart
+								Agenda
 							</li>
 						</Link>
 

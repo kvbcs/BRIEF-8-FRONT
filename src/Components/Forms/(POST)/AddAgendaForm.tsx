@@ -1,34 +1,34 @@
 "use client";
-import { AllCartProps, AllProductsProps } from "@/Utils/types";
+import { AllAgendaProps, AllEventsProps } from "@/Utils/types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { addCartProduct } from "@/Services/agendaService";
+import { addAgendaEvent } from "@/Services/agendaService";
 
-const AddCartForm = ({
-	product,
+const AddAgendaForm = ({
+	event,
 	setisLoading,
 	handleClose,
 }: {
-	product: AllProductsProps;
+	event: AllEventsProps;
 	setisLoading: any;
 	handleClose: any;
 }) => {
-	console.log(product.id);
+	console.log(event.id);
 
 	const {
 		register,
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm<AllCartProps>({ defaultValues: { productId: product.id } });
+	} = useForm<AllAgendaProps>({ defaultValues: { eventId: event.id } });
 
-	const onSubmit: SubmitHandler<AllCartProps> = (data) => {
-		const cartId = window.localStorage.getItem("cart");
-		addCartProduct(data, cartId!)
+	const onSubmit: SubmitHandler<AllAgendaProps> = (data) => {
+		const agendaId = window.localStorage.getItem("agenda");
+		addAgendaEvent(data, agendaId!)
 			.then((res) => {
 				setisLoading(true);
 				console.log(res);
-				toast.success("Product added to cart !");
+				toast.success("Event added to agenda !");
 				handleClose();
 			})
 			.catch((e) => {
@@ -42,7 +42,7 @@ const AddCartForm = ({
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/2 mx-auto">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">
-					Add to cart
+					Add to agenda
 				</h2>
 			</div>
 
@@ -50,13 +50,13 @@ const AddCartForm = ({
 				<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 					<div>
 						<label
-							htmlFor="name"
+							htmlFor="title"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product image
+							Event title
 						</label>
 						<div className="mt-2">
-							<img src={product.image} alt="" />{" "}
+							<img src={event.title} alt="" />{" "}
 						</div>
 					</div>
 					<div>
@@ -64,7 +64,7 @@ const AddCartForm = ({
 							htmlFor="quantity"
 							className="block text-sm font-medium leading-6 text-black"
 						>
-							Product quantity
+							Event quantity
 						</label>
 						<div className="mt-2">
 							<input
@@ -90,4 +90,4 @@ const AddCartForm = ({
 	);
 };
 
-export default AddCartForm;
+export default AddAgendaForm;

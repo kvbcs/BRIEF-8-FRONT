@@ -2,7 +2,7 @@
 import CategoryCards from "@/Components/Cards/CategoryCards";
 import UserCards from "@/Components/Cards/UserCards";
 import { AddCategoryModal } from "@/Components/Modal/(POST)/AddCategory";
-import { AddProductModal } from "@/Components/Modal/(POST)/AddProductModal";
+import { AddProductModal } from "@/Components/Modal/(POST)/AddEventModal";
 import { getAllCategories } from "@/Services/categoryService";
 import { getAllUsers } from "@/Services/userService";
 import { AllCategoriesProps, AllUserProps } from "@/Utils/types";

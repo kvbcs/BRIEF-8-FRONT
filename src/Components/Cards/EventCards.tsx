@@ -42,7 +42,6 @@ const EventCards = ({
 
 	return (
 		<div className=" w-full md:w-fit h-[450px] mx-auto mb-6">
-			{/* <Link href={`/events/${event.id}`}> */}
 			<div className="bg-stone-100 hover:border-slate-500 hover:bg-slate-300 hover:cursor-pointer hover:scale-110 transition ease-in-out shadow-2xl border-2 border-slate-200 rounded-lg h-full md:w-[300px] p-4 dark:bg-gray-800 object-cover dark:border-gray-700">
 				<div className="h-2/4 shadow-xl rounded-lg mb-5">
 					<img

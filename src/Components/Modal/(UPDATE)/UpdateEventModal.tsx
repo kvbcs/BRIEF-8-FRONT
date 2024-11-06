@@ -23,9 +23,11 @@ export const UpdateEventModal = ({
 		left: "50%",
 		transform: "translate(-50%, -50%)",
 		width: 600,
-		height: 950,
+		height: "95%",
+		overflow: "auto",
 		bgcolor: "background.paper",
 		border: "2px solid #000",
+		borderRadius: "50px",
 		boxShadow: 24,
 		p: 2,
 	};

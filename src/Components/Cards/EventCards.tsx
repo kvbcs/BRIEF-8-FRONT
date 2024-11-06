@@ -33,7 +33,11 @@ const EventCards = ({
 	function isAdmin() {
 		const role = window.localStorage.getItem("role");
 		const jwt = window.localStorage.getItem("token");
-		return role === "admin" && jwt !== undefined && jwt!.length > 60;
+		return (
+			role === `${process.env.NEXT_PUBLIC_ADMIN_ROLE}` &&
+			jwt !== undefined &&
+			jwt!.length > 60
+		);
 	}
 
 	return (

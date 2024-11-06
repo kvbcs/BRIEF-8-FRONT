@@ -19,7 +19,7 @@ export default function Home() {
 		getAllEvents()
 			.then((res) => {
 				try {
-					setEventList(res);
+					setEventList(res.events);
 					console.log(res);
 					toast.success("Events loaded !", { id: "123" });
 					setisLoading(false);
@@ -39,7 +39,7 @@ export default function Home() {
 	useEffect(() => {
 		getAllCategories()
 			.then((res) => {
-				setCatgoryList(res);
+				setCatgoryList(res.categories);
 				toast.success("Categories loaded !", { id: "123" });
 				console.log(res);
 				setisLoading(false);
@@ -73,7 +73,7 @@ export default function Home() {
 			<Search setEventList={setEventList} setIsLoading={setisLoading} />
 			<div className="w-full flex flex-row justify-center md:justify-end gap-2">
 				<select className="border-2 rounded-lg p-2 border-black w-fit">
-					{Array.isArray(categoryList) &&
+					{categoryList &&
 						categoryList.map((category) => {
 							return (
 								<option key={category.id} value={category.id}>
@@ -89,7 +89,7 @@ export default function Home() {
 				</select>
 			</div>
 			<div className="flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-2">
-				{Array.isArray(eventList) &&
+				{eventList &&
 					eventList.map((event) => {
 						return (
 							<EventCards

@@ -33,8 +33,8 @@ const UpdateEventForm = ({
 	useEffect(() => {
 		getAllCategories()
 			.then((res) => {
-				toast.success("Categories loaded !");
-				setCategoriesList(res);
+				toast.success("Categories loaded !"), { id: "123" };
+				setCategoriesList(res.categories);
 				console.log(res);
 			})
 			.catch((e) => {

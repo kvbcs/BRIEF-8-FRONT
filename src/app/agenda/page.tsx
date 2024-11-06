@@ -32,7 +32,7 @@ const page = ({ agenda }: { agenda: AllAgendaProps }) => {
 			<h2 className="text-center text-2xl md:text-4xl font-bold w-full mt-8">
 				Your agenda
 			</h2>
-			{agendaList &&
+			{Array.isArray(agendaList) &&
 				agendaList.map((agenda) => {
 					return (
 						<AgendaCards

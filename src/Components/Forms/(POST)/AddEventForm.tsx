@@ -19,7 +19,7 @@ const AddEventForm = (
 		getAllCategories()
 			.then((res) => {
 				toast.success("Categories loaded !");
-				setCategoriesList(res);
+				setCategoriesList(res.categories);
 				console.log(res);
 			})
 			.catch((e) => {
@@ -50,10 +50,10 @@ const AddEventForm = (
 			});
 
 	return (
-		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/2 mx-auto">
+		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 w-full bg-white mx-auto">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
-				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">
-					Add a event
+				<h2 className="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-black">
+					Add an event
 				</h2>
 			</div>
 
@@ -227,10 +227,16 @@ const AddEventForm = (
 							<div></div>
 						</div>
 					</div>
-					<div>
+					<div className="flex justify-between items-center h-[5vh]">
+						<button
+							className="my-8 flex w-1/3 justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							onClick={handleClose}
+						>
+							Cancel
+						</button>
 						<input
 							type="submit"
-							className="my-8 flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							className="my-8 flex w-1/3 justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 							value="Submit"
 						/>
 					</div>

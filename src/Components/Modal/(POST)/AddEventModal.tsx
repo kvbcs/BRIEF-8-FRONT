@@ -4,7 +4,7 @@ import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { IoIosCloseCircleOutline, IoMdAddCircle } from "react-icons/io";
 
-export const AddProductModal = ({ setisLoading }: any) => {
+export const AddEventModal = ({ setisLoading }: any) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -15,10 +15,13 @@ export const AddProductModal = ({ setisLoading }: any) => {
 		left: "50%",
 		transform: "translate(-50%, -50%)",
 		width: 600,
-		bgcolor: "background.paper",
+		height: "95%",
+		bgcolor: "blue",
+		overflow: "auto",
+		borderRadius: "50px",
 		border: "2px solid #000",
 		boxShadow: 24,
-		p: 4,
+		p: 0,
 	};
 
 	return (
@@ -28,7 +31,7 @@ export const AddProductModal = ({ setisLoading }: any) => {
 				className="bg-sky-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-700"
 			>
 				<IoMdAddCircle />
-				Add product
+				Add an event
 			</button>
 
 			<Modal

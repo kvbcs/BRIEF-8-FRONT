@@ -3,8 +3,8 @@ import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { AllEventsProps } from "@/Utils/types";
-import { FaCartPlus } from "react-icons/fa6";
 import AddAgendaForm from "@/Components/Forms/(POST)/AddAgendaForm";
+import { TfiAgenda } from "react-icons/tfi";
 
 export const AddAgendaModal = ({
 	event,
@@ -35,7 +35,7 @@ export const AddAgendaModal = ({
 				onClick={handleOpen}
 				className="bg-sky-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-700"
 			>
-				<FaCartPlus />
+				<TfiAgenda />
 				Add
 			</button>
 

@@ -52,26 +52,26 @@ const Header = () => {
 
 	return (
 		<>
-			<header className="w-full flex flex-row justify-between px-4 gap-2 items-center h-[10vh] bg-black">
-				<div className="flex flex-row items-center gap-2 w-[60px] h-[80%]">
+			<header className="w-full flex flex-row justify-between px-4 gap-2 items-center h-[10vh] bg-blue-700">
+				<div className="flex flex-row items-center gap-2 w-fit h-[90%]">
 					<img
 						onClick={() => {
 							push("/");
 						}}
 						src="/Logo.png"
-						alt="E-commerce logo"
-						className="w-full h-full hover:cursor-pointer rounded-full hover:scale-110 transition ease-in-out"
+						alt="The Meetup logo"
+						className="w-full h-full hover:cursor-pointer rounded-full hover:scale-125 transition ease-in-out"
 					/>
 				</div>
-				<ul className="text-white flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
+				<ul className="text-white flex-row items-center w-2/3 md:gap-4 lg:gap-14 hidden md:flex justify-end ">
 					<Link href="/">
-						<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
+						<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
 							<FaHouse size={26} />
 							Home
 						</li>
 					</Link>
 					<Link href="/events">
-						<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
+						<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
 							<FaTshirt size={26} />
 							Events
 						</li>
@@ -80,7 +80,7 @@ const Header = () => {
 				{isConnected ? (
 					<ul className="text-white flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
 						<Link href="/agenda">
-							<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
+							<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
 								<FaShoppingCart size={26} />
 								Agenda
 							</li>
@@ -88,7 +88,7 @@ const Header = () => {
 
 						{isAdmin && (
 							<Link href="/admin">
-								<li className="hover:bg-slate-600 flex flex-row items-center gap-2 p-2 rounded-lg">
+								<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
 									<RiAdminFill size={26} />
 									Admin
 								</li>
@@ -96,12 +96,12 @@ const Header = () => {
 						)}
 					</ul>
 				) : (
-					<div className="flex flex-row gap-4 items-center">
+					<div className="flex flex-row w-fit  justify-evenly gap-8 items-center">
 						<button
 							onClick={() => {
 								push("/login");
 							}}
-							className="hidden md:flex bg-white hover:bg-slate-200 text-black flex-row items-center gap-2 p-3 rounded-lg"
+							className="hidden md:flex bg-white hover:bg-black hover:text-white transition ease-in-out hover:scale-125 text-black flex-row items-center gap-2 justify-evenly w-[125px] p-3 rounded-lg"
 						>
 							<FaSignInAlt size={26} />
 							Login
@@ -110,7 +110,7 @@ const Header = () => {
 							onClick={() => {
 								push("/register");
 							}}
-							className="hidden md:flex bg-sky-500 hover:bg-sky-700 flex-row items-center gap-2  text-white p-3 rounded-lg"
+							className="hidden md:flex hover:scale-125 hover:text-white transition ease-in-out bg-[gold] hover:bg-yellow-600 flex-row items-center justify-evenly gap-2 w-[125px] text-black  font-bold p-3 rounded-lg"
 						>
 							<FaUserPen size={26} />
 							Register

@@ -54,14 +54,14 @@ const EventCards = ({
 
 				<div className="px-5 pb-5 flex flex-col gap-6">
 					<div className="flex flex-row justify-center items-center gap-10 w-full px-2 text-justify">
-						<h3 className="text-black font-semibold text-xl tracking-tight dark:text-white">
+						<h3 className="text-black font-bold text-2xl tracking-tight dark:text-white">
 							{event.title}
 						</h3>
-						<p className="text-xl text-red-500">
+						{/* <p className="text-xl text-red-500">
 							{format(event.createdAt, "dd/MM/yyyy")}
-						</p>
+						</p> */}
 					</div>
-					<h3 className="text-[gray] font-semibold text-sm tracking-tight dark:text-white">
+					<h3 className="text-[gray] font-semibold text-xl tracking-tight dark:text-white">
 						{event.maxParticipants} spots available.
 					</h3>
 					<div className="w-full flex flex-row items-center justify-between px-2 text-justify">

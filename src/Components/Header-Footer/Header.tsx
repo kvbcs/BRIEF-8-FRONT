@@ -120,7 +120,7 @@ const Header = () => {
 				{isConnected && (
 					<button
 						onClick={handleDisconnect}
-						className="hidden md:flex bg-red-700 hover:bg-red-400 flex-row items-center gap-2 hover:scale-110 transition ease-in-out text-white p-3 rounded-lg"
+						className="hidden md:flex bg-red-700 hover:bg-red-500 hover:text-black flex-row items-center gap-2 hover:scale-110 transition ease-in-out text-white p-3 rounded-lg"
 					>
 						<FaArrowRightFromBracket size={26} />
 						Disconnect

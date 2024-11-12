@@ -1,4 +1,5 @@
 "use client";
+import Title from "@/Components/Title";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FaUserPen } from "react-icons/fa6";
@@ -8,7 +9,7 @@ const page = () => {
 
 	return (
 		<main className="h-full w-full">
-			<section className="bg-gradient-to-b from-blue-700 to-sky-500 h-[90vh] md:h-[90vh] w-full flex flex-col md:flex-row shadow-2xl rounded-b-3xl">
+			<section className="bg-gradient-to-b from-blue-700 to-sky-500 h-[90vh] md:h-[80vh] w-full flex flex-col md:flex-row shadow-2xl rounded-b-3xl mb-40">
 				<div className="h-1/2 md:h-full p-6 lg:p-20 w-full md:w-1/2 flex flex-col justify-evenly gap-8 items-center">
 					<h1 className="text-3xl md:text-4xl text-[gold] lg:text-6xl font-bold text-center">
 						Welcome to MEETUP
@@ -36,9 +37,7 @@ const page = () => {
 					/>
 				</div>
 			</section>
-			<h2 className="mb-5 md:mb-0 mt-20 text-3xl md:text-4xl font-bold text-center w-full">
-				Discover our services
-			</h2>
+			<Title title={"Discover Our Services"} />
 
 			<section className="mb-20 h-fit md:h-[80vh] gap-8 md:gap-4 lg:gap-0 w-full flex flex-col items-center md:flex-row justify-around">
 				<div className=" h-[400px] md:h-[80%] w-[90%] lg:w-1/4 bg-sky-700 hover:bg-sky-500 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col items-center justify-around">

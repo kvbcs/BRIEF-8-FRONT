@@ -1,5 +1,6 @@
 "use client";
 import AgendaCards from "@/Components/Cards/AgendaCards";
+import Title from "@/Components/Title";
 import { getAllAgendaEvents } from "@/Services/agendaService";
 import { AllAgendaProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
@@ -29,9 +30,8 @@ const page = ({ agenda }: { agenda: AllAgendaProps }) => {
 
 	return (
 		<div className="min-h-[80vh] max-h-fit w-full flex flex-col gap-14 justify-between">
-			<h2 className="text-center text-2xl md:text-4xl font-bold w-full mt-8">
-				Your agenda
-			</h2>
+			<Title title={"Your Agenda"} />
+
 			{Array.isArray(agendaList) &&
 				agendaList.map((agenda) => {
 					return (

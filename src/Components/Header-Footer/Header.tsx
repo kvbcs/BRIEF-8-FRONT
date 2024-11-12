@@ -60,7 +60,7 @@ const Header = () => {
 						}}
 						src="/Logo.png"
 						alt="The Meetup logo"
-						className="w-full h-full hover:cursor-pointer rounded-full hover:scale-125 transition ease-in-out"
+						className="w-full h-full hover:cursor-pointer rounded-full hover:scale-110 transition ease-in-out"
 					/>
 				</div>
 				<ul className="text-white flex-row items-center w-2/3 md:gap-4 lg:gap-14 hidden md:flex justify-end ">
@@ -101,7 +101,7 @@ const Header = () => {
 							onClick={() => {
 								push("/login");
 							}}
-							className="hidden md:flex bg-white hover:bg-black hover:text-white transition ease-in-out hover:scale-125 text-black flex-row items-center gap-2 justify-evenly w-[125px] p-3 rounded-lg"
+							className="hidden md:flex bg-white hover:bg-black hover:text-white transition ease-in-out hover:scale-110 text-black flex-row items-center gap-2 justify-evenly w-[125px] p-3 rounded-lg"
 						>
 							<FaSignInAlt size={26} />
 							Login
@@ -110,7 +110,7 @@ const Header = () => {
 							onClick={() => {
 								push("/register");
 							}}
-							className="hidden md:flex hover:scale-125 hover:text-white transition ease-in-out bg-[gold] hover:bg-yellow-600 flex-row items-center justify-evenly gap-2 w-[125px] text-black  font-bold p-3 rounded-lg"
+							className="hidden md:flex hover:scale-110 hover:text-white transition ease-in-out bg-[gold] hover:bg-yellow-600 flex-row items-center justify-evenly gap-2 w-[125px] text-black  font-bold p-3 rounded-lg"
 						>
 							<FaUserPen size={26} />
 							Register

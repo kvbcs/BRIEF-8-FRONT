@@ -22,10 +22,10 @@ const UpdateEventForm = ({
 		event?.maxParticipants || 0
 	);
 	const [startDate, setStartDate] = useState(event?.startDate || "");
-	const [endDate, setEndDate] = useState(event?.endDate || "");
+	const [endDate, setEndDate] = useState(event?.endDate);
 	const [categoryId, setCategoryId] = useState(event?.categoryId || "");
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [eventData, seteventData] = useState<AllEventsProps>();
+	const [eventData, setEventData] = useState<AllEventsProps>();
 	const [categoriesList, setCategoriesList] = useState<AllCategoriesProps[]>(
 		[]
 	);
@@ -55,7 +55,7 @@ const UpdateEventForm = ({
 			setCategoryId(eventData?.categoryId);
 			setIsLoaded(true);
 		}
-	}, [event, isLoaded]);
+	}, [eventData, isLoaded]);
 
 	function handleSubmit() {
 		let eventUpdateData = {
@@ -68,7 +68,10 @@ const UpdateEventForm = ({
 			maxParticipants: maxParticipants,
 			price: price,
 			categoryId: categoryId,
+			createdAt: event.createdAt,
+			updatedAt: new Date(),
 		};
+
 		updateEvent(eventUpdateData, eventUpdateData.id)
 			.then((res) => {
 				setisLoading(true);
@@ -161,7 +164,7 @@ const UpdateEventForm = ({
 						<div className="mt-2">
 							<input
 								onChange={(e) => setStartDate(e.target.value)}
-								defaultValue={event?.startDate}
+								defaultValue={eventData?.startDate}
 								type="date"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 							/>
@@ -177,7 +180,7 @@ const UpdateEventForm = ({
 						<div className="mt-2">
 							<input
 								onChange={(e) => setEndDate(e.target.value)}
-								defaultValue={event?.endDate}
+								defaultValue={eventData?.endDate}
 								type="date"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 							/>

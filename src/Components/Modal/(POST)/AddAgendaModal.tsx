@@ -33,7 +33,7 @@ export const AddAgendaModal = ({
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-sky-500 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-700"
+				className="bg-blue-700 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-500"
 			>
 				<TfiAgenda />
 				Add

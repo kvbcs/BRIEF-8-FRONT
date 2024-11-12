@@ -5,6 +5,10 @@ export type AuthProps = {
 	password: string;
 };
 
+export type TitleProps = {
+	title: string;
+};
+
 export type AllEventsProps = {
 	id: string;
 	title: string;
@@ -16,6 +20,8 @@ export type AllEventsProps = {
 	price: number;
 	category?: AllCategoriesProps;
 	categoryId: string;
+	createdAt: string;
+	updatedAt: Date;
 };
 
 export type UpdateEventsProps = {

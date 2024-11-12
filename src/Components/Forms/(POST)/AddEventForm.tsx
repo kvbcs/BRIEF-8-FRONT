@@ -35,7 +35,8 @@ const AddEventForm = (
 		formState: { errors },
 	} = useForm<AllEventsProps>();
 
-	const onSubmit: SubmitHandler<AllEventsProps> = (data) =>
+	const onSubmit: SubmitHandler<AllEventsProps> = (data) => {
+		
 		addEvent(data)
 			.then((res) => {
 				setisLoading(true);
@@ -48,6 +49,7 @@ const AddEventForm = (
 				console.log(e);
 				console.log(data);
 			});
+	};
 
 	return (
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 w-full bg-white mx-auto">
@@ -123,7 +125,7 @@ const AddEventForm = (
 						</label>
 						<div className="mt-2">
 							<input
-								type="date"
+								type="datetime-local"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								{...register("startDate", { required: true })}
 							/>
@@ -141,7 +143,7 @@ const AddEventForm = (
 						</label>
 						<div className="mt-2">
 							<input
-								type="date"
+								type="datetime-local"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 								{...register("endDate", { required: true })}
 							/>

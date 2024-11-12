@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -10,10 +11,18 @@ const Footer = () => {
 			</div>
 			<div className="w-full flex p-4 justify-center text-white text-xl m-auto">
 				<ul>
-					<li>Private Policy</li>
-					<li>Legal Mentions</li>
-					<li>GitHub</li>
-					<li>LinkedIn</li>
+					<Link href={"/privacy-policy"}>
+						<li className="hover:underline">Privacy Policy</li>
+					</Link>
+					<Link href={"/legal-notice"}>
+						<li className="hover:underline">Legal Notice</li>
+					</Link>{" "}
+					<Link href="https://github.com/kvbcs" target="_blank">
+						<li className="hover:underline">GitHub</li>
+					</Link>{" "}
+					<Link href="https://linkedin.com" target="_blank">
+						<li className="hover:underline">LinkedIn</li>
+					</Link>{" "}
 				</ul>
 			</div>
 		</footer>

@@ -3,6 +3,7 @@ import CategoryCards from "@/Components/Cards/CategoryCards";
 import UserCards from "@/Components/Cards/UserCards";
 import { AddCategoryModal } from "@/Components/Modal/(POST)/AddCategory";
 import { AddEventModal } from "@/Components/Modal/(POST)/AddEventModal";
+import Title from "@/Components/Title";
 import { getAllCategories } from "@/Services/categoryService";
 import { getAllUsers } from "@/Services/userService";
 import { AllCategoriesProps, AllUserProps } from "@/Utils/types";
@@ -62,9 +63,8 @@ const page = () => {
 
 	return (
 		<div className="h-screen w-full flex flex-col justify-evenly">
-			<h1 className="text-center text-2xl md:text-4xl font-bold">
-				Administration Dashboard
-			</h1>
+			<Title title={"Administration Dashboard"} />
+
 			<div className="flex flex-row w-full justify-evenly mt-10">
 				<AddEventModal setisLoading={setisLoading} />
 				<AddCategoryModal setisLoading={setisLoading} />

@@ -2,6 +2,7 @@
 
 import EventCards from "@/Components/Cards/EventCards";
 import Search from "@/Components/Search";
+import Title from "@/Components/Title";
 import { getAllCategories } from "@/Services/categoryService";
 import { getAllEvents } from "@/Services/eventService";
 import { AllCategoriesProps, AllEventsProps } from "@/Utils/types";
@@ -68,8 +69,9 @@ export default function Home() {
 		);
 	}
 	return (
-		<div className="px-8 min-h-[80vh] max-h-fit w-full flex flex-col gap-16 my-8">
-			<h2 className="text-2xl font-bold text-center">Events Available</h2>
+		<div className="px-8 min-h-[80vh] max-h-fit mb-40 w-full flex flex-col gap-16 my-8">
+			<Title title={"Available Events"} />
+
 			<Search setEventList={setEventList} setIsLoading={setisLoading} />
 			<div className="w-full flex flex-row justify-center md:justify-end gap-2">
 				<select className="border-2 rounded-lg p-2 border-black w-fit">

@@ -40,7 +40,7 @@ const page = () => {
 			<Title title={"Discover Our Services"} />
 
 			<section className="mb-20 h-fit md:h-[80vh] gap-8 md:gap-4 lg:gap-0 w-full flex flex-col items-center md:flex-row justify-around">
-				<div className=" h-[400px] md:h-[80%] w-[90%] lg:w-1/4 bg-sky-700 hover:bg-sky-500 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col items-center justify-around">
+				<article className=" h-[400px] md:h-[80%] w-[90%] lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col items-center justify-around">
 					<img
 						src="https://cdni.iconscout.com/illustration/premium/thumb/user-registration-illustration-download-in-svg-png-gif-file-formats--sign-up-log-register-form-create-account-or-pack-interface-illustrations-3723271.png?f=webp"
 						alt="An image of people going outside"
@@ -51,9 +51,9 @@ const page = () => {
 						! Only logged in users can add events they like to their
 						agenda and participate in said events.
 					</p>
-				</div>
-				<div
-					className=" h-[400px] md:h-[80%] w-[90%] lg:w-1/4 bg-sky-700 hover:bg-sky-500 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col 
+				</article>
+				<article
+					className=" h-[400px] md:h-[80%] w-[90%] lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col 
         items-center justify-around"
 				>
 					<img
@@ -66,9 +66,9 @@ const page = () => {
 						descriptions, start dates and end dates and click to
 						participate in the events you like !
 					</p>
-				</div>{" "}
-				<div
-					className=" h-[400px] md:h-[80%] w-[90%] lg:w-1/4 bg-sky-700 hover:bg-sky-500 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col 
+				</article>{" "}
+				<article
+					className=" h-[400px] md:h-[80%] w-[90%] lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col 
         items-center justify-around"
 				>
 					<img
@@ -81,7 +81,7 @@ const page = () => {
 						can modify the quantity of seats or delete them entirely
 						! Buy your seats today !
 					</p>
-				</div>{" "}
+				</article>{" "}
 			</section>
 
 			<section className="mt-40 w-full h-[50vh] flex flex-col md:flex-row-reverse bg-gradient-to-b from-blue-700 to-sky-500 ">

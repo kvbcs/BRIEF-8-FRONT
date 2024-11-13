@@ -21,7 +21,7 @@ export type AllEventsProps = {
 	category?: AllCategoriesProps;
 	categoryId: string;
 	createdAt: string;
-	updatedAt: Date;
+	updatedAt: string;
 };
 
 export type UpdateEventsProps = {

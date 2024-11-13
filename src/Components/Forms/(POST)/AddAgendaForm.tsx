@@ -3,6 +3,7 @@ import { AllAgendaProps, AllEventsProps } from "@/Utils/types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { addAgendaEvent } from "@/Services/agendaService";
+import { useEffect } from "react";
 
 const AddAgendaForm = ({
 	event,
@@ -13,18 +14,27 @@ const AddAgendaForm = ({
 	setisLoading: any;
 	handleClose: any;
 }) => {
-	console.log(event.id);
+	console.log("ici", event.id);
 
 	const {
 		register,
 		handleSubmit,
 		watch,
 		formState: { errors },
+		setValue,
 	} = useForm<AllAgendaProps>({ defaultValues: { eventId: event.id } });
+
+	useEffect(() => {
+		setValue("eventId", event.id);
+	}, [event.id, setValue]);
 
 	const onSubmit: SubmitHandler<AllAgendaProps> = (data) => {
 		const agendaId = window.localStorage.getItem("agenda");
-		addAgendaEvent(data, agendaId!)
+		if (!agendaId) {
+			toast.error("Agenda ID is missing.");
+			return;
+		}
+		addAgendaEvent({ ...data, eventId: event.id }, agendaId)
 			.then((res) => {
 				setisLoading(true);
 				console.log(res);
@@ -48,6 +58,7 @@ const AddAgendaForm = ({
 
 			<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 				<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+					{/* <input type="text" {...register("eventId")} /> */}
 					<div>
 						<label
 							htmlFor="title"
@@ -56,7 +67,8 @@ const AddAgendaForm = ({
 							Event title
 						</label>
 						<div className="mt-2">
-							<img src={event.title} alt="" />{" "}
+							<img src={event.image} alt="" />{" "}
+							<p>{event.title}</p>
 						</div>
 					</div>
 					<div>

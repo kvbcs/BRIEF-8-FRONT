@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { updateEvent } from "@/Services/eventService";
 import { getAllCategories } from "@/Services/categoryService";
+import { format, formatISO } from "date-fns";
 
 const UpdateEventForm = ({
 	event,
@@ -21,8 +22,16 @@ const UpdateEventForm = ({
 	const [maxParticipants, setMaxParticipants] = useState<number>(
 		event?.maxParticipants || 0
 	);
-	const [startDate, setStartDate] = useState(event?.startDate || "");
-	const [endDate, setEndDate] = useState(event?.endDate);
+	const [startDate, setStartDate] = useState(
+		event?.startDate
+			? format(new Date(event.startDate), "yyyy-MM-dd'T'HH:mm")
+			: ""
+	);
+	const [endDate, setEndDate] = useState(
+		event?.endDate
+			? format(new Date(event.endDate), "yyyy-MM-dd'T'HH:mm")
+			: ""
+	);
 	const [categoryId, setCategoryId] = useState(event?.categoryId || "");
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [eventData, setEventData] = useState<AllEventsProps>();
@@ -58,18 +67,18 @@ const UpdateEventForm = ({
 	}, [eventData, isLoaded]);
 
 	function handleSubmit() {
-		let eventUpdateData = {
+		const eventUpdateData = {
 			id: event.id,
 			title: title,
 			image: image,
 			description: description,
-			startDate: startDate,
-			endDate: endDate,
+			startDate: new Date(startDate).toISOString(),
+			endDate: new Date(endDate).toISOString(),
 			maxParticipants: maxParticipants,
 			price: price,
 			categoryId: categoryId,
 			createdAt: event.createdAt,
-			updatedAt: new Date(),
+			updatedAt: new Date().toISOString(),
 		};
 
 		updateEvent(eventUpdateData, eventUpdateData.id)
@@ -164,8 +173,8 @@ const UpdateEventForm = ({
 						<div className="mt-2">
 							<input
 								onChange={(e) => setStartDate(e.target.value)}
-								defaultValue={eventData?.startDate}
-								type="date"
+								defaultValue={startDate}
+								type="datetime-local"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 							/>
 						</div>
@@ -180,8 +189,8 @@ const UpdateEventForm = ({
 						<div className="mt-2">
 							<input
 								onChange={(e) => setEndDate(e.target.value)}
-								defaultValue={eventData?.endDate}
-								type="date"
+								defaultValue={endDate}
+								type="datetime-local"
 								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
 							/>
 						</div>

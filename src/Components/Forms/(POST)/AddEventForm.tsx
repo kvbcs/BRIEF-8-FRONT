@@ -6,6 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ErrorMsg } from "../../Error";
 import { getAllCategories } from "@/Services/categoryService";
+import { formatISO } from "date-fns";
 
 const AddEventForm = (
 	{ setisLoading, handleClose }: any,
@@ -34,10 +35,13 @@ const AddEventForm = (
 		watch,
 		formState: { errors },
 	} = useForm<AllEventsProps>();
-
 	const onSubmit: SubmitHandler<AllEventsProps> = (data) => {
-		
-		addEvent(data)
+		const formattedData = {
+			...data,
+			startDate: formatISO(new Date(data.startDate)),
+			endDate: formatISO(new Date(data.endDate)),
+		};
+		addEvent(formattedData)
 			.then((res) => {
 				setisLoading(true);
 				console.log(res);
@@ -47,7 +51,7 @@ const AddEventForm = (
 			.catch((e) => {
 				toast.error("Error");
 				console.log(e);
-				console.log(data);
+				console.log(formattedData);
 			});
 	};
 

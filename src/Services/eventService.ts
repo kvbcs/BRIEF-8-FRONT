@@ -15,6 +15,22 @@ export async function getAllEvents() {
 		});
 }
 
+//GET one event --------------------------------------------------------------------------------------------------------------------
+export async function getOneEvent(id: string) {
+	let url = `${process.env.NEXT_PUBLIC_API_URL}event/${id}`;
+	return axios
+		.get(url)
+		.then((res) => {
+			console.log(res.data);
+			return res.data;
+		})
+		.catch((e) => {
+			console.log(e);
+
+			throw new Error(e);
+		});
+}
+
 //GET search events --------------------------------------------------------------------------------------------------------------------
 export async function searchEvents(query: string) {
 	let url = `${process.env.NEXT_PUBLIC_API_URL}event/all/${query}`;

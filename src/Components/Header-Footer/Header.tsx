@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { RiAdminFill } from "react-icons/ri";
 import { useStoreConnect } from "@/Components/stores/connextTest";
 import { BiSolidParty } from "react-icons/bi";
+import Image from "next/image";
 
 const Header = () => {
 	const { push } = useRouter();
@@ -48,13 +49,15 @@ const Header = () => {
 	return (
 		<header className="w-full flex flex-row justify-between px-8 gap-2 items-center h-[10vh] bg-blue-700">
 			<div className="flex flex-row items-center gap-2 w-fit h-[90%]">
-				<img
+				<Image
 					onClick={() => {
 						push("/");
 					}}
 					src="/Logo.png"
 					alt="The Meetup logo"
 					className="w-full h-full hover:cursor-pointer rounded-full hover:scale-110 transition ease-in-out"
+					width={100}
+					height={100}
 				/>
 			</div>
 			<ul className="text-white text-xl flex-row items-center w-2/3 md:gap-4 lg:gap-14 hidden md:flex justify-end ">

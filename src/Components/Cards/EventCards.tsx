@@ -6,6 +6,8 @@ import { FaTrashAlt } from "react-icons/fa";
 import { deleteEvent } from "@/Services/eventService";
 import { AddAgendaModal } from "../Modal/(POST)/AddAgendaModal";
 import { format } from "date-fns";
+import Image from "next/image";
+import Link from "next/link";
 
 const EventCards = ({
 	event,
@@ -43,8 +45,9 @@ const EventCards = ({
 
 	return (
 		<div className=" w-full md:w-fit h-[500px] mx-auto mb-6">
+			{/* <Link href={`/events/${event.id}}`}> */}
 			<div className="bg-stone-100 hover:border-slate-500 hover:bg-slate-300 hover:cursor-pointer hover:scale-110 transition ease-in-out shadow-2xl border-2 border-slate-200 rounded-lg h-full md:w-[400px] dark:bg-gray-800 object-cover dark:border-gray-700">
-				<div className="h-2/4 shadow-xl rounded-lg mb-5">
+				<div className="h-2/3 shadow-xl rounded-lg mb-5">
 					<img
 						className="rounded-t-xl h-full w-full shadow-xl object-cover"
 						src={event.image}
@@ -58,44 +61,45 @@ const EventCards = ({
 							{event.title}
 						</h3>
 					</div>
-					<h3 className="text-[gray] font-semibold text-xl tracking-tight dark:text-white">
+					{/* <h3 className="text-[gray] font-semibold text-xl tracking-tight dark:text-white">
 						{event.maxParticipants} spots available.
-					</h3>
+					</h3> */}
+					<hr className="border-black" />
 					<div className="w-full flex flex-row items-center justify-between px-2 text-justify">
-						<h3 className="text-white p-2 rounded-lg bg-black italic font-semibold text-sm tracking-tight dark:text-white">
+						{/* <h3 className="text-white p-2 rounded-lg bg-black italic font-semibold text-sm tracking-tight dark:text-white">
 							{event.category?.name}
-						</h3>
+						</h3> */}
 						<span className="text-2xl font-bold text-[green] dark:text-white">
 							${event.price}
 						</span>
+						<AddAgendaModal
+							event={event}
+							setisLoading={setisLoading}
+						/>
 					</div>
 
 					<div className="flex items-center justify-between">
 						<div className="flex flex-row gap-2 items-center justify-evenly">
 							{isAdmin() && (
-								<UpdateEventModal
-									setisLoading={setisLoading}
-									event={event}
-								/>
-							)}
+								<>
+									<UpdateEventModal
+										setisLoading={setisLoading}
+										event={event}
+									/>
 
-							{isAdmin() && (
-								<button
-									onClick={(e) => {
-										console.log(event.id);
+									<button
+										onClick={(e) => {
+											console.log(event.id);
 
-										handleEventDelete(event.id);
-									}}
-									className="flex flex-row items-center text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"
-								>
-									<FaTrashAlt />
-								</button>
+											handleEventDelete(event.id);
+										}}
+										className="flex flex-row items-center text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"
+									>
+										<FaTrashAlt />
+									</button>
+								</>
 							)}
 						</div>
-						<AddAgendaModal
-							event={event}
-							setisLoading={setisLoading}
-						/>
 					</div>
 				</div>
 			</div>

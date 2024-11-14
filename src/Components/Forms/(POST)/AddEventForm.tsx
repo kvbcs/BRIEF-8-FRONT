@@ -101,6 +101,14 @@ const AddEventForm = (
 								<ErrorMsg content={"This field is required"} />
 							)}
 						</div>
+						{/* <div className="mt-4">
+							<p>Preview</p>
+							<img
+								src={}
+								alt="Your event image"
+								className="w-32 h-32 object-cover"
+							/>
+						</div> */}
 					</div>
 					<div>
 						<label

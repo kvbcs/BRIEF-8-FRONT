@@ -24,13 +24,15 @@ const page = ({ agenda }: { agenda: AllAgendaProps }) => {
 				console.log(res);
 				toast.success("Agenda events loaded"), { id: "agenda-success" };
 				console.log(agendaList);
-				setisLoading(false);
 			})
 			.catch((e) => {
 				console.log(e);
 				toast.error("Server error" + e, { id: "agenda-error" });
+			})
+			.finally(() => {
+				setisLoading(false);
 			});
-	}, [isLoading]);
+	}, []);
 
 	function handleDeleteAllEvents() {
 		const agendaId = window.localStorage.getItem("agenda");
@@ -38,14 +40,16 @@ const page = ({ agenda }: { agenda: AllAgendaProps }) => {
 		deleteAllAgendaEvents(agendaId!)
 			.then((res) => {
 				console.log(res);
-				toast.success("Agenda events deleted"),
+				toast.success("Thanks for buying !"),
 					{ id: "agenda-delete-success" };
 				console.log(agendaList);
-				setisLoading(false);
 			})
 			.catch((e) => {
 				console.log(e);
 				toast.error("Server error" + e, { id: "agenda-error" });
+			})
+			.finally(() => {
+				setisLoading(false);
 			});
 	}
 

@@ -10,7 +10,7 @@ import { AllCategoriesProps, AllEventsProps } from "@/Utils/types";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-export default function Home() {
+const page = () => {
 	const [isLoading, setisLoading] = useState(true);
 	const [eventList, setEventList] = useState<AllEventsProps[]>([]);
 	const [categoryList, setCatgoryList] = useState<AllCategoriesProps[]>([]);
@@ -79,4 +79,6 @@ export default function Home() {
 			</div>
 		</div>
 	);
-}
+};
+
+export default page;

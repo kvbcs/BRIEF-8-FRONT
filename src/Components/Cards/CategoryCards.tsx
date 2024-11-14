@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { FaTrashAlt } from "react-icons/fa";
 import { deleteCategory } from "@/Services/categoryService";
 import { UpdateCategoryModal } from "../Modal/(UPDATE)/UpdateCategoryModal";
+import Image from "next/image";
 
 const CategoryCards = ({
 	category,

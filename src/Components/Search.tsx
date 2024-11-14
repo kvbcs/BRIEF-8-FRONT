@@ -3,12 +3,12 @@ import { searchEvents } from "@/Services/eventService";
 import React, { useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const Search = ({ setProductList, setIsLoading }: any) => {
+const Search = ({ setEventList, setIsLoading }: any) => {
 	const [searchValue, setSearchValue] = useState("");
 
 	function handleSearch() {
 		searchEvents(searchValue).then((res) => {
-			setProductList(res.results);
+			setEventList(res.results);
 			setIsLoading(false);
 		});
 	}
@@ -18,9 +18,8 @@ const Search = ({ setProductList, setIsLoading }: any) => {
 				<input
 					onChange={(e: any) => {
 						setSearchValue(e.target.value);
-						if (searchValue === null) {
-							setIsLoading(true);
-							setIsLoading(false);
+						if (searchValue === null || "") {
+							window.location.reload();
 						}
 					}}
 					type="text"

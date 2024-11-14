@@ -1,6 +1,7 @@
 "use client";
 
 import EventCards from "@/Components/Cards/EventCards";
+import Loading from "@/Components/Loading";
 import Search from "@/Components/Search";
 import Title from "@/Components/Title";
 import { getAllCategories } from "@/Services/categoryService";
@@ -8,65 +9,39 @@ import { getAllEvents } from "@/Services/eventService";
 import { AllCategoriesProps, AllEventsProps } from "@/Utils/types";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Hourglass } from "react-loader-spinner";
 
 export default function Home() {
-	const [search, setSearch] = useState<string>("");
 	const [isLoading, setisLoading] = useState(true);
 	const [eventList, setEventList] = useState<AllEventsProps[]>([]);
 	const [categoryList, setCatgoryList] = useState<AllCategoriesProps[]>([]);
 
 	useEffect(() => {
-		getAllEvents()
-			.then((res) => {
+		Promise.all([getAllEvents(), getAllCategories()])
+			.then(([eventsRes, categoriesRes]) => {
 				try {
-					setEventList(res.events);
-					console.log(res);
-					toast.success("Events loaded !", { id: "123" });
+					setEventList(eventsRes.events);
+					setCatgoryList(categoriesRes.categories);
+					console.log(eventsRes, categoriesRes);
+					toast.success("Events and categories loaded !", {
+						id: "data-success",
+					});
 					setisLoading(false);
 				} catch (e) {
 					console.log(e);
-					toast.error("Error loading events" + e);
-					setisLoading(false);
+					toast.error("Error loading data" + e, { id: "data-error" });
 				}
 			})
 			.catch((e) => {
 				console.log(e);
-				toast.error("Server error" + e);
-				setisLoading(false);
-			});
-	}, []);
-
-	useEffect(() => {
-		getAllCategories()
-			.then((res) => {
-				setCatgoryList(res.categories);
-				toast.success("Categories loaded !", { id: "123" });
-				console.log(res);
-				setisLoading(false);
+				toast.error("Server error" + e, { id: "server-error" });
 			})
-			.catch((e) => {
-				toast.error("Server error" + e);
-				console.log(e);
+			.finally(() => {
 				setisLoading(false);
 			});
-	}, []);
+	}, [isLoading]);
 
 	if (isLoading) {
-		return (
-			<div className="h-screen w-full flex flex-col items-center justify-center">
-				<h1 className="text-4xl">Loading...</h1>
-				<Hourglass
-					visible={true}
-					height="80"
-					width="80"
-					ariaLabel="hourglass-loading"
-					wrapperStyle={{}}
-					wrapperClass=""
-					colors={["#306cce", "#72a1ed"]}
-				/>
-			</div>
-		);
+		return <Loading />;
 	}
 	return (
 		<div className="px-8 min-h-[80vh] max-h-fit mb-40 w-full flex flex-col gap-16 my-8">

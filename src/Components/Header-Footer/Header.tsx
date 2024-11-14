@@ -2,17 +2,12 @@
 import React, { useEffect, useState } from "react";
 import DropMenu from "../ShadCN/DropMenu";
 import Link from "next/link";
-import {
-	FaUser,
-	FaArrowRightFromBracket,
-	FaUserPen,
-	FaHouse,
-} from "react-icons/fa6";
-import { FaShoppingCart, FaSignInAlt, FaTshirt } from "react-icons/fa";
+import { FaArrowRightFromBracket, FaUserPen, FaHouse } from "react-icons/fa6";
+import { FaCalendarAlt, FaShoppingCart, FaSignInAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { RiAdminFill } from "react-icons/ri";
-import { FidgetSpinner } from "react-loader-spinner";
 import { useStoreConnect } from "@/Components/stores/connextTest";
+import { BiSolidParty } from "react-icons/bi";
 
 const Header = () => {
 	const { push } = useRouter();
@@ -51,84 +46,82 @@ const Header = () => {
 	};
 
 	return (
-		<>
-			<header className="w-full flex flex-row justify-between px-4 gap-2 items-center h-[10vh] bg-blue-700">
-				<div className="flex flex-row items-center gap-2 w-fit h-[90%]">
-					<img
-						onClick={() => {
-							push("/");
-						}}
-						src="/Logo.png"
-						alt="The Meetup logo"
-						className="w-full h-full hover:cursor-pointer rounded-full hover:scale-110 transition ease-in-out"
-					/>
-				</div>
-				<ul className="text-white flex-row items-center w-2/3 md:gap-4 lg:gap-14 hidden md:flex justify-end ">
-					<Link href="/">
+		<header className="w-full flex flex-row justify-between px-8 gap-2 items-center h-[10vh] bg-blue-700">
+			<div className="flex flex-row items-center gap-2 w-fit h-[90%]">
+				<img
+					onClick={() => {
+						push("/");
+					}}
+					src="/Logo.png"
+					alt="The Meetup logo"
+					className="w-full h-full hover:cursor-pointer rounded-full hover:scale-110 transition ease-in-out"
+				/>
+			</div>
+			<ul className="text-white text-xl flex-row items-center w-2/3 md:gap-4 lg:gap-14 hidden md:flex justify-end ">
+				<Link href="/">
+					<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-3 p-2 rounded-lg">
+						<FaHouse size={26} />
+						Home
+					</li>
+				</Link>
+				<Link href="/events">
+					<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
+						<BiSolidParty size={26} />
+						Events
+					</li>
+				</Link>
+			</ul>
+			{isConnected ? (
+				<ul className="text-white text-xl font-bold flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
+					<Link href="/agenda">
 						<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
-							<FaHouse size={26} />
-							Home
+							<FaCalendarAlt size={26} />
+							Agenda
 						</li>
 					</Link>
-					<Link href="/events">
-						<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
-							<FaTshirt size={26} />
-							Events
-						</li>
-					</Link>
-				</ul>
-				{isConnected ? (
-					<ul className="text-white flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
-						<Link href="/agenda">
+
+					{isAdmin && (
+						<Link href="/admin">
 							<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
-								<FaShoppingCart size={26} />
-								Agenda
+								<RiAdminFill size={26} />
+								Admin
 							</li>
 						</Link>
-
-						{isAdmin && (
-							<Link href="/admin">
-								<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
-									<RiAdminFill size={26} />
-									Admin
-								</li>
-							</Link>
-						)}
-					</ul>
-				) : (
-					<div className="flex flex-row w-fit  justify-evenly gap-8 items-center">
-						<button
-							onClick={() => {
-								push("/login");
-							}}
-							className="hidden md:flex bg-white hover:bg-black hover:text-white transition ease-in-out hover:scale-110 text-black flex-row items-center gap-2 justify-evenly w-[125px] p-3 rounded-lg"
-						>
-							<FaSignInAlt size={26} />
-							Login
-						</button>
-						<button
-							onClick={() => {
-								push("/register");
-							}}
-							className="hidden md:flex hover:scale-110 hover:text-white transition ease-in-out bg-[gold] hover:bg-yellow-600 flex-row items-center justify-evenly gap-2 w-[125px] text-black  font-bold p-3 rounded-lg"
-						>
-							<FaUserPen size={26} />
-							Register
-						</button>
-					</div>
-				)}
-				{isConnected && (
+					)}
+				</ul>
+			) : (
+				<div className="flex flex-row w-fit  justify-evenly gap-8 items-center">
 					<button
-						onClick={handleDisconnect}
-						className="hidden md:flex bg-red-700 hover:bg-red-500 hover:text-black flex-row items-center gap-2 hover:scale-110 transition ease-in-out text-white p-3 rounded-lg"
+						onClick={() => {
+							push("/login");
+						}}
+						className="hidden md:flex bg-white hover:bg-black hover:text-white transition ease-in-out hover:scale-110 text-black flex-row items-center gap-2 justify-evenly w-[125px] p-3 rounded-full "
 					>
-						<FaArrowRightFromBracket size={26} />
-						Disconnect
+						<FaSignInAlt size={26} />
+						Login
 					</button>
-				)}
-				<DropMenu />
-			</header>
-		</>
+					<button
+						onClick={() => {
+							push("/register");
+						}}
+						className="hidden md:flex hover:scale-110 hover:text-white transition ease-in-out bg-[gold] hover:bg-yellow-600 flex-row items-center justify-evenly gap-2 w-[125px] text-black  font-bold p-3 rounded-full"
+					>
+						<FaUserPen size={26} />
+						Register
+					</button>
+				</div>
+			)}
+			{isConnected && (
+				<button
+					onClick={handleDisconnect}
+					className="hidden md:flex text-xl bg-red-700 hover:bg-red-500 flex-row justify-evenly items-center hover:scale-125 transition ease-in-out text-white p-3 rounded-full font-bold w-[175px]"
+				>
+					<FaArrowRightFromBracket size={26} />
+					Disconnect
+				</button>
+			)}
+			<DropMenu />
+		</header>
 	);
 };
 

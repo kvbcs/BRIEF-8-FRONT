@@ -32,9 +32,9 @@ export const UpdateUserModal = ({
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-orange-500 text-center rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:bg-orange-700"
+				className="bg-orange-500 text-center rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:bg-orange-700 transition ease-in-out hover:scale-125"
 			>
-				<FaEdit />
+				<FaEdit size={26} />
 			</button>
 
 			<Modal

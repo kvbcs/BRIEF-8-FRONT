@@ -57,9 +57,6 @@ const EventCards = ({
 						<h3 className="text-black font-bold text-2xl tracking-tight dark:text-white">
 							{event.title}
 						</h3>
-						{/* <p className="text-xl text-red-500">
-							{format(event.createdAt, "dd/MM/yyyy")}
-						</p> */}
 					</div>
 					<h3 className="text-[gray] font-semibold text-xl tracking-tight dark:text-white">
 						{event.maxParticipants} spots available.

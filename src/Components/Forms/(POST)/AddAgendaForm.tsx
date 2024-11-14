@@ -31,18 +31,18 @@ const AddAgendaForm = ({
 	const onSubmit: SubmitHandler<AllAgendaProps> = (data) => {
 		const agendaId = window.localStorage.getItem("agenda");
 		if (!agendaId) {
-			toast.error("Agenda ID is missing.");
+			toast.error("You must be logged in to add to your agenda.");
 			return;
 		}
 		addAgendaEvent({ ...data, eventId: event.id }, agendaId)
 			.then((res) => {
 				setisLoading(true);
 				console.log(res);
-				toast.success("Event added to agenda !");
+				toast.success("Event added to your agenda !");
 				handleClose();
 			})
 			.catch((e) => {
-				toast.error("You must be logged in" + e);
+				toast.error("Server error", e);
 				console.log(e);
 				console.log(data);
 			});
@@ -58,17 +58,17 @@ const AddAgendaForm = ({
 
 			<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 				<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-					{/* <input type="text" {...register("eventId")} /> */}
+					<input type="hidden" {...register("eventId")} />
 					<div>
 						<label
 							htmlFor="title"
-							className="block text-sm font-medium leading-6 text-black"
+							className="block text-xl font-medium leading-6 text-black"
 						>
 							Event title
 						</label>
 						<div className="mt-2">
+							<p id="title">{event.title}</p>
 							<img src={event.image} alt="" />{" "}
-							<p>{event.title}</p>
 						</div>
 					</div>
 					<div>

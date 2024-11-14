@@ -1,6 +1,7 @@
 "use client";
 import CategoryCards from "@/Components/Cards/CategoryCards";
 import UserCards from "@/Components/Cards/UserCards";
+import Loading from "@/Components/Loading";
 import { AddCategoryModal } from "@/Components/Modal/(POST)/AddCategory";
 import { AddEventModal } from "@/Components/Modal/(POST)/AddEventModal";
 import Title from "@/Components/Title";
@@ -9,7 +10,6 @@ import { getAllUsers } from "@/Services/userService";
 import { AllCategoriesProps, AllUserProps } from "@/Utils/types";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Hourglass } from "react-loader-spinner";
 
 const page = () => {
 	const [isLoading, setisLoading] = useState(true);
@@ -17,62 +17,38 @@ const page = () => {
 	const [categoryList, setCategoryList] = useState<AllCategoriesProps[]>([]);
 
 	useEffect(() => {
-		getAllUsers()
-			.then((res) => {
-				setuserList(res.users);
-				console.log(res);
-				toast.success("Got users");
+		Promise.all([getAllUsers(), getAllCategories()])
+			.then(([usersRes, categoriesRes]) => {
+				setuserList(usersRes.users);
+				setCategoryList(categoriesRes.categories);
+				console.log(usersRes, categoriesRes);
+				toast.success("Users and Categories loaded!", {
+					id: "data-loaded",
+				});
 				setisLoading(false);
 			})
 			.catch((e) => {
 				console.log(e);
-				toast.error("no users :(");
+				toast.error("Error loading data" + e, { id: "data-error" });
 			});
-	}, [isLoading]);
-
-	useEffect(() => {
-		getAllCategories()
-			.then((res) => {
-				setCategoryList(res.categories);
-				console.log(res);
-				toast.success("Got categories");
-				setisLoading(false);
-			})
-			.catch((e) => {
-				console.log(e);
-				toast.error("no categories :(");
-			});
-	}, [isLoading]);
+	}, []);
 
 	if (isLoading) {
-		return (
-			<div className="h-screen w-full flex flex-col items-center justify-center">
-				<h1 className="text-4xl">Loading...</h1>
-				<Hourglass
-					visible={true}
-					height="80"
-					width="80"
-					ariaLabel="hourglass-loading"
-					wrapperStyle={{}}
-					wrapperClass=""
-					colors={["#306cce", "#72a1ed"]}
-				/>
-			</div>
-		);
+		return <Loading />;
 	}
 
 	return (
-		<div className="h-screen w-full flex flex-col justify-evenly">
+		<div className="h-screen mb-40 w-full flex flex-col justify-evenly">
 			<Title title={"Administration Dashboard"} />
 
 			<div className="flex flex-row w-full justify-evenly mt-10">
 				<AddEventModal setisLoading={setisLoading} />
 				<AddCategoryModal setisLoading={setisLoading} />
 			</div>
-			<div className="flex flex-col gap-4 md:flex-row md:h-[500px]">
-				<div className="mt-10 w-full flex flex-col justify-evenly md:w-1/2 md:h-fit md:max-h-full gap-4 items-center p-4 rounded-lg min-h-fit max-h-[200px] bg-black text-white overflow-auto">
-					<h2>All Users</h2>
-					{Array.isArray(userList) &&
+			<div className="flex flex-col gap-4 md:flex-row md:justify-evenly md:h-[500px]">
+				<div className="mt-10 w-full md:w-1/3 flex flex-col justify-evenly md:h-fit md:max-h-full gap-4 items-center p-4 rounded-lg min-h-fit max-h-[200px] bg-black text-white overflow-auto">
+					<h2 className="text-3xl font-bold my-10">All Users</h2>
+					{userList &&
 						userList.map((user) => {
 							return (
 								<UserCards
@@ -83,8 +59,8 @@ const page = () => {
 							);
 						})}
 				</div>
-				<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/2 rounded-lg h-fit max-h-[200px] bg-black text-white overflow-auto md:h-fit md:max-h-full">
-					<h2>All Categories</h2>
+				<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/3 rounded-lg h-fit max-h-[200px] bg-black text-white overflow-auto md:h-fit md:max-h-full">
+					<h2 className="text-3xl font-bold my-10">All Categories</h2>
 					{categoryList &&
 						categoryList.map((category) => {
 							return (

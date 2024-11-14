@@ -32,9 +32,9 @@ export const UpdateCategoryModal = ({
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-orange-500 rounded-full text-white w-fit flex flex-row justify-center items-center p-2 hover:bg-orange-700"
+				className="bg-orange-500 rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:scale-125 transition ease-in-out hover:bg-orange-700"
 			>
-				<FaEdit />
+				<FaEdit size={26} />
 			</button>
 
 			<Modal

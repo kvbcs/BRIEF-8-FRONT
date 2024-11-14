@@ -32,12 +32,17 @@ const CategoryCards = ({
 			[];
 	}
 	return (
-		<div className="w-full flex flex-row justify-between items-center bg-gray-700 rounded-lg p-2">
-			<h3 className="text-sm" key={category.id}>
+		<div className="w-full flex px-10 flex-row justify-around h-[125px] items-center bg-gray-800 rounded-lg p-2">
+			<h3 className="text-xl font-bold" key={category.id}>
 				{category.name}
 			</h3>
-			<img src={category.image} alt="" key={category.id} />
-			<div className="flex flex-row gap-2">
+			<img
+				src={category.image}
+				alt=""
+				key={category.id}
+				className="h-[90%] w-1/3 object-cover"
+			/>
+			<div className="flex flex-col h-full items-center justify-evenly gap-2">
 				<UpdateCategoryModal
 					setisLoading={setisLoading}
 					category={category}
@@ -47,9 +52,9 @@ const CategoryCards = ({
 						console.log(category.id);
 						handleCategoryDelete(category.id);
 					}}
-					className="flex flex-row items-center p-2 rounded-full bg-red-500 hover:bg-red-700"
+					className="flex flex-row items-center p-3 rounded-full bg-red-500 hover:bg-red-700 hover:scale-125 transition ease-in-out"
 				>
-					<FaTrashAlt />
+					<FaTrashAlt size={26} />
 				</button>
 			</div>
 		</div>

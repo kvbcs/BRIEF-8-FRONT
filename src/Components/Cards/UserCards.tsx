@@ -30,8 +30,8 @@ const UserCards = ({
 			[];
 	}
 	return (
-		<div className="bg-gray-800 w-full flex flex-row gap-2 items-center p-2 rounded-lg text-white">
-			<div className="w-full flex flex-col gap-3 flex-wrap">
+		<div className="bg-gray-800 w-full flex flex-row gap-2 h-[125px] items-center justify-evenly p-2 rounded-lg text-white">
+			<div className="w-1/2 flex flex-col gap-3 flex-wrap">
 				<p>First Name : {user.firstName}</p>
 				<p>Last Name : {user.lastName}</p>
 				<p>Email : {user.email}</p>
@@ -43,9 +43,9 @@ const UserCards = ({
 						console.log(user.id);
 						handleUserDelete(user.id);
 					}}
-					className="flex flex-row items-center p-3 rounded-full bg-red-500 hover:bg-red-700"
+					className="flex flex-row items-center p-3 rounded-full bg-red-500 hover:bg-red-700 hover:scale-125 transition ease-in-out"
 				>
-					<FaTrashAlt />
+					<FaTrashAlt size={26} />
 				</button>
 			</div>
 		</div>

@@ -15,14 +15,15 @@ const page = () => {
 						Welcome to MEETUP
 					</h1>
 					<p className="lg:text-2xl text-white">
-						View, plan and participate in our available events now !
+						MEETUP is a website for participating in events. View,
+						plan and participate in our available events now !
 						Register an account to start using our services !
 					</p>
 					<button
 						onClick={() => {
 							push("/register");
 						}}
-						className="md:flex bg-[gold] hover:bg-yellow-600 font-bold hover:scale-125 text-base md:text-3xl transition ease-in-out flex-row items-center gap-2 w-fit flex hover:text-white p-3 rounded-lg"
+						className="md:flex bg-[gold] hover:bg-yellow-600 font-bold hover:scale-125 text-base md:text-3xl transition ease-in-out flex-row items-center gap-2 w-fit flex hover:text-white p-3 rounded-full"
 					>
 						<FaUserPen className="size-8 md:size-19" />
 						Register today !
@@ -39,12 +40,12 @@ const page = () => {
 			</section>
 			<Title title={"Discover Our Services"} />
 
-			<section className="mb-20 h-fit md:h-[80vh] gap-8 md:gap-4 lg:gap-0 w-full flex flex-col items-center md:flex-row justify-around">
-				<article className=" h-[400px] md:h-[80%] w-[90%] lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col items-center justify-around">
+			<section className="mb-20 mt-20 h-fit lg:h-[80vh] gap-8 md:gap-4 lg:gap-0 flex-wrap w-full flex flex-col items-center md:flex-row justify-around">
+				<article className=" h-[400px] lg:h-[80%] w-[90%] md:w-1/2 lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col items-center justify-around">
 					<img
 						src="https://cdni.iconscout.com/illustration/premium/thumb/user-registration-illustration-download-in-svg-png-gif-file-formats--sign-up-log-register-form-create-account-or-pack-interface-illustrations-3723271.png?f=webp"
 						alt="An image of people going outside"
-						className="object-cover h-1/2"
+						className="object-cover h-1/2 w-full"
 					/>
 					<p className="sans-serif overflow-auto text-xl md:text-base lg:text-xl p-8 text-justify h-1/2 flex items-center text-white justify-center">
 						Register now and start browsing all our available events
@@ -53,7 +54,7 @@ const page = () => {
 					</p>
 				</article>
 				<article
-					className=" h-[400px] md:h-[80%] w-[90%] lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col 
+					className=" h-[400px] lg:h-[80%] w-[90%] md:w-1/2 lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col 
         items-center justify-around"
 				>
 					<img
@@ -68,7 +69,7 @@ const page = () => {
 					</p>
 				</article>{" "}
 				<article
-					className=" h-[400px] md:h-[80%] w-[90%] lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col 
+					className=" h-[400px] lg:h-[80%] w-[90%] md:w-1/2 lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col 
         items-center justify-around"
 				>
 					<img
@@ -84,9 +85,9 @@ const page = () => {
 				</article>{" "}
 			</section>
 
-			<section className="mt-40 w-full h-[50vh] flex flex-col md:flex-row-reverse bg-gradient-to-b from-blue-700 to-sky-500 ">
+			<section className="mt-40 w-full h-[50vh] flex flex-col md:flex-row-reverse bg-gradient-to-t from-blue-700 to-sky-500 ">
 				<div className="w-full md:w-1/2 h-1/2 md:h-full flex items-center p-10">
-					<h2 className="text-[gold] text-3xl md:text-5xl font-bold w-full text-center">
+					<h2 className="text-white text-3xl md:text-5xl font-bold w-full text-center">
 						Thanks for visiting MEETUP !
 					</h2>
 				</div>

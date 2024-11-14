@@ -5,6 +5,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { AllEventsProps } from "@/Utils/types";
 import AddAgendaForm from "@/Components/Forms/(POST)/AddAgendaForm";
 import { TfiAgenda } from "react-icons/tfi";
+import { FaCalendarPlus } from "react-icons/fa";
 
 export const AddAgendaModal = ({
 	event,
@@ -33,9 +34,9 @@ export const AddAgendaModal = ({
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-blue-700 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-2 hover:bg-sky-500"
+				className="bg-blue-700 text-center rounded-lg text-white w-fit flex flex-row text-xl justify-center gap-2 items-center p-2 hover:bg-sky-500"
 			>
-				<TfiAgenda />
+				<FaCalendarPlus size={36} />
 				Add
 			</button>
 

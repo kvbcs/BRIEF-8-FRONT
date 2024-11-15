@@ -8,6 +8,7 @@ import Title from "@/Components/Title";
 import { getAllCategories } from "@/Services/categoryService";
 import { getAllUsers } from "@/Services/userService";
 import { AllCategoriesProps, AllUserProps } from "@/Utils/types";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -40,7 +41,7 @@ const page = () => {
 	return (
 		<div className="h-screen mb-40 w-full flex flex-col justify-evenly">
 			<Title title={"Administration Dashboard"} />
-
+			<Link href={"admin/events"}>Go to events</Link>
 			<div className="flex flex-row w-full justify-evenly mt-10">
 				<AddEventModal setisLoading={setisLoading} />
 				<AddCategoryModal setisLoading={setisLoading} />

@@ -14,8 +14,6 @@ const AddAgendaForm = ({
 	setisLoading: any;
 	handleClose: any;
 }) => {
-	console.log("ici", event.id);
-
 	const {
 		register,
 		handleSubmit,
@@ -36,7 +34,6 @@ const AddAgendaForm = ({
 		}
 		addAgendaEvent({ ...data, eventId: event.id }, agendaId)
 			.then((res) => {
-				setisLoading(true);
 				console.log(res);
 				toast.success("Event added to your agenda !");
 				handleClose();
@@ -45,7 +42,11 @@ const AddAgendaForm = ({
 				toast.error("Server error", e);
 				console.log(e);
 				console.log(data);
+			})
+			.finally(() => {
+				setisLoading(false);
 			});
+		[setisLoading];
 	};
 
 	return (

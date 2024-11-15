@@ -27,17 +27,16 @@ export const AddAgendaModal = ({
 		bgcolor: "background.paper",
 		border: "2px solid #000",
 		boxShadow: 24,
-		p: 4,
 	};
 
 	return (
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-blue-700 text-center rounded-lg text-white w-fit flex flex-row text-xl justify-center gap-2 items-center p-2 hover:bg-sky-500"
+				className="bg-gradient-to-b from-[gold] to-[#c7a901] text-center rounded-full text-black hover:text-white w-fit flex flex-row justify-center gap-2 items-center p-4 text-2xl font-bold hover:scale-125 transition ease-in-out"
 			>
-				<FaCalendarPlus size={36} />
-				Add
+				<FaCalendarPlus size={30} />
+				Add to your agenda
 			</button>
 
 			<Modal

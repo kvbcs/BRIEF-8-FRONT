@@ -45,65 +45,64 @@ const EventCards = ({
 
 	return (
 		<div className=" w-full md:w-fit h-[500px] mx-auto mb-6">
-			{/* <Link href={`/events/${event.id}}`}> */}
-			<div className="bg-stone-100 hover:border-slate-500 hover:bg-slate-300 hover:cursor-pointer hover:scale-110 transition ease-in-out shadow-2xl border-2 border-slate-200 rounded-lg h-full md:w-[400px] dark:bg-gray-800 object-cover dark:border-gray-700">
-				<div className="h-2/3 shadow-xl rounded-lg mb-5">
-					<img
-						className="rounded-t-xl h-full w-full shadow-xl object-cover"
-						src={event.image}
-						alt="event image"
-					/>
-				</div>
+			<div className="flex items-center justify-between">
+				<div className="flex flex-row gap-2 items-center justify-evenly">
+					{isAdmin() && (
+						<>
+							<UpdateEventModal
+								setisLoading={setisLoading}
+								event={event}
+							/>
 
-				<div className="px-5 pb-5 flex flex-col gap-6">
-					<div className="flex flex-row justify-center items-center gap-10 w-full px-2 text-justify">
-						<h3 className="text-black font-bold text-2xl tracking-tight dark:text-white">
-							{event.title}
-						</h3>
-					</div>
-					{/* <h3 className="text-[gray] font-semibold text-xl tracking-tight dark:text-white">
-						{event.maxParticipants} spots available.
-					</h3> */}
-					<hr className="border-black" />
-					<div className="w-full flex flex-row items-center justify-between px-2 text-justify">
-						{/* <h3 className="text-white p-2 rounded-lg bg-black italic font-semibold text-sm tracking-tight dark:text-white">
-							{event.category?.name}
-						</h3> */}
-						<span className="text-2xl font-bold text-[green] dark:text-white">
-							${event.price}
-						</span>
-						<AddAgendaModal
-							event={event}
-							setisLoading={setisLoading}
+							<button
+								onClick={(e) => {
+									console.log(event.id);
+
+									handleEventDelete(event.id);
+								}}
+								className="flex flex-row items-center text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"
+							>
+								<FaTrashAlt />
+							</button>
+						</>
+					)}
+				</div>
+			</div>
+			<Link href={`events/${event.id}`}>
+				<div className="bg-stone-100 hover:border-stone-300 hover:bg-stone-300 hover:cursor-pointer hover:scale-125 transition ease-in-out shadow-2xl border-2 border-stone-100 rounded-3xl h-full md:w-[400px] object-cover">
+					<div className="h-2/3 shadow-xl rounded-lg">
+						<img
+							className="rounded-t-xl h-full w-full shadow-xl object-cover"
+							src={event.image}
+							alt="event image"
 						/>
 					</div>
 
-					<div className="flex items-center justify-between">
-						<div className="flex flex-row gap-2 items-center justify-evenly">
-							{isAdmin() && (
-								<>
-									<UpdateEventModal
-										setisLoading={setisLoading}
-										event={event}
-									/>
-
-									<button
-										onClick={(e) => {
-											console.log(event.id);
-
-											handleEventDelete(event.id);
-										}}
-										className="flex flex-row items-center text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"
-									>
-										<FaTrashAlt />
-									</button>
-								</>
-							)}
+					<div className="text-center h-1/3 flex flex-col justify-evenly px-6">
+						<div className="flex flex-row justify-center items-center gap-10 w-full px-2 text-justify">
+							<h3 className="text-black font-bold text-2xl tracking-tight dark:text-white">
+								{event.title}
+							</h3>
+						</div>
+						{/* <h3 className="text-[gray] font-semibold text-xl tracking-tight dark:text-white">
+						{event.maxParticipants} spots available.
+					</h3> */}
+						<hr className="border-black" />
+						<div className="w-full flex flex-row items-center justify-between px-2 text-justify">
+							<h3 className="text-white p-2 rounded-lg bg-black italic font-semibold text-sm tracking-tight dark:text-white">
+								{event.category?.name}
+							</h3>
+							<span className="text-2xl font-bold text-[green] dark:text-white">
+								${event.price}
+							</span>
+							{/* <AddAgendaModal
+							event={event}
+							setisLoading={setisLoading}
+						/> */}
 						</div>
 					</div>
 				</div>
-			</div>
-			{/* </Link> */}
+			</Link>
 		</div>
 	);
 };

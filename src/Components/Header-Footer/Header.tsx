@@ -47,7 +47,7 @@ const Header = () => {
 	};
 
 	return (
-		<header className="w-full flex flex-row justify-between px-8 gap-2 items-center h-[10vh] bg-blue-700">
+		<header className="w-full flex flex-row justify-between px-8 gap-2 items-center h-[10vh] bg-gradient-to-t from-blue-700 to-blue-900">
 			<div className="flex flex-row items-center gap-2 w-fit h-[90%]">
 				<Image
 					onClick={() => {
@@ -117,7 +117,7 @@ const Header = () => {
 			{isConnected && (
 				<button
 					onClick={handleDisconnect}
-					className="hidden md:flex text-xl bg-red-700 hover:bg-red-500 flex-row justify-evenly items-center hover:scale-125 transition ease-in-out text-white p-3 rounded-full font-bold w-[175px]"
+					className="hidden md:flex text-xl bg-gradient-to-t from-red-700 to-red-500 flex-row justify-evenly items-center hover:scale-125 transition ease-in-out text-white hover:text-black p-3 rounded-full font-bold w-[175px]"
 				>
 					<FaArrowRightFromBracket size={26} />
 					Disconnect

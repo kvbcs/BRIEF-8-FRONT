@@ -1,6 +1,6 @@
 import { deleteUser } from "@/Services/userService";
 import { AllUserProps } from "@/Utils/types";
-import React from "react";
+import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 import { FaTrashAlt } from "react-icons/fa";
 import { UpdateUserModal } from "../Modal/(UPDATE)/UpdateUserModal";
@@ -8,24 +8,31 @@ import { UpdateUserModal } from "../Modal/(UPDATE)/UpdateUserModal";
 const UserCards = ({
 	user,
 	setisLoading,
+	isLoading,
 }: {
 	user: AllUserProps;
 	setisLoading: any;
+	isLoading: any;
 }) => {
-	function handleUserDelete(id: string) {
+	useEffect(() => {
+		handleUserDelete;
+	}, [isLoading]);
+
+	async function handleUserDelete(id: string) {
+		setisLoading(true);
 		deleteUser(id)
 			.then((res) => {
 				if (res.status === 200) {
-					setisLoading(true);
-
-					console.log(res);
 					toast.success("User deleted !");
 				} else {
 					toast.error("Unexisting user");
 				}
 			})
 			.catch((e) => {
-				console.log(e), toast.error("Server error" + e);
+				console.log(e), toast.error("Server error");
+			})
+			.finally(() => {
+				setisLoading(false);
 			}),
 			[];
 	}
@@ -37,7 +44,7 @@ const UserCards = ({
 				<p>Email : {user.email}</p>
 			</div>
 			<div className="w-fit flex flex-col gap-2">
-				<UpdateUserModal setisLoading={setisLoading} user={user} />
+				<UpdateUserModal setisLoading={setisLoading} user={user} isLoading={isLoading} />
 				<button
 					onClick={(e) => {
 						console.log(user.id);

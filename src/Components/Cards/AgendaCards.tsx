@@ -1,7 +1,10 @@
 "use client";
-import { deleteAgendaEvent } from "@/Services/agendaService";
+import {
+	deleteAgendaEvent,
+	getAllAgendaEvents,
+} from "@/Services/agendaService";
 import { AllAgendaProps } from "@/Utils/types";
-import React from "react";
+import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 import { FaTrashAlt } from "react-icons/fa";
 import { UpdateAgendaModal } from "../Modal/(UPDATE)/UpdateAgendaModal";
@@ -9,27 +12,35 @@ import { UpdateAgendaModal } from "../Modal/(UPDATE)/UpdateAgendaModal";
 const AgendaCards = ({
 	agenda,
 	setisLoading,
+	isLoading,
 }: {
 	agenda: AllAgendaProps;
 	setisLoading: any;
+	isLoading: any;
 }) => {
-	function handleAgendaDelete() {
+	useEffect(() => {
+		handleAgendaDelete;
+	}, [isLoading]);
+
+	async function handleAgendaDelete() {
 		const agendaId = window.localStorage.getItem("agenda");
 		const eventId = agenda.eventId;
+		setisLoading(true);
+
 		deleteAgendaEvent(agendaId!, eventId)
 			.then((res) => {
 				if (res.status === 200) {
-					setisLoading(true);
-					console.log(res);
 					toast.success("Agenda event deleted !");
 				} else {
-					toast.error("Bad response");
+					toast.error("Error");
 				}
 			})
 			.catch((e) => {
-				console.log(e), toast.error("Server error");
-			}),
-			[];
+				toast.error("Server error");
+			})
+			.finally(() => {
+				setisLoading(false);
+			});
 	}
 	return (
 		<div className="w-full flex flex-row justify-center">
@@ -55,12 +66,11 @@ const AgendaCards = ({
 				<div className="flex md:flex-col flex-row gap-2 items-center justify-evenly">
 					<UpdateAgendaModal
 						setisLoading={setisLoading}
+						isLoading={isLoading}
 						agenda={agenda}
 					/>
 					<button
 						onClick={(e) => {
-							console.log(agenda.eventId);
-
 							handleAgendaDelete();
 						}}
 						className="flex flex-row items-center text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"

@@ -4,7 +4,7 @@ import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { IoIosCloseCircleOutline, IoMdAddCircle } from "react-icons/io";
 
-export const AddCategoryModal = ({ setisLoading }: any) => {
+export const AddCategoryModal = ({ setisLoading, isLoading }: any) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -47,6 +47,7 @@ export const AddCategoryModal = ({ setisLoading }: any) => {
 						</span>
 						<AddCategoryForm
 							setisLoading={setisLoading}
+							isLoading={isLoading}
 							handleClose={handleClose}
 						/>
 					</div>

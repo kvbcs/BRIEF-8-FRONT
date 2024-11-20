@@ -1,12 +1,12 @@
 "use client";
 import { AllCategoriesProps } from "@/Utils/types";
-import React from "react";
+import React, { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ErrorMsg } from "../../Error";
 import { addCategory } from "@/Services/categoryService";
 
-const AddCategoryForm = ({ handleClose, setisLoading }: any) => {
+const AddCategoryForm = ({ handleClose, setisLoading, isLoading }: any) => {
 	const {
 		register,
 		handleSubmit,
@@ -14,19 +14,21 @@ const AddCategoryForm = ({ handleClose, setisLoading }: any) => {
 		formState: { errors },
 	} = useForm<AllCategoriesProps>();
 
-	const onSubmit: SubmitHandler<AllCategoriesProps> = (data) =>
+	const onSubmit: SubmitHandler<AllCategoriesProps> = (data) => {
+		setisLoading(true);
+
 		addCategory(data)
 			.then((res) => {
-				setisLoading(true);
-				console.log(res);
 				toast.success("Category created !");
 				handleClose();
 			})
 			.catch((e) => {
-				toast.error("Server error" + e);
-				console.log(e);
-				console.log(data);
+				toast.error("Server error");
+			})
+			.finally(() => {
+				setisLoading(false);
 			});
+	};
 
 	return (
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/2 mx-auto">

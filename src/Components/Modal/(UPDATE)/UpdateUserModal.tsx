@@ -9,9 +9,11 @@ import UpdateUserForm from "@/Components/Forms/(UPDATE)/UpdateUserForm";
 export const UpdateUserModal = ({
 	user,
 	setisLoading,
+	isLoading,
 }: {
 	user: AllUserProps;
 	setisLoading: any;
+	isLoading: any;
 }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
@@ -55,6 +57,7 @@ export const UpdateUserModal = ({
 							user={user}
 							handleClose={handleClose}
 							setisLoading={setisLoading}
+							isLoading={isLoading}
 						/>
 					</div>
 				</Box>

@@ -9,9 +9,11 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 export const UpdateAgendaModal = ({
 	agenda,
 	setisLoading,
+	isLoading
 }: {
 	agenda: updateAgendaProps;
-	setisLoading: any;
+		setisLoading: any;
+	isLoading: any
 }) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
@@ -54,6 +56,7 @@ export const UpdateAgendaModal = ({
 						<UpdateAgendaForm
 							handleClose={handleClose}
 							setisLoading={setisLoading}
+							isLoading={isLoading}
 							agenda={agenda}
 						/>
 					</div>

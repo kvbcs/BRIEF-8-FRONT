@@ -8,13 +8,14 @@ const UpdateAgendaForm = ({
 	agenda,
 	handleClose,
 	setisLoading,
+	isLoading,
 }: {
 	agenda: updateAgendaProps;
 	handleClose: any;
 	setisLoading: any;
+	isLoading: any;
 }) => {
 	const [quantity, setQuantity] = useState<number>(agenda?.quantity || 0);
-
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [agendaData, setagendaData] = useState<updateAgendaProps>();
 
@@ -25,14 +26,15 @@ const UpdateAgendaForm = ({
 		}
 	}, [agenda, isLoaded]);
 
-	function handleSubmit() {
+	async function handleSubmit() {
 		let agendaUpdateData = {
 			id: agenda.id,
 			eventId: agenda.eventId,
 			quantity: quantity,
 		};
 		const agendaId = window.localStorage.getItem("agenda");
-		console.log(agendaId);
+
+		setisLoading(true);
 
 		updateAgendaEvent(
 			agendaUpdateData,
@@ -49,7 +51,6 @@ const UpdateAgendaForm = ({
 			.finally(() => {
 				setisLoading(false);
 			});
-		[setisLoading];
 	}
 
 	return (

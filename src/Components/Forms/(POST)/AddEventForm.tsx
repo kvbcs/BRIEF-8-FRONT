@@ -9,7 +9,7 @@ import { getAllCategories } from "@/Services/categoryService";
 import { formatISO } from "date-fns";
 
 const AddEventForm = (
-	{ setisLoading, handleClose }: any,
+	{ setisLoading, handleClose, isLoading }: any,
 	event: AllEventsProps
 ) => {
 	const [categoriesList, setCategoriesList] = useState<AllCategoriesProps[]>(
@@ -21,11 +21,12 @@ const AddEventForm = (
 			.then((res) => {
 				toast.success("Categories loaded !");
 				setCategoriesList(res.categories);
-				console.log(res);
 			})
 			.catch((e) => {
-				toast.error("Server error", e);
-				console.log(e);
+				toast.error("Server error");
+			})
+			.finally(() => {
+				setisLoading(false);
 			});
 	}, []);
 
@@ -35,23 +36,27 @@ const AddEventForm = (
 		watch,
 		formState: { errors },
 	} = useForm<AllEventsProps>();
+
 	const onSubmit: SubmitHandler<AllEventsProps> = (data) => {
+		setisLoading(true);
+
 		const formattedData = {
 			...data,
 			startDate: formatISO(new Date(data.startDate)),
 			endDate: formatISO(new Date(data.endDate)),
 		};
+
 		addEvent(formattedData)
 			.then((res) => {
-				setisLoading(true);
-				console.log(res);
 				toast.success("Event created !");
 				handleClose();
 			})
+
 			.catch((e) => {
-				toast.error("Error");
-				console.log(e);
-				console.log(formattedData);
+				toast.error("Server error");
+			})
+			.finally(() => {
+				setisLoading(false);
 			});
 	};
 

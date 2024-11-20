@@ -7,11 +7,13 @@ import { updateUser } from "@/Services/userService";
 const UpdateUserForm = ({
 	user,
 	setisLoading,
+	isLoading,
 	handleClose,
 }: {
 	user: AllUserProps;
 	setisLoading: any;
 	handleClose: any;
+	isLoading: any;
 }) => {
 	const [firstName, setFirstName] = useState(user?.firstName || "");
 	const [lastName, setLastName] = useState(user?.lastName || "");
@@ -28,25 +30,24 @@ const UpdateUserForm = ({
 		}
 	}, [user, isLoaded]);
 
-	function handleSubmit() {
+	async function handleSubmit() {
 		let userUpdateData = {
 			id: user.id,
 			firstName: firstName,
 			lastName: lastName,
 			email: email,
 		};
+		setisLoading(true);
 		updateUser(userUpdateData, userUpdateData.id)
 			.then((res) => {
-				setisLoading(true);
-				console.log(res);
-				console.log(userUpdateData);
 				toast.success("User updated !");
 				handleClose();
 			})
 			.catch((e) => {
-				toast.error("Server error" + e);
-				console.log(e);
-				console.log(userUpdateData);
+				toast.error("Server error");
+			})
+			.finally(() => {
+				setisLoading(false);
 			}),
 			[];
 	}

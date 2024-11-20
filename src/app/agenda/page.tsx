@@ -28,18 +28,23 @@ const page = ({ agenda }: { agenda: AllAgendaProps }) => {
 			.finally(() => {
 				setisLoading(false);
 			});
-	}, [setisLoading]);
+	}, [isLoading]);
 
-	function handleDeleteAllEvents() {
+	useEffect(() => {
+		handleDeleteAllEvents;
+	}, [isLoading]);
+
+	async function handleDeleteAllEvents() {
 		const agendaId = window.localStorage.getItem("agenda");
+		setisLoading(true);
 		deleteAllAgendaEvents(agendaId!)
-			.then((res) => {
-				toast.success("Thanks for buying !"),
-					{ id: "agenda-delete-success" };
-				console.log(agendaList);
+			.then(() => {
+				toast.success("Thanks for buying !", {
+					id: "agenda-delete-success",
+				});
+				setagendaList([]);
 			})
 			.catch((e) => {
-				console.log(e);
 				toast.error("Server error", { id: "agenda-error" });
 			})
 			.finally(() => {
@@ -62,6 +67,7 @@ const page = ({ agenda }: { agenda: AllAgendaProps }) => {
 							key={agenda.eventId}
 							setisLoading={setisLoading}
 							agenda={agenda}
+							isLoading={isLoading}
 						/>
 					);
 				})}

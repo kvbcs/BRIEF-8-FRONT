@@ -4,7 +4,7 @@ import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { IoIosCloseCircleOutline, IoMdAddCircle } from "react-icons/io";
 
-export const AddEventModal = ({ setisLoading }: any) => {
+export const AddEventModal = ({ setisLoading, isLoading }: any) => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -30,7 +30,7 @@ export const AddEventModal = ({ setisLoading }: any) => {
 				onClick={handleOpen}
 				className="bg-blue-700 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-3 hover:bg-sky-500 hover:scale-125 transition ease-in-out text-3xl font-bold"
 			>
-				<IoMdAddCircle size={26}/>
+				<IoMdAddCircle size={26} />
 				Add an event
 			</button>
 
@@ -51,6 +51,7 @@ export const AddEventModal = ({ setisLoading }: any) => {
 						<AddEventForm
 							handleClose={handleClose}
 							setisLoading={setisLoading}
+							isLoading={isLoading}
 						/>
 					</div>
 				</Box>

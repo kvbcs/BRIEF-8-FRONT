@@ -34,14 +34,12 @@ const AddAgendaForm = ({
 		}
 		addAgendaEvent({ ...data, eventId: event.id }, agendaId)
 			.then((res) => {
-				console.log(res);
 				toast.success("Event added to your agenda !");
 				handleClose();
 			})
 			.catch((e) => {
-				toast.error("Server error", e);
-				console.log(e);
-				console.log(data);
+				toast.error("Server error");
+				
 			})
 			.finally(() => {
 				setisLoading(false);

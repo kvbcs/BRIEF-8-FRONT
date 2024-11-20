@@ -39,19 +39,17 @@ const UpdateAgendaForm = ({
 			agendaId!,
 			agendaUpdateData.eventId!
 		)
-			.then((res: any) => {
-				setisLoading(true);
-				console.log(res);
-				console.log(agendaUpdateData);
+			.then(() => {
 				toast.success("Agenda event updated !");
 				handleClose();
 			})
-			.catch((e: any) => {
-				toast.error("Error");
-				console.log(e);
-				console.log(agendaUpdateData);
-			}),
-			[];
+			.catch((e) => {
+				toast.error("Server error");
+			})
+			.finally(() => {
+				setisLoading(false);
+			});
+		[setisLoading];
 	}
 
 	return (

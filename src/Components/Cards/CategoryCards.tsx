@@ -18,30 +18,28 @@ const CategoryCards = ({
 			.then((res) => {
 				if (res.status === 200) {
 					setisLoading(true);
-					console.log(res);
 					toast.success("Category deleted !");
 				} else {
 					toast.error("Unexisting category");
 				}
 			})
 			.catch((e) => {
-				console.log(e),
 					toast.error(
-						"Events with this category can't be deleted yet" + e
+						"Events with this category can't be deleted yet"
 					);
 			}),
 			[];
 	}
 	return (
 		<div className="w-full flex px-10 flex-row justify-around h-[125px] items-center bg-gray-800 rounded-lg p-2">
-			<h3 className="text-xl font-bold" key={category.id}>
+			<h3 className="text-xl font-bold w-1/3" key={category.id}>
 				{category.name}
 			</h3>
 			<img
 				src={category.image}
 				alt=""
 				key={category.id}
-				className="h-[90%] w-1/3 object-cover"
+				className="h-[90%] w-1/3 object-cover rounded-3xl"
 			/>
 			<div className="flex flex-col h-full items-center justify-evenly gap-2">
 				<UpdateCategoryModal

@@ -3,7 +3,7 @@ import React from "react";
 
 const Title = ({ title }: TitleProps) => {
 	return (
-		<h2 className="text-2xl md:text-6xl font-serif font-bold text-center serif">
+		<h2 className="text-2xl md:text-6xl font-sans font-bold text-center">
 			{title}
 		</h2>
 	);

@@ -28,7 +28,7 @@ export const AddCategoryModal = ({ setisLoading }: any) => {
 				className="bg-blue-700 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-3 hover:bg-sky-500 hover:scale-125 transition ease-in-out text-3xl font-bold"
 			>
 				<IoMdAddCircle size={26} />
-				Add category
+				Add a category
 			</button>
 
 			<Modal

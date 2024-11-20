@@ -17,36 +17,30 @@ const page = ({ agenda }: { agenda: AllAgendaProps }) => {
 
 	useEffect(() => {
 		const agendaId = window.localStorage.getItem("agenda");
-		console.log(agendaId);
 		getAllAgendaEvents(agendaId!)
 			.then((res) => {
 				setagendaList(res.agendaEvents);
-				console.log(res);
 				toast.success("Agenda events loaded"), { id: "agenda-success" };
-				console.log(agendaList);
 			})
 			.catch((e) => {
-				console.log(e);
-				toast.error("Server error" + e, { id: "agenda-error" });
+				toast.error("Server error", { id: "agenda-error" });
 			})
 			.finally(() => {
 				setisLoading(false);
 			});
-	}, []);
+	}, [setisLoading]);
 
 	function handleDeleteAllEvents() {
 		const agendaId = window.localStorage.getItem("agenda");
-		console.log(agendaId);
 		deleteAllAgendaEvents(agendaId!)
 			.then((res) => {
-				console.log(res);
 				toast.success("Thanks for buying !"),
 					{ id: "agenda-delete-success" };
 				console.log(agendaList);
 			})
 			.catch((e) => {
 				console.log(e);
-				toast.error("Server error" + e, { id: "agenda-error" });
+				toast.error("Server error", { id: "agenda-error" });
 			})
 			.finally(() => {
 				setisLoading(false);

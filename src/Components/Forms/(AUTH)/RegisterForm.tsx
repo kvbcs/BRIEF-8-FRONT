@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "@/Utils/validator";
+import { authSchema } from "@/Utils/validator";
 import { registerService } from "@/Services/authService";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -19,7 +19,10 @@ export const RegisterForm = () => {
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm<AuthProps>({ mode: "all", resolver: yupResolver(schema) });
+	} = useForm<AuthProps>({
+		mode: "all",
+		resolver: yupResolver(authSchema),
+	});
 
 	const onSubmit: SubmitHandler<AuthProps> = async (data) => {
 		try {
@@ -27,19 +30,15 @@ export const RegisterForm = () => {
 				.then((res) => {
 					if (res.status === 201) {
 						setisLoading(true);
-						console.log(res);
 						toast.success("Register successful !");
 						push("/login");
-						console.log(res.status);
 					}
 				})
 				.catch((e) => {
-					toast.error("Credentials already taken" + e);
-					console.log(e);
+					toast.error("Credentials already taken");
 				});
 		} catch (e) {
-			toast.error("Server error" + e);
-			console.log(e);
+			toast.error("Server error");
 		}
 	};
 

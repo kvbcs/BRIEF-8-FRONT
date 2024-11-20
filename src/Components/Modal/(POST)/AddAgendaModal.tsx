@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { AllEventsProps } from "@/Utils/types";
 import AddAgendaForm from "@/Components/Forms/(POST)/AddAgendaForm";
-import { TfiAgenda } from "react-icons/tfi";
 import { FaCalendarPlus } from "react-icons/fa";
 
 export const AddAgendaModal = ({

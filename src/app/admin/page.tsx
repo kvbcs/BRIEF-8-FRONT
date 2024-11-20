@@ -41,13 +41,12 @@ const page = () => {
 	return (
 		<div className="h-screen mb-40 w-full flex flex-col justify-evenly">
 			<Title title={"Administration Dashboard"} />
-			<Link href={"admin/events"}>Go to events</Link>
 			<div className="flex flex-row w-full justify-evenly mt-10">
 				<AddEventModal setisLoading={setisLoading} />
 				<AddCategoryModal setisLoading={setisLoading} />
 			</div>
 			<div className="flex flex-col gap-4 md:flex-row md:justify-evenly md:h-[500px]">
-				<div className="mt-10 w-full md:w-1/3 flex flex-col justify-evenly md:h-fit md:max-h-full gap-4 items-center p-4 rounded-lg min-h-fit max-h-[200px] bg-black text-white overflow-auto">
+				<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/3 rounded-lg h-fit max-h-[200px] bg-black text-white overflow-auto md:h-fit md:max-h-full">
 					<h2 className="text-3xl font-bold my-10">All Users</h2>
 					{userList &&
 						userList.map((user) => {

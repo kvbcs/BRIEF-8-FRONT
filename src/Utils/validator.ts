@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const schema = yup.object({
+export const authSchema = yup.object({
 	firstName: yup
 		.string()
 		.required("This field is required")

@@ -21,19 +21,17 @@ const page = () => {
 				try {
 					setEventList(eventsRes.events);
 					setCatgoryList(categoriesRes.categories);
-					console.log(eventsRes, categoriesRes);
 					toast.success("Events and categories loaded !", {
 						id: "data-success",
 					});
 					setisLoading(false);
 				} catch (e) {
-					console.log(e);
-					toast.error("Error loading data" + e, { id: "data-error" });
+					toast.error("Error loading data", { id: "data-error" });
 				}
 			})
 			.catch((e) => {
 				console.log(e);
-				toast.error("Server error" + e, { id: "server-error" });
+				toast.error("Server error" , { id: "server-error" });
 			})
 			.finally(() => {
 				setisLoading(false);

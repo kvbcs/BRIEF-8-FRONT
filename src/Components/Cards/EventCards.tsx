@@ -44,7 +44,7 @@ const EventCards = ({
 	}
 
 	return (
-		<div className=" w-full md:w-fit h-[500px] mx-auto mb-6">
+		<div className=" w-full md:w-fit h-[500px] mx-auto mb-36">
 			<div className="flex items-center justify-between">
 				<div className="flex flex-row gap-2 items-center justify-evenly">
 					{isAdmin() && (
@@ -69,12 +69,15 @@ const EventCards = ({
 				</div>
 			</div>
 			<Link href={`events/${event.id}`}>
-				<div className="bg-stone-100 hover:border-stone-300 hover:bg-stone-300 hover:cursor-pointer hover:scale-125 transition ease-in-out shadow-2xl border-2 border-stone-100 rounded-3xl h-full md:w-[400px] object-cover">
+				<div className="bg-stone-100 hover:border-stone-300 mb-20 hover:bg-stone-300 hover:cursor-pointer hover:scale-125 transition ease-in-out shadow-2xl border-2 border-stone-100 rounded-3xl h-full md:w-[400px] object-cover">
 					<div className="h-2/3 shadow-xl rounded-lg">
-						<img
+						<Image
 							className="rounded-t-xl h-full w-full shadow-xl object-cover"
 							src={event.image}
-							alt="event image"
+							alt="An image of the event"
+							width={500}
+							height={500}
+							loading="lazy"
 						/>
 					</div>
 

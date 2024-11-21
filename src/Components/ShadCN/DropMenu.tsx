@@ -9,11 +9,12 @@ import {
 } from "@/Components/ui/dropdown-menu";
 import { IoIosMenu } from "react-icons/io";
 import Link from "next/link";
-import { FaArrowRightFromBracket, FaUserPen } from "react-icons/fa6";
+import { FaArrowRightFromBracket, FaHouse, FaUserPen } from "react-icons/fa6";
 import { FaShoppingCart, FaSignInAlt, FaTshirt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { RiAdminFill } from "react-icons/ri";
 import { useStoreConnect } from "../stores/connextTest";
+import { BiSolidParty } from "react-icons/bi";
 
 const DropMenu = () => {
 	const { push } = useRouter();
@@ -25,7 +26,11 @@ const DropMenu = () => {
 	function checkIsAdmin() {
 		const jwt = window.localStorage.getItem("token");
 		const role = window.localStorage.getItem("role");
-		return role === "admin" && jwt !== undefined && jwt!.length > 60;
+		return (
+			role === `${process.env.NEXT_PUBLIC_ADMIN_ROLE}` &&
+			jwt !== undefined &&
+			jwt!.length > 60
+		);
 	}
 
 	function checkIsConnected() {
@@ -45,7 +50,7 @@ const DropMenu = () => {
 	const handleDisconnect = () => {
 		setisLoading(true);
 		window.localStorage.clear();
-		push("/login");
+		push("/");
 	};
 
 	return (
@@ -58,29 +63,34 @@ const DropMenu = () => {
 				</DropdownMenuTrigger>
 				<DropdownMenuContent>
 					<DropdownMenuSeparator />
-					{isAdmin && (
-						<Link href="/admin">
-							<DropdownMenuItem className="flex flex-row items-center gap-2">
-								<RiAdminFill /> Admin
-							</DropdownMenuItem>
-						</Link>
-					)}
+					<Link href="/">
+						<DropdownMenuItem className="flex flex-row items-center gap-2">
+							<FaHouse />
+							Home
+						</DropdownMenuItem>
+					</Link>
+					<Link href="/events">
+						<DropdownMenuItem className="flex flex-row items-center gap-2">
+							<BiSolidParty />
+							Events
+						</DropdownMenuItem>{" "}
+					</Link>
+
 					{isConnected ? (
 						<>
-							<Link href="/">
+							<Link href="/agenda">
 								<DropdownMenuItem className="flex flex-row items-center gap-2">
-									<FaTshirt />
-									Products
+									<FaHouse />
+									Agenda
 								</DropdownMenuItem>
 							</Link>
-
-							<Link href="/cart">
-								<DropdownMenuItem className="flex flex-row items-center gap-2">
-									<FaShoppingCart />
-									Cart
-								</DropdownMenuItem>{" "}
-							</Link>
-
+							{isAdmin && (
+								<Link href="/admin">
+									<DropdownMenuItem className="flex flex-row items-center gap-2">
+										<RiAdminFill /> Admin
+									</DropdownMenuItem>
+								</Link>
+							)}
 							<DropdownMenuItem
 								onClick={handleDisconnect}
 								className="bg-red-700 text-white rounded-lg hover:bg-red-700 flex flex-row items-center gap-2"

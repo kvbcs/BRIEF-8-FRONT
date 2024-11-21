@@ -1,5 +1,6 @@
 "use client";
 import Title from "@/Components/Title";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FaUserPen } from "react-icons/fa6";
@@ -9,12 +10,12 @@ const page = () => {
 
 	return (
 		<main className="h-full w-full">
-			<section className="bg-gradient-to-b from-blue-700 to-sky-500 h-[90vh] md:h-[80vh] w-full flex flex-col md:flex-row shadow-2xl rounded-b-3xl mb-40">
+			<section className="bg-gradient-to-b from-blue-700 to-blue-500 h-[90vh] md:h-[80vh] w-full flex flex-col md:flex-row shadow-2xl rounded-b-3xl mb-40">
 				<div className="h-1/2 md:h-full p-6 lg:p-20 w-full md:w-1/2 flex flex-col justify-evenly gap-8 items-center">
 					<h1 className="text-3xl md:text-4xl text-[gold] lg:text-6xl font-bold text-center">
 						Welcome to MEETUP
 					</h1>
-					<p className="lg:text-2xl text-white">
+					<p className="lg:text-2xl text-white md:px-20 text-justify">
 						MEETUP is a website for participating in events. View,
 						plan and participate in our available events now !
 						Register an account to start using our services !
@@ -31,10 +32,12 @@ const page = () => {
 				</div>
 
 				<div className=" h-1/2 md:h-full w-full md:w-1/2">
-					<img
+					<Image
 						src="https://cdni.iconscout.com/illustration/premium/thumb/people-doing-party-in-night-club-illustration-download-svg-png-gif-file-formats--surprise-dj-pack-illustrations-3184274.png"
-						alt="E-commerce logo"
+						alt="A picture of people partying"
 						className="object-contain lg:object-cover h-full w-full"
+						width={500}
+						height={500}
 					/>
 				</div>
 			</section>
@@ -42,10 +45,13 @@ const page = () => {
 
 			<section className="mb-20 mt-20 h-fit lg:h-[80vh] gap-8 md:gap-4 lg:gap-0 flex-wrap w-full flex flex-col items-center md:flex-row justify-around">
 				<article className=" h-[400px] lg:h-[80%] w-[90%] md:w-1/2 lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col items-center justify-around">
-					<img
+					<Image
 						src="https://cdni.iconscout.com/illustration/premium/thumb/user-registration-illustration-download-in-svg-png-gif-file-formats--sign-up-log-register-form-create-account-or-pack-interface-illustrations-3723271.png?f=webp"
 						alt="An image of people going outside"
 						className="object-cover h-1/2 w-full"
+						width={500}
+						height={500}
+						loading="lazy"
 					/>
 					<p className="sans-serif overflow-auto text-xl md:text-base lg:text-xl p-8 text-justify h-1/2 flex items-center text-white justify-center">
 						Register now and start browsing all our available events
@@ -57,10 +63,13 @@ const page = () => {
 					className=" h-[400px] lg:h-[80%] w-[90%] md:w-1/2 lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col 
         items-center justify-around"
 				>
-					<img
+					<Image
 						src="https://cdni.iconscout.com/illustration/premium/thumb/event-management-illustration-download-in-svg-png-gif-file-formats--service-entertainment-catering-organize-celebrity-ceremony-pack-people-illustrations-4620528.png"
 						alt="An image of different clothing products"
 						className="object-cover h-1/2"
+						width={500}
+						height={500}
+						loading="lazy"
 					/>
 					<p className="sans-serif overflow-auto text-xl md:text-base lg:text-xl p-8 text-justify h-1/2 flex items-center text-white justify-center">
 						Browse through our available events today, look at their
@@ -72,10 +81,13 @@ const page = () => {
 					className=" h-[400px] lg:h-[80%] w-[90%] md:w-1/2 lg:w-1/4 bg-blue-700 hover:bg-blue-600 hover:scale-110 transition ease-in-out shadow-2xl rounded-3xl flex flex-col 
         items-center justify-around"
 				>
-					<img
+					<Image
 						src="https://cdni.iconscout.com/illustration/premium/thumb/ecommerce-illustration-download-in-svg-png-gif-file-formats--add-to-cart-shopping-bag-e-commerce-pack-illustrations-3145686.png?f=webp"
 						alt="An image of a lot of furniture"
 						className="object-cover h-1/2"
+						width={500}
+						height={500}
+						loading="lazy"
 					/>
 					<p className="sans-serif overflow-auto text-xl md:text-base lg:text-xl p-8 text-justify h-1/2 flex items-center text-white justify-center">
 						Once you've added an event you like to your agenda, you
@@ -92,10 +104,13 @@ const page = () => {
 					</h2>
 				</div>
 				<div className="w-full md:w-1/2 h-1/2 md:h-full">
-					<img
+					<Image
 						src="https://cdni.iconscout.com/illustration/premium/thumb/people-doing-party-in-night-club-illustration-download-svg-png-gif-file-formats--surprise-dj-pack-illustrations-3184274.png"
 						alt="An image for thanking our customers"
 						className="object-cover h-full w-full"
+						width={500}
+						height={500}
+						loading="lazy"
 					/>
 				</div>
 			</section>

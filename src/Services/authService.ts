@@ -24,7 +24,6 @@ export async function registerService(auth: AuthProps) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res);
 			return res;
 		})
 		.catch((e) => {
@@ -53,7 +52,6 @@ export async function loginService(auth: AuthProps) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res);
 			return res;
 		})
 		.catch((e) => {

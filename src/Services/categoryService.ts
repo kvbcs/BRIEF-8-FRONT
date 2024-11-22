@@ -7,7 +7,6 @@ export async function getAllCategories() {
 	return axios
 		.get(url)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -37,7 +36,6 @@ export async function addCategory(category: AllCategoriesProps) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -67,7 +65,6 @@ export async function updateCategory(category: AllCategoriesProps, id: string) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -93,7 +90,6 @@ export async function deleteCategory(id: string) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res);
 			return res;
 		})
 		.catch((e) => {

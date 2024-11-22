@@ -15,7 +15,6 @@ export async function getAllAgendaEvents(agendaId: string) {
 	return axios
 		.get(url, axiosConfig)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -45,7 +44,6 @@ export async function addAgendaEvent(agenda: AllAgendaProps, agendaId: string) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -78,7 +76,6 @@ export async function updateAgendaEvent(
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -104,7 +101,6 @@ export async function deleteAgendaEvent(agendaId: string, eventId: string) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res);
 			return res;
 		})
 		.catch((e) => {
@@ -130,7 +126,6 @@ export async function deleteAllAgendaEvents(agendaId: string) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res);
 			return res;
 		})
 		.catch((e) => {

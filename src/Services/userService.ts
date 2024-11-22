@@ -1,6 +1,4 @@
-import {
-	AllUserProps,
-} from "@/Utils/types";
+import { AllUserProps } from "@/Utils/types";
 import axios from "axios";
 
 //GET users --------------------------------------------------------------------------------------------------------------------
@@ -17,7 +15,6 @@ export async function getAllUsers() {
 	return axios
 		.get(url, axiosConfig)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -44,12 +41,11 @@ export async function updateUser(user: AllUserProps, id: string) {
 				firstName: user.firstName,
 				lastName: user.lastName,
 				email: user.email,
-				role: user.role
+				role: user.role,
 			},
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -75,7 +71,6 @@ export async function deleteUser(id: string) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res);
 			return res;
 		})
 		.catch((e) => {

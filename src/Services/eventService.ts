@@ -20,7 +20,6 @@ export async function getOneEvent(id: string) {
 	return axios
 		.get(url)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -36,7 +35,6 @@ export async function searchEvents(query: string) {
 	return axios
 		.get(url)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -72,7 +70,6 @@ export async function addEvent(event: AllEventsProps) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -108,7 +105,6 @@ export async function updateEvent(eventUpdateData: AllEventsProps, id: string) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {
@@ -134,7 +130,6 @@ export async function deleteEvent(id: string) {
 			axiosConfig
 		)
 		.then((res) => {
-			console.log(res);
 			return res;
 		})
 		.catch((e) => {

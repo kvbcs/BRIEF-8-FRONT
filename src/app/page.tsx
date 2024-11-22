@@ -15,7 +15,7 @@ const page = () => {
 					<h1 className="text-3xl md:text-4xl text-[gold] lg:text-6xl font-bold text-center">
 						Welcome to MEETUP
 					</h1>
-					<p className="lg:text-2xl text-white md:px-20 text-justify">
+					<p className="lg:text-2xl text-white md:px-20 text-left">
 						MEETUP is a website for participating in events. View,
 						plan and participate in our available events now !
 						Register an account to start using our services !
@@ -38,6 +38,7 @@ const page = () => {
 						className="object-contain lg:object-cover h-full w-full"
 						width={500}
 						height={500}
+						loading="lazy"
 					/>
 				</div>
 			</section>
@@ -53,7 +54,7 @@ const page = () => {
 						height={500}
 						loading="lazy"
 					/>
-					<p className="sans-serif overflow-auto text-xl md:text-base lg:text-xl p-8 text-justify h-1/2 flex items-center text-white justify-center">
+					<p className="sans-serif overflow-auto text-xl md:text-base lg:text-xl p-8 text-left h-1/2 flex items-center text-white justify-center">
 						Register now and start browsing all our available events
 						! Only logged in users can add events they like to their
 						agenda and participate in said events.
@@ -71,7 +72,7 @@ const page = () => {
 						height={500}
 						loading="lazy"
 					/>
-					<p className="sans-serif overflow-auto text-xl md:text-base lg:text-xl p-8 text-justify h-1/2 flex items-center text-white justify-center">
+					<p className="sans-serif overflow-auto text-xl md:text-base lg:text-xl p-8 text-left h-1/2 flex items-center text-white justify-center">
 						Browse through our available events today, look at their
 						descriptions, start dates and end dates and click to
 						participate in the events you like !
@@ -89,7 +90,7 @@ const page = () => {
 						height={500}
 						loading="lazy"
 					/>
-					<p className="sans-serif overflow-auto text-xl md:text-base lg:text-xl p-8 text-justify h-1/2 flex items-center text-white justify-center">
+					<p className="sans-serif overflow-auto text-xl md:text-base lg:text-xl p-8 text-left h-1/2 flex items-center text-white justify-center">
 						Once you've added an event you like to your agenda, you
 						can modify the quantity of seats or delete them entirely
 						! Buy your seats today !

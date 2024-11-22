@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
 	return (
-		<footer className="w-full h-fit bg-black flex flex-col justify-between items-center">
+		<footer className="w-full h-[30vh] bg-black flex flex-col justify-between items-center">
 			<div className="flex justify-center w-full">
 				<p className="pt-2 text-[gray] italic text-center">
 					© 2024 All Rights Reserved. Developped by Kyllian Vibancos

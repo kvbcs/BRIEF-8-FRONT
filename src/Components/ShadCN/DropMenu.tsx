@@ -61,8 +61,7 @@ const DropMenu = () => {
 						<IoIosMenu size={52} />
 					</button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent>
-					<DropdownMenuSeparator />
+				<DropdownMenuContent className="h-fit flex flex-col gap-4">
 					<Link href="/">
 						<DropdownMenuItem className="flex flex-row items-center gap-2">
 							<FaHouse />
@@ -105,7 +104,7 @@ const DropMenu = () => {
 								onClick={() => {
 									push("/login");
 								}}
-								className="bg-white text-black rounded-lg hover:bg-slate-300 flex flex-row items-center gap-2"
+								className="bg-white text-black border-2 border-black rounded-lg hover:bg-slate-300 flex flex-row items-center gap-2"
 							>
 								<FaSignInAlt />
 								Login

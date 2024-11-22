@@ -7,7 +7,6 @@ export async function getAllEvents() {
 	return axios
 		.get(url)
 		.then((res) => {
-			console.log(res.data);
 			return res.data;
 		})
 		.catch((e) => {

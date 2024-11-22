@@ -98,7 +98,7 @@ const Header = () => {
 						onClick={() => {
 							push("/login");
 						}}
-						className="hidden md:flex bg-white hover:bg-black hover:text-white transition ease-in-out hover:scale-110 text-black flex-row items-center gap-2 justify-evenly w-[125px] p-3 rounded-full "
+						className="hidden md:flex bg-white hover:bg-black border-black border-2 hover:border-white hover:text-white transition ease-in-out hover:scale-110 text-black flex-row items-center gap-2 justify-evenly w-[125px] p-3 rounded-full "
 					>
 						<FaSignInAlt size={26} />
 						Login
@@ -107,7 +107,7 @@ const Header = () => {
 						onClick={() => {
 							push("/register");
 						}}
-						className="hidden md:flex hover:scale-110 hover:text-white transition ease-in-out bg-[gold] hover:bg-yellow-600 flex-row items-center justify-evenly gap-2 w-[125px] text-black  font-bold p-3 rounded-full"
+						className="hidden md:flex hover:scale-110 hover:text-white transition ease-in-out bg-[gold] hover:bg-yellow-600 flex-row items-center justify-evenly gap-2 w-[125px] text-black border-2 border-black hover:border-white  font-bold p-3 rounded-full"
 					>
 						<FaUserPen size={26} />
 						Register

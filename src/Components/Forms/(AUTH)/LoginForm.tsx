@@ -57,7 +57,7 @@ export const LoginForm = () => {
 	};
 
 	return (
-		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+		<div className="flex bg-slate-100 min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<img
 					alt="Ecommerce logo"
@@ -70,7 +70,10 @@ export const LoginForm = () => {
 			</div>
 
 			<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-				<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					className="space-y-6 md:w-2/3 m-auto"
+				>
 					<div>
 						<label
 							htmlFor="email"
@@ -83,7 +86,7 @@ export const LoginForm = () => {
 								id="email"
 								type="email"
 								autoComplete="email"
-								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								className="block w-full border-0 py-1.5 text-gray-900 shadow-2xl rounded-full ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-700 sm:text-sm sm:leading-6 pl-3"
 								{...register("email", { required: true })}
 							/>
 							{errors.email && (
@@ -107,7 +110,7 @@ export const LoginForm = () => {
 							<input
 								id="password"
 								type="password"
-								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								className="block w-full border-0 py-1.5 text-gray-900 shadow-2xl rounded-full ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-700 sm:text-sm sm:leading-6 pl-3"
 								{...register("password", {
 									required: true,
 								})}
@@ -123,8 +126,8 @@ export const LoginForm = () => {
 					<div>
 						<input
 							type="submit"
-							className="flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-							value="Log in"
+							className="flex w-full justify-center rounded-full bg-[gold] px-3 py-1.5 text-sm font-semibold leading-6 text-black hover:text-white shadow-sm hover:bg-[#a78a2b] hover:scale-110 transition ease-in-out hover:cursor-pointer border-2 border-black"
+							value="Submit"
 						/>
 					</div>
 				</form>
@@ -133,9 +136,9 @@ export const LoginForm = () => {
 					Not a member ?{" "}
 					<Link
 						href="/register"
-						className="font-semibold leading-6 text-sky-500 hover:text-sky-700"
+						className="font-semibold leading-6 text-blue-700 hover:text-sky-500"
 					>
-						Register{" "}
+						Register
 					</Link>
 				</p>
 			</div>

@@ -25,9 +25,9 @@ export const AddCategoryModal = ({ setisLoading, isLoading }: any) => {
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-blue-700 text-center rounded-lg text-white w-fit flex flex-row justify-center gap-2 items-center p-3 hover:bg-sky-500 hover:scale-125 transition ease-in-out text-3xl font-bold"
+				className="bg-gradient-to-t from-[gold] to-[#FEB336] text-center rounded-full text-black hover:text-white border-2 border-black hover:border-white w-fit flex flex-row justify-center gap-2 items-center p-3 hover:scale-125 transition ease-in-out text-3xl font-bold shadow-2xl"
 			>
-				<IoMdAddCircle size={26} />
+				<IoMdAddCircle size={30} />
 				Add a category
 			</button>
 

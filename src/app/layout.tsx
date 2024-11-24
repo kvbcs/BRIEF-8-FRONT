@@ -22,7 +22,7 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<Header />
 				<Toaster position="top-left" reverseOrder={false} />
-				<main className="flex min-h-[90vh] flex-col items-center gap-4 bg-white">
+				<main className="flex min-h-[90vh] flex-col items-center gap-4 bg-slate-200">
 					{children}
 				</main>
 				<Footer />

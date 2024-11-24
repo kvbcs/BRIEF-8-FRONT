@@ -3,14 +3,14 @@ import React from "react";
 
 const Footer = () => {
 	return (
-		<footer className="w-full h-[30vh] bg-black flex flex-col justify-between items-center">
+		<footer className="w-full h-[30vh] bg-gradient-to-b from-black to-slate-800 pt-6 flex flex-col justify-between items-center">
 			<div className="flex justify-center w-full">
 				<p className="pt-2 text-[gray] italic text-center">
 					© 2024 All Rights Reserved. Developped by Kyllian Vibancos
 				</p>
 			</div>
-			<div className="w-full flex p-4 justify-center text-white text-xl m-auto">
-				<ul>
+			<nav className="w-full p-4 text-white text-xl m-auto">
+				<ul className="flex flex-col items-center m-auto gap-4">
 					<Link href={"/privacy-policy"}>
 						<li className="hover:underline">Privacy Policy</li>
 					</Link>
@@ -24,7 +24,7 @@ const Footer = () => {
 						<li className="hover:underline">LinkedIn</li>
 					</Link>{" "}
 				</ul>
-			</div>
+			</nav>
 		</footer>
 	);
 };

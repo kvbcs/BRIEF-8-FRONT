@@ -37,14 +37,18 @@ const UserCards = ({
 			[];
 	}
 	return (
-		<div className="bg-gray-800 w-full flex flex-row gap-2 h-[125px] items-center justify-evenly p-2 rounded-lg text-white">
-			<div className="w-1/2 flex flex-col gap-3 flex-wrap">
+		<div className="bg-white w-full flex flex-row gap-2 h-[125px] items-center justify-evenly p-2 rounded-lg">
+			<div className="w-1/2 flex flex-col gap-1 text-black flex-wrap">
 				<p>First Name : {user.firstName}</p>
 				<p>Last Name : {user.lastName}</p>
 				<p>Email : {user.email}</p>
 			</div>
 			<div className="w-fit flex flex-col gap-2">
-				<UpdateUserModal setisLoading={setisLoading} user={user} isLoading={isLoading} />
+				<UpdateUserModal
+					setisLoading={setisLoading}
+					user={user}
+					isLoading={isLoading}
+				/>
 				<button
 					onClick={(e) => {
 						console.log(user.id);

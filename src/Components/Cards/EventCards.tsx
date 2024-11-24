@@ -16,6 +16,9 @@ const EventCards = ({
 	event: AllEventsProps;
 	setisLoading: any;
 }) => {
+	const formatDate = (date?: Date | string) =>
+		date ? format(new Date(date), "MM/dd/yyyy HH:mm") : "";
+
 	function handleEventDelete(id: string) {
 		deleteEvent(id)
 			.then((res) => {
@@ -56,21 +59,19 @@ const EventCards = ({
 
 							<button
 								onClick={(e) => {
-									console.log(event.id);
-
 									handleEventDelete(event.id);
 								}}
-								className="flex flex-row items-center text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"
+								className="flex flex-row items-center hover:scale-125 transition ease-in-out text-white bg-red-500 hover:bg-red-700 p-3 rounded-full"
 							>
-								<FaTrashAlt />
+								<FaTrashAlt size={30}/>
 							</button>
 						</>
 					)}
 				</div>
 			</div>
 			<Link href={`events/${event.id}`}>
-				<div className="bg-stone-100 hover:border-stone-300 mb-20 hover:bg-stone-300 hover:cursor-pointer hover:scale-125 transition ease-in-out shadow-2xl border-2 border-stone-100 rounded-3xl h-full md:w-[400px] object-cover">
-					<div className="h-2/3 shadow-xl rounded-lg">
+				<section className="bg-white mb-20 hover:bg-stone-200 hover:cursor-pointer hover:scale-110 transition ease-in-out shadow-2xl border-2 rounded-3xl h-full md:w-[400px] object-cover">
+					<article className="h-2/3 shadow-xl rounded-lg">
 						<Image
 							className="rounded-t-xl h-full w-full shadow-xl object-cover"
 							src={event.image}
@@ -79,13 +80,16 @@ const EventCards = ({
 							height={500}
 							loading="lazy"
 						/>
-					</div>
+					</article>
 
-					<div className="text-center h-1/3 flex flex-col justify-evenly px-6">
-						<div className="flex flex-row justify-center items-center gap-10 w-full px-2 text-justify">
+					<article className="text-center h-1/3 flex flex-col justify-evenly px-6">
+						<div className=" w-full text-center">
 							<h3 className="text-black font-bold text-2xl tracking-tight dark:text-white">
 								{event.title}
 							</h3>
+							<p className="mt-4">
+								Starts : {formatDate(event.startDate)}
+							</p>
 						</div>
 						{/* <h3 className="text-[gray] font-semibold text-xl tracking-tight dark:text-white">
 						{event.maxParticipants} spots available.
@@ -103,8 +107,8 @@ const EventCards = ({
 							setisLoading={setisLoading}
 						/> */}
 						</div>
-					</div>
-				</div>
+					</article>
+				</section>
 			</Link>
 		</div>
 	);

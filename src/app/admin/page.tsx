@@ -24,6 +24,7 @@ const page = () => {
 				toast.success("Users and Categories loaded!", {
 					id: "data-loaded",
 				});
+				
 			})
 			.catch((e) => {
 				toast.error("Error loading data", { id: "data-error" });
@@ -40,7 +41,7 @@ const page = () => {
 	return (
 		<div className="h-screen mb-40 w-full flex flex-col justify-evenly">
 			<Title title={"Administration Dashboard"} />
-			<div className="flex flex-row w-full justify-evenly mt-10">
+			<section className="flex flex-row w-full justify-evenly mt-10">
 				<AddEventModal
 					setisLoading={setisLoading}
 					isLoading={isLoading}
@@ -49,9 +50,9 @@ const page = () => {
 					setisLoading={setisLoading}
 					isLoading={isLoading}
 				/>
-			</div>
-			<div className="flex flex-col gap-4 md:flex-row md:justify-evenly md:h-[500px]">
-				<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/3 rounded-lg h-fit max-h-[200px] bg-black text-white overflow-auto md:h-fit md:max-h-full">
+			</section>
+			<section className="flex flex-col gap-4 md:flex-row md:justify-evenly md:h-[500px]">
+				<article className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/3 rounded-3xl h-fit max-h-[75vh] bg-gradient-to-b from-blue-700 to-sky-500 text-white shadow-2xl overflow-auto md:h-fit md:max-h-[570px]">
 					<h2 className="text-3xl font-bold my-10">All Users</h2>
 					{userList &&
 						userList.map((user) => {
@@ -64,8 +65,8 @@ const page = () => {
 								/>
 							);
 						})}
-				</div>
-				<div className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/3 rounded-lg h-fit max-h-[200px] bg-black text-white overflow-auto md:h-fit md:max-h-full">
+				</article>
+				<article className="mt-10 w-full flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/3 rounded-3xl h-fit max-h-[75vh] bg-gradient-to-b from-blue-700 to-sky-500 text-white shadow-2xl overflow-auto md:h-fit md:max-h-[570px]">
 					<h2 className="text-3xl font-bold my-10">All Categories</h2>
 					{categoryList &&
 						categoryList.map((category) => {
@@ -77,8 +78,8 @@ const page = () => {
 								/>
 							);
 						})}
-				</div>
-			</div>
+				</article>
+			</section>
 		</div>
 	);
 };

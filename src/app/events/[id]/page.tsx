@@ -22,7 +22,6 @@ const page = ({
 }) => {
 	const [eventDetails, setEventDetails] = useState<AllEventsProps>();
 	const [isLoading, setisLoading] = useState(true);
-	console.log("event ici", eventDetails);
 
 	const eventId = params.id;
 	const formatDate = (date?: Date | string) =>
@@ -30,7 +29,6 @@ const page = ({
 
 	useEffect(() => {
 		if (!eventId) {
-			console.error("Event ID is undefined");
 			toast.error("Event ID is missing.");
 			setisLoading(false);
 			return;
@@ -45,8 +43,7 @@ const page = ({
 				}
 			})
 			.catch((e) => {
-				console.log(e);
-				toast.error("Unexisting id" + e);
+				toast.error("Unexisting id");
 			})
 			.finally(() => {
 				setisLoading(false);
@@ -101,7 +98,7 @@ const page = ({
 						$ {eventDetails?.price}
 					</p>
 					<p className="text-black italic font-bold bg-gray-300 rounded-full text-base md:text-xl p-2 md:p-4">
-						{eventDetails?.maxParticipants} places available.
+						{eventDetails?.quantity}/{eventDetails?.maxParticipants} participants.
 					</p>
 					<AddAgendaModal
 						event={eventDetails!}

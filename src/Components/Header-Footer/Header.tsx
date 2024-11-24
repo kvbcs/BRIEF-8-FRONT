@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import DropMenu from "../ShadCN/DropMenu";
 import Link from "next/link";
 import { FaArrowRightFromBracket, FaUserPen, FaHouse } from "react-icons/fa6";
-import { FaCalendarAlt, FaShoppingCart, FaSignInAlt } from "react-icons/fa";
+import { FaCalendarAlt, FaSignInAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { RiAdminFill } from "react-icons/ri";
 import { useStoreConnect } from "@/Components/stores/connextTest";
@@ -28,9 +28,18 @@ const Header = () => {
 
 	function checkIsConnected() {
 		const role = window.localStorage.getItem("role");
-		const cart = window.localStorage.getItem("cart");
+		const agenda = window.localStorage.getItem("agenda");
 		const jwt = window.localStorage.getItem("token");
-		return jwt !== null || cart !== null || role !== null;
+		return (
+			(jwt !== null &&
+				jwt.length > 62 &&
+				agenda !== null &&
+				agenda.length > 30 &&
+				role !== null &&
+				role.length > 30 &&
+				role === `${process.env.NEXT_PUBLIC_ADMIN_ROLE}`) ||
+			role === `${process.env.NEXT_PUBLIC_USER_ROLE}`
+		);
 	}
 
 	useEffect(() => {
@@ -73,54 +82,54 @@ const Header = () => {
 						Events
 					</li>
 				</Link>
-			</ul>
-			{isConnected ? (
-				<ul className="text-white text-xl font-bold flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
-					<Link href="/agenda">
-						<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
-							<FaCalendarAlt size={26} />
-							Agenda
-						</li>
-					</Link>
-
-					{isAdmin && (
-						<Link href="/admin">
+				{isConnected ? (
+					<ul className="text-white text-xl font-bold flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
+						<Link href="/agenda">
 							<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
-								<RiAdminFill size={26} />
-								Admin
+								<FaCalendarAlt size={26} />
+								Agenda
 							</li>
 						</Link>
-					)}
-				</ul>
-			) : (
-				<div className="flex flex-row w-fit  justify-evenly gap-8 items-center">
-					<button
-						onClick={() => {
-							push("/login");
-						}}
-						className="hidden md:flex bg-white hover:bg-black border-black border-2 hover:border-white hover:text-white transition ease-in-out hover:scale-110 text-black flex-row items-center gap-2 justify-evenly w-[125px] p-3 rounded-full "
-					>
-						<FaSignInAlt size={26} />
-						Login
-					</button>
-					<button
-						onClick={() => {
-							push("/register");
-						}}
-						className="hidden md:flex hover:scale-110 hover:text-white transition ease-in-out bg-[gold] hover:bg-yellow-600 flex-row items-center justify-evenly gap-2 w-[125px] text-black border-2 border-black hover:border-white  font-bold p-3 rounded-full"
-					>
-						<FaUserPen size={26} />
-						Register
-					</button>
-				</div>
-			)}
+
+						{isAdmin && (
+							<Link href="/admin">
+								<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
+									<RiAdminFill size={26} />
+									Admin
+								</li>
+							</Link>
+						)}
+					</ul>
+				) : (
+					<div className="flex flex-row w-fit  justify-evenly gap-8 items-center">
+						<button
+							onClick={() => {
+								push("/login");
+							}}
+							className="hidden md:flex bg-white hover:bg-black border-black border-2 hover:border-white hover:text-white transition ease-in-out hover:scale-110 text-black flex-row items-center gap-2 justify-evenly w-[125px] p-3 rounded-full "
+						>
+							<FaSignInAlt size={26} />
+							Login
+						</button>
+						<button
+							onClick={() => {
+								push("/register");
+							}}
+							className="hidden md:flex hover:scale-110 hover:text-white transition ease-in-out bg-[gold] hover:bg-yellow-600 flex-row items-center justify-evenly gap-2 w-[125px] text-black border-2 border-black hover:border-white  font-bold p-3 rounded-full"
+						>
+							<FaUserPen size={26} />
+							Register
+						</button>
+					</div>
+				)}
+			</ul>
 			{isConnected && (
 				<button
 					onClick={handleDisconnect}
-					className="hidden md:flex text-xl bg-gradient-to-t from-red-700 to-red-500 flex-row justify-evenly items-center hover:scale-125 transition ease-in-out text-white hover:text-black p-3 rounded-full font-bold w-[175px]"
+					className="hidden md:flex text-xl bg-white flex-row justify-evenly items-center hover:scale-125 transition ease-in-out text-black hover:text-white hover:bg-black border-2 border-black hover:border-white p-3 rounded-full font-bold w-fit lg:w-[175px]"
 				>
 					<FaArrowRightFromBracket size={26} />
-					Disconnect
+					Log out
 				</button>
 			)}
 			<DropMenu />

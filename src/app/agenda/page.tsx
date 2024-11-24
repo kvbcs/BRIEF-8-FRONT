@@ -56,8 +56,23 @@ const page = ({ agenda }: { agenda: AllAgendaProps }) => {
 		return <Loading />;
 	}
 
+	if (agendaList.length === 0) {
+		return (
+			<main className="w-full h-full m-auto text-center">
+				<h2 className="text-xl md:text-5xl font-bold">
+					You have no events in your agenda !
+				</h2>
+				<img
+					src="https://i.pinimg.com/originals/14/fd/8e/14fd8efea17748c4b959a07f91e09154.png"
+					alt="An image of people with question marks"
+					className="h-1/3 w-full md:w-1/4 m-auto"
+				/>
+			</main>
+		);
+	}
+
 	return (
-		<div className="min-h-[80vh] max-h-fit w-full flex flex-col gap-14 justify-between">
+		<div className="min-h-[80vh] max-h-fit w-full flex flex-col mt-10 gap-14 justify-between">
 			<Title title={"Your Agenda"} />
 
 			{agendaList &&

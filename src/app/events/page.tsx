@@ -31,7 +31,7 @@ const page = () => {
 			})
 			.catch((e) => {
 				console.log(e);
-				toast.error("Server error" , { id: "server-error" });
+				toast.error("Server error", { id: "server-error" });
 			})
 			.finally(() => {
 				setisLoading(false);
@@ -42,12 +42,12 @@ const page = () => {
 		return <Loading />;
 	}
 	return (
-		<div className="px-8 min-h-[80vh] max-h-fit mb-40 w-full flex flex-col gap-16 my-8">
+		<main className="px-8 min-h-[80vh] max-h-fit mb-40 w-full flex flex-col gap-16 my-8">
 			<Title title={"Available Events"} />
 
 			<Search setEventList={setEventList} setIsLoading={setisLoading} />
-			<div className="w-full flex flex-row justify-center md:justify-end gap-2">
-				<select className="border-2 rounded-lg p-2 border-black w-fit">
+			<aside className="w-full flex flex-row justify-center md:justify-end gap-2">
+				<select className="border-2 rounded-full shadow-2xl p-2 border-black w-fit">
 					{categoryList &&
 						categoryList.map((category) => {
 							return (
@@ -57,13 +57,13 @@ const page = () => {
 							);
 						})}
 				</select>
-				<select className="border-2 rounded-lg p-2 border-black w-fit">
+				<select className="border-2 rounded-full shadow-2xl p-2 border-black w-fit">
 					<option>0-50$</option>
 					<option>50-100$</option>
 					<option>+100$</option>
 				</select>
-			</div>
-			<div className="flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-2">
+			</aside>
+			<section className="flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-2">
 				{eventList &&
 					eventList.map((event) => {
 						return (
@@ -74,8 +74,8 @@ const page = () => {
 							/>
 						);
 					})}
-			</div>
-		</div>
+			</section>
+		</main>
 	);
 };
 

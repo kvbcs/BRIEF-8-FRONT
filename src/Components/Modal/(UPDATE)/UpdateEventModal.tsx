@@ -35,9 +35,9 @@ export const UpdateEventModal = ({
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-orange-500 rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:bg-orange-700"
+				className="bg-orange-400 rounded-full text-white w-fit flex flex-row justify-center items-center p-3 hover:bg-orange-600 hover:scale-125 transition ease-in-out"
 			>
-				<FaEdit />
+				<FaEdit size={30} />
 			</button>
 
 			<Modal

@@ -10,7 +10,7 @@ const page = () => {
 
 	return (
 		<main className="h-full w-full">
-			<section className="bg-gradient-to-b from-blue-700 to-blue-500 h-[90vh] md:h-[80vh] w-full flex flex-col md:flex-row shadow-2xl rounded-b-3xl mb-40">
+			<section className="bg-gradient-to-b from-blue-700 to-sky-500 h-[90vh] md:h-[80vh] w-full flex flex-col md:flex-row shadow-2xl rounded-b-3xl mb-40">
 				<div className="h-1/2 md:h-full p-6 lg:p-20 w-full md:w-1/2 flex flex-col justify-evenly gap-8 items-center">
 					<h1 className="text-3xl md:text-4xl text-[gold] lg:text-6xl font-bold text-center">
 						Welcome to MEETUP
@@ -24,10 +24,10 @@ const page = () => {
 						onClick={() => {
 							push("/register");
 						}}
-						className="md:flex bg-[gold] hover:bg-yellow-600 font-bold hover:scale-125 text-base md:text-3xl transition ease-in-out flex-row items-center gap-2 w-fit flex hover:text-white p-3 rounded-full"
+						className="md:flex bg-[gold] hover:bg-yellow-600 border-2 border-black hover:border-white font-bold hover:scale-125 text-base md:text-3xl transition ease-in-out flex-row items-center gap-2 w-fit flex hover:text-white p-3 rounded-full"
 					>
 						<FaUserPen className="size-8 md:size-19" />
-						Register today !
+						Register
 					</button>
 				</div>
 

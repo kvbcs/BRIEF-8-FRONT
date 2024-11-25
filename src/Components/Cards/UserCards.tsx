@@ -29,7 +29,7 @@ const UserCards = ({
 				}
 			})
 			.catch((e) => {
-				console.log(e), toast.error("Server error");
+				toast.error("Server error");
 			})
 			.finally(() => {
 				setisLoading(false);
@@ -37,8 +37,8 @@ const UserCards = ({
 			[];
 	}
 	return (
-		<div className="bg-white w-full flex flex-row gap-2 h-[125px] items-center justify-evenly p-2 rounded-lg">
-			<div className="w-1/2 flex flex-col gap-1 text-black flex-wrap">
+		<div className="bg-white w-full flex flex-row gap-2 h-[150px] items-center justify-evenly p-2 rounded-lg">
+			<div className="w-1/2 flex flex-col gap-1 break-words whitespace-nowrap overflow-y-auto truncate text-black flex-wrap">
 				<p>First Name : {user.firstName}</p>
 				<p>Last Name : {user.lastName}</p>
 				<p>Email : {user.email}</p>

@@ -14,18 +14,19 @@ export const AddCategoryModal = ({ setisLoading, isLoading }: any) => {
 		top: "50%",
 		left: "50%",
 		transform: "translate(-50%, -50%)",
-		width: 600,
+		width: 350,
 		bgcolor: "background.paper",
 		border: "2px solid #000",
 		boxShadow: 24,
-		p: 4,
+		p: 0,
+		borderRadius: 15,
 	};
 
 	return (
 		<>
 			<button
 				onClick={handleOpen}
-				className="bg-gradient-to-t from-[gold] to-[#FEB336] text-center rounded-full text-black hover:text-white border-2 border-black hover:border-white w-fit flex flex-row justify-center gap-2 items-center p-3 hover:scale-125 transition ease-in-out text-3xl font-bold shadow-2xl"
+				className="bg-gradient-to-t from-[gold] to-[#FEB336] text-center rounded-full text-black hover:text-white border-2 border-black hover:border-white w-fit flex flex-row justify-center gap-2 items-center p-3 hover:scale-125 transition ease-in-out text-base md:text-3xl font-bold shadow-2xl"
 			>
 				<IoMdAddCircle size={30} />
 				Add a category

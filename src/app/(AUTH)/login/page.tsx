@@ -3,7 +3,7 @@ import React from "react";
 
 const page = () => {
 	return (
-		<main className="w-full h-screen">
+		<main className="w-full h-fit md:h-screen md:max-h-fit">
 			<LoginForm />
 		</main>
 	);

@@ -4,13 +4,12 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu";
 import { IoIosMenu } from "react-icons/io";
 import Link from "next/link";
 import { FaArrowRightFromBracket, FaHouse, FaUserPen } from "react-icons/fa6";
-import { FaShoppingCart, FaSignInAlt, FaTshirt } from "react-icons/fa";
+import { FaCalendarAlt, FaSignInAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { RiAdminFill } from "react-icons/ri";
 import { useStoreConnect } from "../stores/connextTest";
@@ -64,13 +63,13 @@ const DropMenu = () => {
 				<DropdownMenuContent className="h-fit flex flex-col gap-4">
 					<Link href="/">
 						<DropdownMenuItem className="flex flex-row items-center gap-2">
-							<FaHouse />
+							<FaHouse size={20} />
 							Home
 						</DropdownMenuItem>
 					</Link>
 					<Link href="/events">
 						<DropdownMenuItem className="flex flex-row items-center gap-2">
-							<BiSolidParty />
+							<BiSolidParty size={20} />
 							Events
 						</DropdownMenuItem>{" "}
 					</Link>
@@ -79,23 +78,23 @@ const DropMenu = () => {
 						<>
 							<Link href="/agenda">
 								<DropdownMenuItem className="flex flex-row items-center gap-2">
-									<FaHouse />
+									<FaCalendarAlt size={20} />
 									Agenda
 								</DropdownMenuItem>
 							</Link>
 							{isAdmin && (
 								<Link href="/admin">
 									<DropdownMenuItem className="flex flex-row items-center gap-2">
-										<RiAdminFill /> Admin
+										<RiAdminFill size={20} /> Admin
 									</DropdownMenuItem>
 								</Link>
 							)}
 							<DropdownMenuItem
 								onClick={handleDisconnect}
-								className="bg-red-700 text-white rounded-lg hover:bg-red-700 flex flex-row items-center gap-2"
+								className="bg-gradient-to-t from-red-800 to-red-600 text-white rounded-lg hover:bg-red-700 flex flex-row items-center gap-2"
 							>
-								<FaArrowRightFromBracket />
-								Disconnect
+								<FaArrowRightFromBracket size={20} />
+								Log Out
 							</DropdownMenuItem>
 						</>
 					) : (
@@ -104,18 +103,18 @@ const DropMenu = () => {
 								onClick={() => {
 									push("/login");
 								}}
-								className="bg-white text-black border-2 border-black rounded-lg hover:bg-slate-300 flex flex-row items-center gap-2"
+								className="bg-white text-black border-2 border-black rounded-full hover:bg-slate-300 flex flex-row items-center gap-2"
 							>
-								<FaSignInAlt />
+								<FaSignInAlt size={20} />
 								Login
 							</DropdownMenuItem>
 							<DropdownMenuItem
 								onClick={() => {
 									push("/register");
 								}}
-								className="bg-sky-700 text-white rounded-lg hover:bg-sky-700 flex flex-row items-center gap-2"
+								className="bg-gradient-to-t from-[gold] to-[#FEB537] rounded-full flex flex-row items-center gap-2 text-black"
 							>
-								<FaUserPen />
+								<FaUserPen size={20} />
 								Register
 							</DropdownMenuItem>
 						</>

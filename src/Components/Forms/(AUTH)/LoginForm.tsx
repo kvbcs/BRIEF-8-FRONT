@@ -36,28 +36,23 @@ export const LoginForm = () => {
 						window.localStorage.setItem("agenda", res.data.agenda);
 						toast.success("Login successful !");
 						setIsConnected(true);
-
 						push("/events");
 						setisLoading(false);
-						console.log(res.data);
-						console.log(res.status);
 					}
 					if (res.status === 403) {
 						toast.error("Invalid credentials");
 					}
 				})
 				.catch((e) => {
-					console.log(e);
-					toast.error("Invalid credentials" + e);
+					toast.error("Invalid credentials");
 				});
 		} catch (e) {
-			toast.error("Server error" + e);
-			console.log(e);
+			toast.error("Server error");
 		}
 	};
 
 	return (
-		<div className="flex bg-slate-100 min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-20 lg:px-8">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<img
 					alt="Ecommerce logo"
@@ -126,7 +121,7 @@ export const LoginForm = () => {
 					<div>
 						<input
 							type="submit"
-							className="flex w-full justify-center rounded-full bg-[gold] px-3 py-1.5 text-sm font-semibold leading-6 text-black hover:text-white shadow-sm hover:bg-[#a78a2b] hover:scale-110 transition ease-in-out hover:cursor-pointer border-2 border-black"
+							className="flex w-full justify-center rounded-full bg-gradient-to-t from-[gold] to-[#FEB537] px-3 py-1.5 text-sm font-semibold leading-6 text-black hover:text-blue-700 hover:border-blue-700 shadow-2xl hover:scale-125 transition ease-in-out hover:cursor-pointer border-2 border-black"
 							value="Submit"
 						/>
 					</div>

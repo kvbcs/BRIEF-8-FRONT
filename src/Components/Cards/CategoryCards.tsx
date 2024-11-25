@@ -24,24 +24,28 @@ const CategoryCards = ({
 				}
 			})
 			.catch((e) => {
-					toast.error(
-						"Events with this category can't be deleted yet"
-					);
+				toast.error("Events with this category can't be deleted yet");
 			}),
 			[];
 	}
 	return (
-		<div className="w-full flex px-10 flex-row justify-around h-[125px] items-center bg-white rounded-lg p-2">
-			<h3 className="text-xl text-black font-bold w-1/3" key={category.id}>
+		<div className="w-full flex px-2 md:px-10 flex-row justify-around h-[125px] items-center bg-white rounded-lg p-2 gap-4">
+			<h3
+				className="text-xl text-black text-center font-bold w-1/3 break-words truncate whitespace-nowrap"
+				key={category.id}
+			>
 				{category.name}
 			</h3>
-			<img
+			<Image
 				src={category.image}
-				alt=""
+				alt="An image of the category"
 				key={category.id}
 				className="h-[90%] w-1/3 object-cover rounded-3xl"
+				loading="lazy"
+				width={500}
+				height={500}
 			/>
-			<div className="flex flex-col h-full items-center justify-evenly gap-2">
+			<div className="flex flex-col h-full items-center w-fit justify-evenly gap-2">
 				<UpdateCategoryModal
 					setisLoading={setisLoading}
 					category={category}

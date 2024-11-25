@@ -14,7 +14,7 @@ export type AllEventsProps = {
 	title: string;
 	image: string;
 	description: string;
-	quantity: number;
+	quantity?: number;
 	maxParticipants: number;
 	startDate: string;
 	endDate: string;
@@ -48,7 +48,7 @@ export type AllUserProps = {
 	firstName: string;
 	lastName: string;
 	email: string;
-	role: string;
+	role?: string;
 };
 
 export type AllAgendaProps = {

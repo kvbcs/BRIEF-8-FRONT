@@ -16,7 +16,6 @@ const UpdateCategoryForm = ({
 	const [name, setName] = useState(category?.name || "");
 	const [image, setImage] = useState(category?.image || "");
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [isReloadNeeded, setisReloadNeeded] = useState(false);
 	const [categoryData, setcategoryData] = useState<AllCategoriesProps>();
 
 	useEffect(() => {
@@ -43,20 +42,16 @@ const UpdateCategoryForm = ({
 		updateCategory(categoryUpdateData, categoryUpdateData.id)
 			.then((res) => {
 				setisLoading(true);
-				console.log(res);
-				console.log(categoryUpdateData);
 				toast.success("Category updated !");
 			})
 			.catch((e) => {
-				toast.error("Error" + e);
-				console.log(e);
-				console.log(categoryUpdateData);
+				toast.error("Server error");
 			}),
 			[];
 	}
 
 	return (
-		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/2 mx-auto">
+		<div className="flex min-h-full flex-1 flex-col justify-center px-0 md:px-6 py-12 lg:px-8 bg-white w-2/3 mx-auto">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">
 					Edit a category

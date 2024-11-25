@@ -43,7 +43,7 @@ export const RegisterForm = () => {
 	};
 
 	return (
-		<div className="flex bg-slate-100 min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<img
 					alt="The E-commerce logo"
@@ -56,7 +56,10 @@ export const RegisterForm = () => {
 			</div>
 
 			<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-				<form onSubmit={handleSubmit(onSubmit)} className="space-y-6 md:w-2/3 m-auto">
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					className="space-y-6 md:w-2/3 m-auto"
+				>
 					<div>
 						<label
 							htmlFor="firstName"
@@ -141,7 +144,7 @@ export const RegisterForm = () => {
 					<div>
 						<input
 							type="submit"
-							className="flex w-full justify-center rounded-full border-2 border-black hover:border-white bg-[gold] px-3 py-1.5 text-sm font-semibold leading-6 text-black hover:text-white shadow-2xl hover:bg-yellow-500 hover:cursor-pointer hover:scale-125 transition ease-in-out"
+							className="flex w-full justify-center rounded-full border-2 border-black hover:border-blue-700 bg-gradient-to-t from-[gold] to-[#FEB537] px-3 py-1.5 text-sm font-semibold leading-6 text-black hover:text-blue-700 shadow-2xl hover:cursor-pointer hover:scale-125 transition ease-in-out"
 							value="Submit"
 						/>
 					</div>

@@ -24,7 +24,7 @@ const page = () => {
 						onClick={() => {
 							push("/register");
 						}}
-						className="md:flex bg-[gold] hover:bg-yellow-600 border-2 border-black hover:border-white font-bold hover:scale-125 text-base md:text-3xl transition ease-in-out flex-row items-center gap-2 w-fit flex hover:text-white p-3 rounded-full"
+						className="md:flex bg-gradient-to-t from-[gold] to-[#FEB537] border-2 border-black hover:border-white font-bold hover:scale-125 text-base md:text-3xl transition ease-in-out flex-row items-center gap-2 w-fit flex hover:text-white p-3 rounded-full"
 					>
 						<FaUserPen className="size-8 md:size-19" />
 						Register

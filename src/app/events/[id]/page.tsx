@@ -54,7 +54,7 @@ const page = ({
 		return <Loading />;
 	}
 	return (
-		<main className="min-h-screen max-h-fit w-full flex flex-col md:flex-row p-4 md:p-20 gap-10">
+		<main className="min-h-screen max-h-fit w-full flex flex-col md:flex-row p-4 md:p-20 gap-10 mb-20 md:mb-0">
 			<section className="flex-1 h-full w-full md:w-1/2">
 				<Image
 					src={eventDetails!.image}
@@ -65,7 +65,7 @@ const page = ({
 					loading="lazy"
 				/>
 			</section>
-			<section className="flex-1 h-full bg-slate-100 md:p-10 rounded-3xl shadow-2xl md:w-1/2 w-full flex flex-col justify-evenly gap-6 md:gap-6">
+			<section className="flex-1 h-full bg-slate-100 p-4 md:p-10 rounded-3xl shadow-2xl md:w-1/2 w-full flex flex-col justify-evenly gap-6">
 				<div className="flex flex-row w-full items-center justify-between">
 					<p className="font-bold text-sm md:text-base italic">
 						Created on the {formatDate(eventDetails?.createdAt)}
@@ -98,7 +98,8 @@ const page = ({
 						$ {eventDetails?.price}
 					</p>
 					<p className="text-black italic font-bold bg-gray-300 rounded-full text-base md:text-xl p-2 md:p-4">
-						{eventDetails?.quantity}/{eventDetails?.maxParticipants} participants.
+						{eventDetails?.quantity}/{eventDetails?.maxParticipants}{" "}
+						participants.
 					</p>
 					<AddAgendaModal
 						event={eventDetails!}

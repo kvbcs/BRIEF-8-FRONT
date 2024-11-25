@@ -44,11 +44,9 @@ const UpdateEventForm = ({
 			.then((res) => {
 				toast.success("Categories loaded !"), { id: "123" };
 				setCategoriesList(res.categories);
-				console.log(res);
 			})
 			.catch((e) => {
 				toast.error("Error getting categories", e);
-				console.log(e);
 			});
 	}, [isLoaded]);
 
@@ -84,21 +82,18 @@ const UpdateEventForm = ({
 		updateEvent(eventUpdateData, eventUpdateData.id)
 			.then((res) => {
 				setisLoading(true);
-				console.log(res);
-				console.log(eventUpdateData);
+
 				toast.success("Event updated !");
 				handleClose();
 			})
 			.catch((e) => {
-				toast.error("Error" + e);
-				console.log(e);
-				console.log(eventUpdateData);
+				toast.error("Server error");
 			}),
 			[];
 	}
 
 	return (
-		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-1/2 mx-auto">
+		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white w-full mx-auto">
 			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">
 					Edit an event

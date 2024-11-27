@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCreditCard } from "react-icons/fa6";
 
-const page = ({ agenda }: { agenda: AllAgendaProps }) => {
+const page = () => {
 	const [agendaList, setagendaList] = useState<AllAgendaProps[]>([]);
 	const [isLoading, setisLoading] = useState(true);
 

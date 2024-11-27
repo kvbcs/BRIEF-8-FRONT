@@ -1,15 +1,12 @@
 "use client";
 import Loading from "@/Components/Loading";
 import { AddAgendaModal } from "@/Components/Modal/(POST)/AddAgendaModal";
-import { UpdateEventModal } from "@/Components/Modal/(UPDATE)/UpdateEventModal";
-import Title from "@/Components/Title";
-import { deleteEvent, getOneEvent } from "@/Services/eventService";
+import {  getOneEvent } from "@/Services/eventService";
 import { AllEventsProps } from "@/Utils/types";
 import { format } from "date-fns";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { FaTrashAlt } from "react-icons/fa";
 export type ParamsProps = {
 	id: string;
 };

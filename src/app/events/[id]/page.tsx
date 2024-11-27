@@ -1,7 +1,7 @@
 "use client";
 import Loading from "@/Components/Loading";
 import { AddAgendaModal } from "@/Components/Modal/(POST)/AddAgendaModal";
-import {  getOneEvent } from "@/Services/eventService";
+import { getOneEvent } from "@/Services/eventService";
 import { AllEventsProps } from "@/Utils/types";
 import { format } from "date-fns";
 import Image from "next/image";
@@ -10,11 +10,7 @@ import toast from "react-hot-toast";
 export type ParamsProps = {
 	id: string;
 };
-const page = ({
-	params,
-}: {
-	params: ParamsProps;
-}) => {
+const EventPage = ({ params }: { params: ParamsProps }) => {
 	const [eventDetails, setEventDetails] = useState<AllEventsProps>();
 	const [isLoading, setisLoading] = useState(true);
 
@@ -106,4 +102,4 @@ const page = ({
 	);
 };
 
-export default page;
+export default EventPage;

@@ -15,10 +15,8 @@ export type ParamsProps = {
 };
 const page = ({
 	params,
-	event,
 }: {
 	params: ParamsProps;
-	event: AllEventsProps;
 }) => {
 	const [eventDetails, setEventDetails] = useState<AllEventsProps>();
 	const [isLoading, setisLoading] = useState(true);

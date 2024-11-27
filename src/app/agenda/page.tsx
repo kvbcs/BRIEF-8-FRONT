@@ -14,11 +14,24 @@ import { FaCreditCard } from "react-icons/fa6";
 const page = () => {
 	const [agendaList, setagendaList] = useState<AllAgendaProps[]>([]);
 	const [isLoading, setisLoading] = useState(true);
+	const role = window.localStorage.getItem("role");
+	const jwt = window.localStorage.getItem("token");
+	const agenda = window.localStorage.getItem("agenda");
 
 	useEffect(() => {
 		const agendaId = window.localStorage.getItem("agenda");
 		getAllAgendaEvents(agendaId!)
 			.then((res) => {
+				if (
+					(role !== `${process.env.NEXT_PUBLIC_ADMIN_ROLE}` &&
+						role !== `${process.env.NEXT_PUBLIC_USER_ROLE}`) ||
+					jwt === undefined ||
+					jwt!.length < 60 ||
+					agenda === undefined ||
+					agenda!.length < 30
+				) {
+					toast.error("Page not found", { id: "jwt-error" });
+				}
 				setagendaList(res.agendaEvents);
 				toast.success("Agenda events loaded"), { id: "agenda-success" };
 			})
@@ -51,7 +64,27 @@ const page = () => {
 				setisLoading(false);
 			});
 	}
-
+	if (
+		(role !== `${process.env.NEXT_PUBLIC_ADMIN_ROLE}` &&
+			role !== `${process.env.NEXT_PUBLIC_USER_ROLE}`) ||
+		jwt === undefined ||
+		jwt!.length < 60 ||
+		agenda === undefined ||
+		agenda!.length < 30
+	) {
+		return (
+			<main className="w-full h-full m-auto text-center">
+				<h2 className="text-xl md:text-5xl font-bold">
+					404 Page Not Found
+				</h2>
+				<img
+					src="https://i.pinimg.com/originals/14/fd/8e/14fd8efea17748c4b959a07f91e09154.png"
+					alt="An image of people with question marks"
+					className="h-1/3 w-full md:w-1/4 m-auto"
+				/>
+			</main>
+		);
+	}
 	if (isLoading) {
 		return <Loading />;
 	}

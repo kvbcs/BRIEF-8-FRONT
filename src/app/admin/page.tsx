@@ -15,15 +15,26 @@ const page = () => {
 	const [isLoading, setisLoading] = useState(true);
 	const [userList, setUserList] = useState<AllUserProps[]>([]);
 	const [categoryList, setCategoryList] = useState<AllCategoriesProps[]>([]);
+	const role = window.localStorage.getItem("role");
+	const jwt = window.localStorage.getItem("token");
 
 	useEffect(() => {
 		Promise.all([getAllUsers(), getAllCategories()])
+
 			.then(([usersRes, categoriesRes]) => {
-				setUserList(usersRes.users);
-				setCategoryList(categoriesRes.categories);
-				toast.success("Users and Categories loaded!", {
-					id: "data-loaded",
-				});
+				if (
+					role !== `${process.env.NEXT_PUBLIC_ADMIN_ROLE}` ||
+					jwt === undefined ||
+					jwt!.length < 60
+				) {
+					toast.error("Page not found", { id: "role-error" });
+				} else {
+					setUserList(usersRes.users);
+					setCategoryList(categoriesRes.categories);
+					toast.success("Users and Categories loaded!", {
+						id: "data-loaded",
+					});
+				}
 			})
 			.catch((e) => {
 				toast.error("Error loading data", { id: "data-error" });
@@ -33,6 +44,24 @@ const page = () => {
 			});
 	}, [isLoading]);
 
+	if (
+		role !== `${process.env.NEXT_PUBLIC_ADMIN_ROLE}` ||
+		jwt === undefined ||
+		jwt!.length < 60
+	) {
+		return (
+			<main className="w-full h-full m-auto text-center">
+				<h2 className="text-xl md:text-5xl font-bold">
+					404 Page Not Found
+				</h2>
+				<img
+					src="https://i.pinimg.com/originals/14/fd/8e/14fd8efea17748c4b959a07f91e09154.png"
+					alt="An image of people with question marks"
+					className="h-1/3 w-full md:w-1/4 m-auto"
+				/>
+			</main>
+		);
+	}
 	if (isLoading) {
 		return <Loading />;
 	}

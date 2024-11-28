@@ -11,7 +11,7 @@ const page = () => {
 	return (
 		<main className="h-full w-full">
 			<section className="bg-gradient-to-b from-blue-700 to-sky-500 h-[90vh] md:h-[80vh] w-full flex flex-col md:flex-row shadow-2xl rounded-b-3xl mb-40">
-				<div className="h-1/2 md:h-full p-6 lg:p-20 w-full md:w-1/2 flex flex-col justify-evenly gap-8 items-center">
+				<article className="h-1/2 md:h-full p-6 lg:p-20 w-full md:w-1/2 flex flex-col justify-evenly gap-8 items-center">
 					<h1 className="text-3xl md:text-4xl text-[gold] lg:text-6xl font-bold text-center">
 						Welcome to MEETUP
 					</h1>
@@ -29,9 +29,9 @@ const page = () => {
 						<FaUserPen className="size-8 md:size-19" />
 						Register
 					</button>
-				</div>
+				</article>
 
-				<div className=" h-1/2 md:h-full w-full md:w-1/2">
+				<article className=" h-1/2 md:h-full w-full md:w-1/2">
 					<Image
 						src="https://cdni.iconscout.com/illustration/premium/thumb/people-doing-party-in-night-club-illustration-download-svg-png-gif-file-formats--surprise-dj-pack-illustrations-3184274.png"
 						alt="A picture of people partying"
@@ -40,7 +40,7 @@ const page = () => {
 						height={500}
 						loading="lazy"
 					/>
-				</div>
+				</article>
 			</section>
 			<Title title={"Discover Our Services"} />
 

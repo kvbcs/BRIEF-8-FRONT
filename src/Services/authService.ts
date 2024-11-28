@@ -1,4 +1,4 @@
-import { AuthProps } from "@/Utils/types";
+import { AuthProps, LoginProps } from "@/Utils/types";
 import axios from "axios";
 
 //Service du register --------------------------------------------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ export async function registerService(auth: AuthProps) {
 }
 
 //Service du login --------------------------------------------------------------------------------------------------------------------
-export async function loginService(auth: AuthProps) {
+export async function loginService(auth: LoginProps) {
 	let url = `${process.env.NEXT_PUBLIC_API_URL}auth/signin`;
 
 	let axiosConfig = {

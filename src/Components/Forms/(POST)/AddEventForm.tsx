@@ -37,7 +37,20 @@ const AddEventForm = (
 		formState: { errors },
 	} = useForm<AllEventsProps>();
 
+	const validateDates = (startDate: any, endDate: any) => {
+		if (new Date(startDate) >= new Date(endDate)) {
+			toast.error("Start date must be earlier than End date.");
+			return false;
+		}
+		return true;
+	};
 	const onSubmit: SubmitHandler<AllEventsProps> = (data) => {
+		const startDate = new Date(data.startDate);
+		const endDate = new Date(data.endDate);
+		if (!validateDates(startDate, endDate)) {
+			setisLoading(false); 
+			return; 
+		}
 		setisLoading(true);
 
 		const formattedData = {
@@ -48,10 +61,13 @@ const AddEventForm = (
 
 		addEvent(formattedData)
 			.then((res) => {
-				toast.success("Event created !");
-				handleClose();
+				if (res.status === 400) {
+					toast.error("Invalid dates");
+				} else if (res.status === 201) {
+					toast.success("Event created!");
+					handleClose();
+				}
 			})
-
 			.catch((e) => {
 				toast.error("Server error");
 			})

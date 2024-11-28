@@ -30,7 +30,6 @@ const page = () => {
 				}
 			})
 			.catch((e) => {
-				console.log(e);
 				toast.error("Server error", { id: "server-error" });
 			})
 			.finally(() => {

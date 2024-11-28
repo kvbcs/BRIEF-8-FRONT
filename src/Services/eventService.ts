@@ -70,7 +70,7 @@ export async function addEvent(event: AllEventsProps) {
 			axiosConfig
 		)
 		.then((res) => {
-			return res.data;
+			return res;
 		})
 		.catch((e) => {
 			throw new Error(e);

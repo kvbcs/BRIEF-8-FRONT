@@ -2,12 +2,14 @@
 import { useStoreConnect } from "@/Components/stores/connextTest";
 import { ErrorMsg } from "@/Components/Error";
 import { loginService } from "@/Services/authService";
-import { AuthProps } from "@/Utils/types";
+import { AuthProps, LoginProps } from "@/Utils/types";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { loginSchema } from "@/Utils/loginSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const LoginForm = () => {
 	const { setIsConnected } = useStoreConnect((state) => state);
@@ -20,9 +22,12 @@ export const LoginForm = () => {
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm<AuthProps>();
+	} = useForm<LoginProps>({
+		mode: "all",
+		resolver: yupResolver(loginSchema),
+	});
 
-	const onSubmit: SubmitHandler<AuthProps> = (data) => {
+	const onSubmit: SubmitHandler<LoginProps> = (data) => {
 		try {
 			loginService(data)
 				.then((res) => {
@@ -82,12 +87,10 @@ export const LoginForm = () => {
 								type="email"
 								autoComplete="email"
 								className="block w-full border-0 py-1.5 text-gray-900 shadow-2xl rounded-full ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-700 sm:text-sm sm:leading-6 pl-3"
-								{...register("email", { required: true })}
+								{...register("email")}
 							/>
 							{errors.email && (
-								<ErrorMsg
-									content={"The email field is required"}
-								/>
+								<ErrorMsg content={errors.email.message} />
 							)}
 						</div>
 					</div>
@@ -106,14 +109,10 @@ export const LoginForm = () => {
 								id="password"
 								type="password"
 								className="block w-full border-0 py-1.5 text-gray-900 shadow-2xl rounded-full ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-700 sm:text-sm sm:leading-6 pl-3"
-								{...register("password", {
-									required: true,
-								})}
+								{...register("password")}
 							/>
 							{errors.password && (
-								<ErrorMsg
-									content={"The password field is required"}
-								/>
+								<ErrorMsg content={errors.password.message} />
 							)}
 						</div>
 					</div>

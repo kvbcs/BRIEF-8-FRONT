@@ -5,7 +5,10 @@ export type AuthProps = {
 	password: string;
 	gdpr: boolean;
 };
-
+export type LoginProps = {
+	email: string;
+	password: string;
+};
 export type TitleProps = {
 	title: string;
 };

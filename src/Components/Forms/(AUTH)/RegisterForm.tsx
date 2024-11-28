@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { authSchema } from "@/Utils/validator";
+import { registerSchema } from "@/Utils/registerSchema";
 import { registerService } from "@/Services/authService";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -21,7 +21,7 @@ export const RegisterForm = () => {
 		formState: { errors },
 	} = useForm<AuthProps>({
 		mode: "all",
-		resolver: yupResolver(authSchema),
+		resolver: yupResolver(registerSchema),
 	});
 
 	const onSubmit: SubmitHandler<AuthProps> = async (data) => {
@@ -139,6 +139,25 @@ export const RegisterForm = () => {
 								<ErrorMsg content={errors.password?.message} />
 							)}
 						</div>
+					</div>
+					<div className="flex justify-evenly w-full">
+						<input
+							type="checkbox"
+							id="gdpr"
+							className="w-4 shadow-2xl"
+							required
+							{...register("gdpr")}
+						/>
+						<label htmlFor="gdpr" className="font-bold text-sm">
+							I accept the{" "}
+							<Link
+								href="/privacy-policy"
+								className="text-blue-700 hover:text-sky-500"
+								target="_blank"
+							>
+								Terms of Service
+							</Link>
+						</label>
 					</div>
 
 					<div>

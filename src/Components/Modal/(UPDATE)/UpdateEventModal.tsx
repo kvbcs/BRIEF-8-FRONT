@@ -22,14 +22,14 @@ export const UpdateEventModal = ({
 		top: "50%",
 		left: "50%",
 		transform: "translate(-50%, -50%)",
-		width: 600,
-		height: "95%",
+		width: 350,
+		height: "80%",
 		overflow: "auto",
 		bgcolor: "background.paper",
 		border: "2px solid #000",
 		borderRadius: "50px",
 		boxShadow: 24,
-		p: 2,
+		p: 0,
 	};
 	return (
 		<>

@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const authSchema = yup.object({
+export const registerSchema = yup.object({
 	firstName: yup
 		.string()
 		.required("This field is required")
@@ -12,7 +12,7 @@ export const authSchema = yup.object({
 	email: yup
 		.string()
 		.required("This field is required")
-		.email()
+		.email("Email must be a valid format")
 		.typeError("Email must be valid"),
 	password: yup
 		.string()
@@ -25,4 +25,8 @@ export const authSchema = yup.object({
 			/[!@#$%^&*(),.?":{}|<>]/,
 			"Password must contain at least one special character"
 		),
+	gdpr: yup
+		.boolean()
+		.oneOf([true], "You must agree to the Terms of Service")
+		.required("This field is required"),
 });

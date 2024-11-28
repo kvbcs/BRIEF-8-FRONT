@@ -67,7 +67,7 @@ const page = () => {
 	}
 
 	return (
-		<main className="min-h-screen max-h-fit mt-5 mb-40 w-full flex flex-col justify-evenly">
+		<main className="min-h-screen max-h-fit mt-10 mb-40 w-full flex flex-col justify-evenly">
 			<Title title={"Administration Dashboard"} />
 			<section className="flex flex-row w-full justify-evenly mt-10">
 				<AddEventModal
@@ -79,7 +79,7 @@ const page = () => {
 					isLoading={isLoading}
 				/>
 			</section>
-			<section className="flex flex-col gap-4 md:flex-row md:justify-evenly md:h-[500px]">
+			<section className="flex flex-col gap-4 md:flex-row md:justify-evenly md:min-h-[500px] md:max-h-fit">
 				<article className="mt-10 mx-4 md:mx-0 flex flex-col justify-evenly gap-4 items-center p-4 md:w-1/3 rounded-3xl h-fit max-h-[50vh] bg-gradient-to-b from-blue-700 to-sky-500 text-white shadow-2xl overflow-auto md:h-fit md:max-h-[570px]">
 					<h2 className="text-3xl font-bold my-10">All Users</h2>
 					{userList &&

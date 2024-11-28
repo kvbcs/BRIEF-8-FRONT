@@ -69,70 +69,72 @@ const Header = () => {
 					height={100}
 				/>
 			</div>
-			<ul className="text-white text-xl flex-row items-center w-2/3 md:gap-4 lg:gap-14 hidden md:flex justify-end ">
-				<Link href="/">
-					<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-3 p-2 rounded-lg">
-						<FaHouse size={26} />
-						Home
-					</li>
-				</Link>
-				<Link href="/events">
-					<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
-						<BiSolidParty size={26} />
-						Events
-					</li>
-				</Link>
-				{isConnected ? (
-					<ul className="text-white text-xl font-bold flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
-						<Link href="/agenda">
-							<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
-								<FaCalendarAlt size={26} />
-								Agenda
-							</li>
-						</Link>
-
-						{isAdmin && (
-							<Link href="/admin">
+			<nav className="min-w-2/3 max-w-fit lg:flex justify-end lg:gap-14">
+				<ul className="text-white text-xl flex-row items-center md:gap-4 lg:gap-14 hidden lg:flex flex-nowrap justify-end ">
+					<Link href="/">
+						<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-3 p-2 rounded-lg">
+							<FaHouse size={26} />
+							Home
+						</li>
+					</Link>
+					<Link href="/events">
+						<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
+							<BiSolidParty size={26} />
+							Events
+						</li>
+					</Link>
+					{isConnected ? (
+						<ul className="text-white text-xl font-bold flex-row items-center md:gap-4 lg:gap-14 hidden md:flex">
+							<Link href="/agenda">
 								<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
-									<RiAdminFill size={26} />
-									Admin
+									<FaCalendarAlt size={26} />
+									Agenda
 								</li>
 							</Link>
-						)}
-					</ul>
-				) : (
-					<div className="flex flex-row w-fit  justify-evenly gap-8 items-center">
-						<button
-							onClick={() => {
-								push("/login");
-							}}
-							className="hidden md:flex bg-white hover:bg-black border-black border-2 hover:border-white hover:text-white transition ease-in-out hover:scale-110 text-black flex-row items-center gap-2 justify-evenly w-[150px] p-3 rounded-full "
-						>
-							<FaSignInAlt size={26} />
-							Login
-						</button>
-						<button
-							onClick={() => {
-								push("/register");
-							}}
-							className="hidden md:flex hover:scale-110 hover:text-white transition ease-in-out bg-gradient-to-t from-[gold] to-[#FEB537] flex-row items-center justify-evenly gap-2 w-[150px] text-black border-2 border-black hover:border-white  font-bold p-3 rounded-full"
-						>
-							<FaUserPen size={26} />
-							Register
-						</button>
-					</div>
+
+							{isAdmin && (
+								<Link href="/admin">
+									<li className="hover:bg-sky-500 font-bold hover:scale-125 transition ease-in-out flex flex-row items-center gap-2 p-2 rounded-lg">
+										<RiAdminFill size={26} />
+										Admin
+									</li>
+								</Link>
+							)}
+						</ul>
+					) : (
+						<div className="flex flex-row w-fit  justify-evenly gap-8 items-center">
+							<button
+								onClick={() => {
+									push("/login");
+								}}
+								className="hidden md:flex bg-white hover:bg-black border-black border-2 hover:border-white hover:text-white transition ease-in-out hover:scale-110 text-black flex-row items-center gap-2 justify-evenly w-[150px] p-3 rounded-full "
+							>
+								<FaSignInAlt size={26} />
+								Login
+							</button>
+							<button
+								onClick={() => {
+									push("/register");
+								}}
+								className="hidden md:flex hover:scale-110 hover:text-white transition ease-in-out bg-gradient-to-t from-[gold] to-[#FEB537] flex-row items-center justify-evenly gap-2 w-[150px] text-black border-2 border-black hover:border-white  font-bold p-3 rounded-full"
+							>
+								<FaUserPen size={26} />
+								Register
+							</button>
+						</div>
+					)}
+				</ul>
+				{isConnected && (
+					<button
+						onClick={handleDisconnect}
+						className="hidden lg:flex text-xl bg-gradient-to-b from-red-600 to-red-800 flex-row justify-evenly items-center hover:scale-110 transition ease-in-out text-white hover:text-black hover:bg-black border-2 border-white hover:border-black p-3 rounded-full font-bold w-fit lg:w-[175px]"
+					>
+						<FaArrowRightFromBracket size={26} />
+						Log out
+					</button>
 				)}
-			</ul>
-			{isConnected && (
-				<button
-					onClick={handleDisconnect}
-					className="hidden md:flex text-xl bg-white flex-row justify-evenly items-center hover:scale-125 transition ease-in-out text-black hover:text-white hover:bg-black border-2 border-black hover:border-white p-3 rounded-full font-bold w-fit lg:w-[175px]"
-				>
-					<FaArrowRightFromBracket size={26} />
-					Log out
-				</button>
-			)}
-			<DropMenu />
+				<DropMenu />
+			</nav>
 		</header>
 	);
 };

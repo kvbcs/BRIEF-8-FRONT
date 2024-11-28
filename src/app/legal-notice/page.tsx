@@ -2,14 +2,16 @@ import React from "react";
 
 const page = () => {
 	return (
-		<main className="py-40 px-64 text-justify">
-			<h1 className="font-bold text-5xl text-center">Legal Notice</h1>
+		<main className="h-fit w-full p-6 py-16 lg:py-40 lg:px-64 text-justify">
+			<h1 className="text-2xl md:text-5xl text-center font-bold mb-10">
+				MEETUP - Legal Notice
+			</h1>
 
 			<section>
-				<h2 className="text-3xl my-10 font-bold underline">
+				<h2 className="text-xl md:text-3xl my-10 font-bold underline">
 					1. Introduction
 				</h2>
-				<p className="text-xl">
+				<p className="text-base md:text-xl">
 					Welcome to <b>MEETUP</b>, an event listing website that
 					allows users to create, view, and participate in various
 					events. By using our services, you agree to comply with the
@@ -17,10 +19,10 @@ const page = () => {
 				</p>
 			</section>
 			<section>
-				<h2 className="text-3xl my-10 font-bold underline">
+				<h2 className="text-xl md:text-3xl my-10 font-bold underline">
 					2. Website Information
 				</h2>
-				<p className="text-xl">
+				<p className="text-base md:text-xl">
 					<b>Website name:</b> MEETUP
 					<br />
 					<b>Publication Director:</b> Kyllian Vibancos
@@ -29,10 +31,10 @@ const page = () => {
 				</p>
 			</section>
 			<section>
-				<h2 className="text-3xl my-10 font-bold underline">
+				<h2 className="text-xl md:text-3xl my-10 font-bold underline">
 					3. Terms of Use
 				</h2>
-				<p className="text-xl">
+				<p className="text-base md:text-xl">
 					By accessing and using the MEETUP website, you agree to
 					comply with our terms and conditions of use, as well as any
 					other policies and guidelines that we may post on the
@@ -41,10 +43,10 @@ const page = () => {
 				</p>
 			</section>
 			<section>
-				<h2 className="text-3xl my-10 font-bold underline">
+				<h2 className="text-xl md:text-3xl my-10 font-bold underline">
 					4. Intellectual Property
 				</h2>
-				<p className="text-xl">
+				<p className="text-base md:text-xl">
 					The content of the website, including but not limited to
 					text, images, logos, graphics, videos, and software, is the
 					property of the Publisher or its licensors and is protected
@@ -54,10 +56,10 @@ const page = () => {
 				</p>
 			</section>
 			<section>
-				<h2 className="text-3xl my-10 font-bold underline">
+				<h2 className="text-xl md:text-3xl my-10 font-bold underline">
 					5. Personal Data
 				</h2>
-				<p className="text-xl">
+				<p className="text-base md:text-xl">
 					The collection and use of personal data are governed by our{" "}
 					<a href="/privacy-policy">Privacy Policy</a>, which outlines
 					how we collect, process, and protect your information. By
@@ -67,10 +69,10 @@ const page = () => {
 				</p>
 			</section>
 			<section>
-				<h2 className="text-3xl my-10 font-bold underline">
+				<h2 className="text-xl md:text-3xl my-10 font-bold underline">
 					6. Liability
 				</h2>
-				<p className="text-xl">
+				<p className="text-base md:text-xl">
 					The Publisher makes every effort to ensure that the
 					information provided on the website is accurate and
 					up-to-date. However, we cannot guarantee the completeness or
@@ -81,10 +83,10 @@ const page = () => {
 				</p>
 			</section>
 			<section>
-				<h2 className="text-3xl my-10 font-bold underline">
+				<h2 className="text-xl md:text-3xl my-10 font-bold underline">
 					7. External Links
 				</h2>
-				<p className="text-xl">
+				<p className="text-base md:text-xl">
 					The website may contain links to third-party websites. These
 					external links are provided for your convenience and do not
 					imply an endorsement or responsibility for the content of
@@ -93,10 +95,10 @@ const page = () => {
 				</p>
 			</section>
 			<section>
-				<h2 className="text-3xl my-10 font-bold underline">
+				<h2 className="text-xl md:text-3xl my-10 font-bold underline">
 					8. Applicable Law and Dispute Resolution
 				</h2>
-				<p className="text-xl">
+				<p className="text-base md:text-xl">
 					These legal notices are governed by the laws of [Insert
 					Country]. Any disputes arising from the use of the website
 					or related services will be resolved through the courts of
@@ -104,10 +106,10 @@ const page = () => {
 				</p>
 			</section>
 			<section>
-				<h2 className="text-3xl my-10 font-bold underline">
+				<h2 className="text-xl md:text-3xl my-10 font-bold underline">
 					9. Modifications to the Legal Notice
 				</h2>
-				<p className="text-xl">
+				<p className="text-base md:text-xl">
 					The Publisher reserves the right to modify these legal
 					notices at any time. Any changes will be posted on this
 					page, and the effective date will be updated accordingly. It

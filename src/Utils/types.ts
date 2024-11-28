@@ -3,6 +3,7 @@ export type AuthProps = {
 	lastName: string;
 	email: string;
 	password: string;
+	gdpr: boolean;
 };
 
 export type TitleProps = {
